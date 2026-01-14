@@ -1,27 +1,42 @@
 # HallucinationRadar
-Hallucination Radar is a project that checks whether an AI (LLM) answer is actually true or just sounding true.
 
-Sometimes chatbots give confident answers that are wrong (this is called hallucination).
-This system acts like a truth-checker layer on top of AI.
+**HallucinationRadar** is a project that checks whether an AI (LLM) answer is actually true — or just *sounds* true.
 
-What it does
+Sometimes chatbots give confident answers that are wrong (**hallucinations**). HallucinationRadar acts like a **truth-checking layer** on top of AI responses.
 
-When a user asks a question:
+---
 
-The AI generates an answer
+## What it does
 
-The system breaks the answer into small factual statements (claims)
+When a user asks a question, the system:
 
-It searches trusted sources (like Wikipedia / PDFs / documents) for evidence
+1. **Generates an AI answer**
+2. **Breaks the answer into factual statements (claims)**
+3. **Searches trusted sources** (e.g., Wikipedia, PDFs, verified documents) for evidence
+4. **Evaluates each claim**:
+   -  Supported by evidence
+   -  Partially supported / unsure
+   -  Not supported (hallucination)
+5. **Outputs a Truthfulness Score** (0–100%)
+6. **Highlights risky sentences** and provides **citations**
 
-It checks each claim:
+---
 
- Supported by evidence
+## Output
 
- Partially supported / unsure
+HallucinationRadar provides:
 
- Not supported (hallucination)
+- **Truthfulness Score**: `0–100%`
+- **Claim-by-claim verification table**
+- **Risky/high-uncertainty sentence highlighting**
+- **Citations** to supporting (or contradicting) sources
 
-It gives a Truthfulness Score (0–100%)
+---
 
-It highlights risky sentences and shows citations
+## Why it matters
+
+LLMs can produce fluent answers that may still be incorrect. HallucinationRadar helps:
+
+- Detect misinformation early
+- Increase trust and transparency
+- Make AI outputs verifiable and auditable
