@@ -1,0 +1,58 @@
+# HallucinationRadar Configuration
+
+# LLM Settings
+llm:
+  model_name: "gpt2" # Can be replaced with larger models like "facebook/opt-350m"
+  max_length: 256
+  temperature: 0.7
+  top_p: 0.9
+
+# Embedding and Retrieval Settings
+embedding:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  embedding_dim: 384
+  device: "cpu" # Set to "cuda" if GPU is available
+
+# Document Retrieval
+retrieval:
+  top_k: 5 # Number of documents to retrieve for verification
+  similarity_threshold: 0.3
+  search_method: "semantic" # Options: semantic, keyword, hybrid
+
+# Claim Extraction Settings
+claims:
+  min_claim_length: 10 # Minimum characters in a claim
+  max_claims_per_answer: 20
+
+# Verification Settings
+verification:
+  support_threshold: 0.7 # Threshold for "supported" claim
+  conflict_threshold: 0.5 # Threshold for "conflicting" evidence
+  uncertainty_threshold: 0.4 # Below this = unsupported/hallucination
+
+# Scoring Settings
+scoring:
+  supported_weight: 1.0
+  partially_supported_weight: 0.5
+  unsupported_weight: 0.0
+  hallucination_penalty: -0.5
+
+# Highlighting Settings
+highlighting:
+  high_risk_threshold: 0.3 # Claims below this are marked as risky
+  medium_risk_threshold: 0.6
+  color_scheme:
+    high_risk: "red"
+    medium_risk: "orange"
+    low_risk: "green"
+
+# Data Settings
+data:
+  documents_path: "./data/documents"
+  vector_store_path: "./data/vector_store"
+  cache_embeddings: true
+
+# Logging
+logging:
+  level: "INFO"
+  output_file: "./logs/hallucination_radar.log"
