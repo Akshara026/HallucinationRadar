@@ -1,0 +1,68 @@
+step 1:
+
+making an AI piepline that checks another AI’s answer
+
+    Question → Answer → Claims → Evidence → Verification → Score → Report
+
+step 2:
+
+installing basics
+    pip install langchain langgraph openai faiss-cpu wikipedia
+
+
+folder struct
+
+    hallucination_radar/
+    │
+    ├── main.py
+    ├── graph.py
+    ├── state.py
+    ├── nodes/
+    │   ├── answer.py
+    │   ├── claims.py
+    │   ├── retrieval.py
+    │   ├── verify.py
+    │   ├── score.py
+    │   └── report.py
+    │
+    └── data/
+
+STEP 3:
+
+    DEFINING THE STATE
+
+        from typing import TypedDict, List, Dict
+
+        class RadarState(TypedDict):
+            query: str
+            answer: str
+            claims: List[str]
+            evidence: Dict[str, List[str]]
+            verdicts: Dict[str, dict]
+            score: float
+            report: str
+
+    wch will be inside state.py
+
+step 4:
+    BUILDING EACH NODES
+
+    ie, answer node, claim extraction, retrieval(dont make complictaed rag), verification node (ech is truth engine)
+    and after that scoring node - report node
+
+STEP 5:
+    CONNECT EVERYTHING WITH LLANG GRAPAH
+
+STEP 6:
+    above all tseps integrating will make basic 
+
+    after this, improving strts
+
+
+Upgrade 1 — Better Retrieval
+
+Replace Wikipedia with:
+
+FAISS + embeddings
+chunk documents (300 tokens)
+top-k retrieval
