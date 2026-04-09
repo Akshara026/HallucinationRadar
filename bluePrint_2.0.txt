@@ -1,6 +1,12 @@
+BEFORE READING THIS, PLS READ A FILE NAMED "rulesAndRegulation.jpeg"
+AND PLS DONT BLINDLY. KNOW UR STUFFS AND DO.. IF DUNNO PLS READ OR ASK OR LEARN.
+
+
+GENERAL PLAN (CHNAGES ACC TO TIME)
+
 step 1:
 
-making an AI piepline that checks another AI’s answer
+makin an AI piepline that checks another AI’s answer
 
     Question → Answer → Claims → Evidence → Verification → Score → Report
 
