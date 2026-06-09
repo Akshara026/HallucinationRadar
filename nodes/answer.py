@@ -1,6 +1,6 @@
 from langchain_community.chat_models import ChatOllama
 
-llm = ChatOllama(model="llama3.1", temperature=1)
+llm = ChatOllama(model="llama3.1", temperature=0)
 
 
 def answer_node(state):
@@ -35,7 +35,6 @@ Rules:
 - Try starting sentences in different ways, use dependent clauses.
 - Hook readers with each topic sentence first.
 - Vary sentence length between 6-20 words
-- Utilize Transition words
 - Provide valuable information
 
 
