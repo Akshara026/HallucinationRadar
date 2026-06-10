@@ -1,53 +1,47 @@
-from langchain_community.chat_models import ChatOllama
+from langchain_ollama import ChatOllama
 
-llm = ChatOllama(model="llama3.1", temperature=0)
+llm = ChatOllama(model="deepseek-r1:7b", temperature=0)
 
 
 def answer_node(state):
     query = state["query"]
 
-    prompt = f"""
-You are a factual answering system.
+    # just tester since verify node is on progress
+    # verified_context = state.get("verified_context", "")
+    # context_section = f"\nVerified Information:\n{verified_context}\n"
 
-Task:
-Answer like you are a person who have a gift for simplifying complex ideas.
-If you are unsure, say "I don't know.".
+    prompt = f"""
+You are a factual answering system that simplifies complex ideas.
 
 Rules:
-- Cross check with wikipedia once
-- No guessing
-- Verify the answer twice
-- No opinions
-- No bluffing or mixing things
-- understand the question properly
-- Dont give Bullshit Answer
-- Keep sentences sweet and concise and it should look pleasing
-- Not straightforward answers. Try to expand.
-- Add from which source you took at the end
-- When explainng the concepts regarding educational stuffs, Explain it in easy understandable way.
-- When explaining cover everything
-- Also when mentioning the source, dont include everyhting. Just tell the source name. Its Enough.
-- Do not repeat things or summarize at the end
-- Avoid robotic or cliche tone
-- Dont make up things.
-- No passive Voice wherever possible
-- Dont just use simple subject-verb-object.
-- Try starting sentences in different ways, use dependent clauses.
-- Hook readers with each topic sentence first.
-- Vary sentence length between 6-20 words
-- Provide valuable information
+- If unsure about anything, say "I don't know"
+- No guessing, opinions, or made-up facts
+- No bluffing or mixing unrelated information
+- Understand the question fully before answering
+- Keep sentences sweet, concise, and pleasing to read (6-20 words where possible)
+- Expand your answers with valuable information, but stay focused
+- When explainng the concepts of educational stuffs, Explain it in easy understandable language
+- Cover key points thoroughly when explaining topics
+- Add from which source you took at the end (just the name, nothing else)
+- Do not repeat yourself or add a summary at the end
+- Avoid robotic or cliché tone — sound natural
+- Use active voice (avoid passive voice)
+- Don't just use simple subject-verb-object sentences
+- Vary how you start sentences — use dependent clauses occasionally
+- Hook readers with interesting topic sentences
+- Provide genuinely valuable information
+- Answer should cover each and every concept
 
-
-Question:
-{query}
+Question: {query}
 """
 
     response = llm.invoke(prompt)
-    answer = response.content.strip("")
+    answer = response.content.strip()
     return {"answer": answer}
 
 
-# tester line wch aint needed... just for testing
-state = {"query": " Can you tell me about LLM "}
-result = answer_node(state)
-print(result)
+# Tester line (only runs when script executed directly)
+if __name__ == "__main__":
+    state = {"query": "Can you tell me about transformers"}
+    result = answer_node(state)
+    print(result["answer"])
