@@ -3,17 +3,30 @@ import re
 
 from langchain_ollama import ChatOllama
 
-# initisalising model once so it can be accesed multple func at same time
+# Initializin the model once so it can be reused
 llm = ChatOllama(
     model="deepseek-r1:7b",
     temperature=0.2,
     num_ctx=8192,
+    request_timeout=120,
 )
+
+JSON_SYSTEM_PROMPT = """
+You are a JSON API.
+
+Rules:
+- Return only valid JSON.
+- Do not output reasoning.
+- Do not output analysis.
+- Do not use markdown code fences.
+- Do not include explanations or commentary.
+- Return raw JSON only.
+"""
 
 
 def clean_response(text: str) -> str:
     """
-    this func to remove DeepSeek reasoning tags.
+    this just removes DeepSeek reasoning tags if they appear.
     """
     return re.sub(
         r"<think>.*?</think>",
@@ -23,84 +36,109 @@ def clean_response(text: str) -> str:
     ).strip()
 
 
-def extract_concepts(query: str) -> list[str]:
+def parse_json_array(text: str) -> list[str]:
     """
-    Call the LLM to extract concepts from the user's question.
+    Extract and validate a JSON array from model output.
     """
+    match = re.search(r"\[[\s\S]*\]", text)
 
-    prompt = f"""
-Identify the minimum set of concepts needed to teach this topic.
-
-Question: {query}
-
-Rules:
-- Return ONLY a JSON array.
-- Order concepts from beginner to advanced.
-- Include the limitations of previous approaches.
-- Include the motivation for the new approach.
-- Exclude implementation details unless essential.
-- Return 5 to 10 concepts maximum.
-"""
-
-    response = llm.invoke(prompt)
-
-    text = clean_response(response.content)
+    if not match:
+        return []
 
     try:
-        concepts = json.loads(text)
+        data = json.loads(match.group())
 
-        if isinstance(concepts, list):
-            return concepts
+        if isinstance(data, list):
+            return [
+                item.strip() for item in data if isinstance(item, str) and item.strip()
+            ]
 
     except json.JSONDecodeError:
         pass
 
-    # Fallback for invalid JSON
-    return [line.strip("- ").strip() for line in text.splitlines() if line.strip()]
+    return []
+
+
+def extract_concepts(query: str) -> list[str]:
+    """
+    Extract the minimum set of concepts needed to explain a topic.
+    """
+    prompt = f"""
+Identify the minimum concepts needed to explain the topic.
+
+Question: {query}
+
+Example:
+[
+  "Problem being solved",
+  "Limitations of previous approaches",
+  "Motivation for the new approach",
+  "Core concepts",
+  "Key components"
+]
+
+Rules:
+- Return a JSON array of strings.
+- Return 5 to 10 concepts maximum.
+- Order concepts from beginner to advanced.
+- Include limitations of previous approaches.
+- Include motivation for the new approach.
+"""
+
+    messages = [
+        ("system", JSON_SYSTEM_PROMPT),
+        ("human", prompt),
+    ]
+
+    response = llm.invoke(messages)
+
+    text = clean_response(response.content)
+
+    concepts = parse_json_array(text)
+
+    if not concepts or not all(isinstance(c, str) and c.strip() for c in concepts):
+        concepts = [
+            "Problem being solved",
+            "Limitations of previous approaches",
+            "Motivation for the new approach",
+            "Core concepts",
+            "Key components",
+            "Applications and limitations",
+        ]
+
+    return concepts
 
 
 def generate_answer(query: str, concepts: list[str]) -> str:
     """
-    callin LLM again to generate the ans using the concepts tht we ectrcted abv
-    :3
+    Generate a beginner-friendly explanation using extracted concepts.
     """
-
     concept_list = "\n".join(f"- {concept}" for concept in concepts)
 
     prompt = f"""
-    You are an expert teacher explaining technical topics to beginners.
+You are an expert teacher explaining technical topics to beginners.
 
-    Question:
-    {query}
+Question:
+{query}
 
-    You MUST explain all of these concepts:
+Explain these concepts in order:
 
-    {concept_list}
+{concept_list}
 
-    Teaching style requirements:
-
-    - Teach through a story, not a textbook.
-    - Start with the problem that existed before this technology.
-    - Explain why previous approaches failed.
-    - Introduce the new solution.
-    - Explain concepts in the given order.
-    - Build from simple ideas to advanced ones.
-    - Use analogies whenever possible.
-    - Explain jargon immediately after introducing it.
-    - Focus on intuition before mathematical details.
-    - Use numbered sections.
-    - Write naturally, as if teaching a curious beginner.
-    - Do NOT use headings like "Introduction", "Core Concepts", or "Applications".
-    - Do NOT add a summary or conclusion.
-
-    Recommended flow:
-
-    1. The problem with older approaches
-    2. The new idea
-    3. How the core mechanism works
-    4. The major components
-    5. Why this was a breakthrough
-    """
+Rules:
+- Use numbered sections only.
+- No markdown headings.
+- No bullet points.
+- No summary or conclusion.
+- Start with the problem older approaches faced.
+- Explain why older approaches failed.
+- Introduce the new idea.
+- Explain each concept in order.
+- Define jargon immediately.
+- Use analogies whenever possible.
+- Focus on intuition before mathematics.
+- Write naturally, as if teaching a curious beginner.
+"""
 
     response = llm.invoke(prompt)
 
@@ -111,7 +149,6 @@ def answer_node(state: dict) -> dict:
     """
     Orchestrate the pipeline.
     """
-
     query = state["query"]
 
     concepts = extract_concepts(query)
@@ -132,11 +169,12 @@ if __name__ == "__main__":
 
     result = answer_node(state)
 
-    print("\n concepts :3\n")
+    print("\nConcepts:\n")
+
     for concept in result["concepts"]:
         print(f"- {concept}")
 
-    print("\n main answer :3\n")
+    print("\nAnswer:\n")
     print(result["answer"])
 
 
