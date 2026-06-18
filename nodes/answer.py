@@ -38,19 +38,30 @@ def clean_response(text: str) -> str:
 
 def parse_json_array(text: str) -> list[str]:
     """
-    Extract and validate a JSON array from model output.
+    Parse model output as either:
+
+    1. A top-level JSON array:
+       ["a", "b", "c"]
+
+    2. A JSON object containing a "concepts" array:
+       {"concepts": ["a", "b", "c"]}
+
+    Returns only non-empty strings.
+    Invalid or malformed responses return an empty list.
     """
-    match = re.search(r"\[[\s\S]*\]", text)
-
-    if not match:
-        return []
-
     try:
-        data = json.loads(match.group())
+        data = json.loads(text)
 
         if isinstance(data, list):
             return [
                 item.strip() for item in data if isinstance(item, str) and item.strip()
+            ]
+
+        if isinstance(data, dict) and isinstance(data.get("concepts"), list):
+            return [
+                item.strip()
+                for item in data["concepts"]
+                if isinstance(item, str) and item.strip()
             ]
 
     except json.JSONDecodeError:
@@ -116,7 +127,6 @@ def generate_answer(query: str, concepts: list[str]) -> str:
     concept_list = "\n".join(f"- {concept}" for concept in concepts)
 
     prompt = f"""
-You are an expert teacher explaining technical topics to beginners.
 
 Question:
 {query}
@@ -127,9 +137,11 @@ Explain these concepts in order:
 
 Rules:
 - Use numbered sections only.
-- No markdown headings.
+- Do not use ###, ##, or # for headings.
+- Do not use ** or * for bold or italic text.
+- Write plain text only.
 - No bullet points.
-- No summary or conclusion.
+-  Stop writing after the last concept. Do not add a summary.
 - Start with the problem older approaches faced.
 - Explain why older approaches failed.
 - Introduce the new idea.
@@ -140,7 +152,15 @@ Rules:
 - Write naturally, as if teaching a curious beginner.
 """
 
-    response = llm.invoke(prompt)
+    messages = [
+        (
+            "system",
+            "You are an expert teacher explaining technical topics to beginners.",
+        ),
+        ("human", prompt),
+    ]
+
+    response = llm.invoke(messages)
 
     return clean_response(response.content)
 
