@@ -7,7 +7,7 @@ from langchain_ollama import ChatOllama
 # Initializin the model once so it can be accescced easily by othr func
 llm = ChatOllama(
     model="deepseek-r1:7b",
-    temperature=0.2,
+    temperature=0.6,
     num_ctx=8192,
     request_timeout=120,
 )

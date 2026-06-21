@@ -1,0 +1,3 @@
+after making all nodes, make a sperate file for initisalising model so all nodes can acces it
+
+something beautiful :3
