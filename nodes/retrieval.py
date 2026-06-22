@@ -19,8 +19,7 @@ from typing import Any, Dict, List, Set, Tuple
 
 import numpy as np
 import wikipedia
-from langchain_community.chat_models import ChatOllama
-from langchain_community.embeddings import OllamaEmbeddings
+from langchain_ollama import ChatOllama, OllamaEmbeddings
 
 llm = ChatOllama(
     model="qwen2.5:7b", temperature=0, num_ctx=2048
@@ -48,16 +47,13 @@ def retrieval_node(state: Dict[str, Any]) -> Dict[str, Any]:
 
     start_time = time.time()
 
-    # Step 1: Generate all queries at once (batch LLM call)
-    print(f"\n🔍 Generating search queries for {len(claims)} claims...")
+    print(f"\nGenerating search queries for {len(claims)} claims...")
     all_queries = generate_all_queries(claims)  # One LLM call for all claims
 
-    # Step 2: Collect all unique Wikipedia articles needed (avoids re-fetching)
-    print("📚 Fetching Wikipedia articles...")
+    print("Fetching Wikipedia articles...")
     articles = collect_all_articles(all_queries)
 
-    # Step 3: Extract chunks from articles
-    print("✂️  Extracting text chunks...")
+    print("Extracting text chunks...")
     all_chunks = extract_all_chunks(claims, articles)
 
     # Step 4: Batch embed all chunks + claims (one embedding call where possible)
