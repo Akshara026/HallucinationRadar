@@ -1,3 +1,7 @@
 after making all nodes, make a sperate file for initisalising model so all nodes can acces it
 
 something beautiful :3
+
+
+22 march (dont forget to cirrect it)
+retrivak part answer sucks. check why and temperatuire mofifcations
