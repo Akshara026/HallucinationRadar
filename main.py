@@ -1,16 +1,16 @@
 from nodes.answer import answer_node
 from nodes.claims import claims_node
 from nodes.retrieval import retrieval_node
+from nodes.verify import verify_node
 
 
 def run_pipeline(query):
     state = {"query": query}
 
     state.update(answer_node(state))
-
     state.update(claims_node(state))
-
     state.update(retrieval_node(state))
+    state.update(verify_node(state))
 
     return state
 
@@ -30,11 +30,9 @@ if __name__ == "__main__":
         print(f"{i}. {c}")
 
     print("\n" + "=" * 60)
-    print("EVIDENCE")
+    print("VERIFICATION")
     print("=" * 60)
-    for claim, evidence_list in result["evidence"].items():
+    for claim, verdict in result["verdicts"].items():
         print(f"\nClaim: {claim}")
-        print("-" * 40)
-        for ev in evidence_list:
-            print(f"  [{ev.get('relevance', 0):.1%}] {ev['title']}")
-            print(f"  {ev['content'][:150]}...")
+        print(f"Verdict: {verdict['verdict']} ({verdict['confidence']:.1%})")
+        print(f"Reasoning: {verdict['reasoning'][:200]}...")
