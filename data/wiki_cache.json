@@ -1,0 +1,165 @@
+{
+  "search:llm training process": [
+    "Large language model",
+    "List of large language models"
+  ],
+  "search:openai gpt-4 capabilities generation": [
+    "GPT-4",
+    "GPT-4o"
+  ],
+  "search:llm models text data": [
+    "Large language model",
+    "List of large language models"
+  ],
+  "search:llm model complexity": [
+    "Prompt injection",
+    "Prompt engineering"
+  ],
+  "search:parameters indicate complexity": [
+    "Parameterized complexity",
+    "Hjorth parameters"
+  ],
+  "search:models meta research facebook": [
+    "Meta Platforms",
+    "Meta AI"
+  ],
+  "search:models gpt-4 fine-tuned task-oriented": [
+    "GPT-1",
+    "Transformer (deep learning)"
+  ],
+  "search:gpt-4 llms largest currently": [
+    "Large language model",
+    "Llama (language model)"
+  ],
+  "search:common llms google search": [
+    "Large language model",
+    "Search engine optimization"
+  ],
+  "GPT-1": {
+    "title": "GPT-1",
+    "url": "https://en.wikipedia.org/wiki/GPT-1",
+    "summary": "Generative Pre-trained Transformer 1 (GPT-1) is OpenAI's first large language model in its GPT series of models, developed following Google's invention of the transformer architecture in 2017. In June 2018, OpenAI released a paper titled \"Improving Language Understanding by Generative Pre-Training\", in which they introduced that initial model along with the term generative pre-trained transformer (GPT).\nUp to that point, the best-performing neural NLP models primarily employed supervised learnin",
+    "paragraphs": [
+      "Generative Pre-trained Transformer 1 (GPT-1) is OpenAI's first large language model in its GPT series of models, developed following Google's invention of the transformer architecture in 2017. In June 2018, OpenAI released a paper titled \"Improving Language Understanding by Generative Pre-Training\", in which they introduced that initial model along with the term generative pre-trained transformer "
+    ],
+    "page_id": 68456032
+  },
+  "GPT-4": {
+    "title": "GPT-4",
+    "url": "https://en.wikipedia.org/wiki/GPT-4",
+    "summary": "Generative Pre-trained Transformer 4 (GPT-4) is a large language model developed by OpenAI and the fourth in its series of GPT foundation models.  \nGPT-4 is preceded by GPT-3.5 and followed by its successor GPT-5. GPT-4V is a version of GPT-4 that can process images in addition to text. OpenAI has not revealed technical details and statistics about GPT-4, such as the precise size of the model.\nAn early version of GPT-4 was integrated by Microsoft into Bing Chat, launched in February 2023. GPT-4 ",
+    "paragraphs": [
+      "Generative Pre-trained Transformer 4 (GPT-4) is a large language model developed by OpenAI and the fourth in its series of GPT foundation models.  \nGPT-4 is preceded by GPT-3.5 and followed by its successor GPT-5. GPT-4V is a version of GPT-4 that can process images in addition to text. OpenAI has not revealed technical details and statistics about GPT-4, such as the precise size of the model.\nAn "
+    ],
+    "page_id": 72861474
+  },
+  "GPT-4o": {
+    "title": "GPT-4o",
+    "url": "https://en.wikipedia.org/wiki/GPT-4o",
+    "summary": "GPT-4o (\"o\" for \"omni\") is a multilingual, multimodal generative pre-trained transformer developed by OpenAI and released in May 2024 as part of its GPT series of models. It can process and generate text, images and audio.\nUpon release, GPT-4o was free in ChatGPT, though paid subscribers had higher usage limits. GPT-4o was removed from ChatGPT in August 2025 when GPT-5 was released, but OpenAI reintroduced it for paid subscribers after users complained about the sudden removal.\nGPT-4o's audio-ge",
+    "paragraphs": [
+      "GPT-4o (\"o\" for \"omni\") is a multilingual, multimodal generative pre-trained transformer developed by OpenAI and released in May 2024 as part of its GPT series of models. It can process and generate text, images and audio.\nUpon release, GPT-4o was free in ChatGPT, though paid subscribers had higher usage limits. GPT-4o was removed from ChatGPT in August 2025 when GPT-5 was released, but OpenAI rei"
+    ],
+    "page_id": 76899001
+  },
+  "Hjorth parameters": {
+    "title": "Hjorth parameters",
+    "url": "https://en.wikipedia.org/wiki/Hjorth_parameters",
+    "summary": "Hjorth parameters are indicators of statistical properties used in signal processing in the time domain introduced by Bo Hjorth in 1970. The parameters are Activity, Mobility, and Complexity.\nThey are commonly used in the analysis of electroencephalography signals for feature extraction. The  parameters are normalised slope descriptors (NSDs) used in EEG.\nMoreover, in the robotic area, the Hjorth parameters are used for tactile signal processing for the physical object properties detection such ",
+    "paragraphs": [
+      "Hjorth parameters are indicators of statistical properties used in signal processing in the time domain introduced by Bo Hjorth in 1970. The parameters are Activity, Mobility, and Complexity.\nThey are commonly used in the analysis of electroencephalography signals for feature extraction. The  parameters are normalised slope descriptors (NSDs) used in EEG.\nMoreover, in the robotic area, the Hjorth "
+    ],
+    "page_id": 45227846
+  },
+  "Large language model": {
+    "title": "Large language model",
+    "url": "https://en.wikipedia.org/wiki/Large_language_model",
+    "summary": "A large language model (LLM) is an AI model (typically a neural network) trained on a vast amount of text for natural language processing tasks, especially language generation. LLMs can typically generate, summarize, translate, and analyze text in many contexts, and are a foundational technology behind modern chatbots. Biased or inaccurate training data can make an LLM's output less reliable.\nLLMs are typically based on transformer architecture. Generative pre-trained transformers (GPTs) are a t",
+    "paragraphs": [
+      "A large language model (LLM) is an AI model (typically a neural network) trained on a vast amount of text for natural language processing tasks, especially language generation. LLMs can typically generate, summarize, translate, and analyze text in many contexts, and are a foundational technology behind modern chatbots. Biased or inaccurate training data can make an LLM's output less reliable.\nLLMs"
+    ],
+    "page_id": 73248112
+  },
+  "List of large language models": {
+    "title": "List of large language models",
+    "url": "https://en.wikipedia.org/wiki/List_of_large_language_models",
+    "summary": "A large language model (LLM) is a type of machine learning model designed for natural language processing tasks such as language generation. LLMs are language models with many parameters, and are trained with self-supervised learning on a vast amount of text.",
+    "paragraphs": [
+      "A large language model (LLM) is a type of machine learning model designed for natural language processing tasks such as language generation. LLMs are language models with many parameters, and are trained with self-supervised learning on a vast amount of text."
+    ],
+    "page_id": 73249226
+  },
+  "Llama (language model)": {
+    "title": "Llama (language model)",
+    "url": "https://en.wikipedia.org/wiki/Llama_(language_model)",
+    "summary": "Llama (\"Large Language Model Meta AI\" serving as a backronym) is a family of large language models (LLMs) released by Meta AI starting in February 2023.\nLlama models come in different sizes, ranging from 1 billion to 2 trillion parameters. Initially only a foundation model, starting with Llama 2, Meta AI released instruction fine-tuned versions alongside foundation models.\nModel weights for the first version of Llama were only available to researchers on a case-by-case basis, under a non-commerc",
+    "paragraphs": [
+      "Llama (\"Large Language Model Meta AI\" serving as a backronym) is a family of large language models (LLMs) released by Meta AI starting in February 2023.\nLlama models come in different sizes, ranging from 1 billion to 2 trillion parameters. Initially only a foundation model, starting with Llama 2, Meta AI released instruction fine-tuned versions alongside foundation models.\nModel weights for the fi"
+    ],
+    "page_id": 73306787
+  },
+  "Meta AI": {
+    "title": "Meta AI",
+    "url": "https://en.wikipedia.org/wiki/Meta_AI",
+    "summary": "Meta AI is a research division of Meta (formerly Facebook) that develops artificial intelligence and augmented reality technologies.",
+    "paragraphs": [
+      "Meta AI is a research division of Meta (formerly Facebook) that develops artificial intelligence and augmented reality technologies."
+    ],
+    "page_id": 70734095
+  },
+  "Meta Platforms": {
+    "title": "Meta Platforms",
+    "url": "https://en.wikipedia.org/wiki/Meta_Platforms",
+    "summary": "Meta Platforms, Inc. (doing business as Meta) is an American multinational technology company headquartered in Menlo Park, California. Meta owns and operates several prominent social media platforms and communication services, including Facebook, Instagram, WhatsApp, Messenger, and Threads. The company also operates an advertising network for its own sites and third parties; as of 2023, advertising accounted for 97.8 percent of its total revenue. Meta has been described as a part of Big Tech, wh",
+    "paragraphs": [
+      "Meta Platforms, Inc. (doing business as Meta) is an American multinational technology company headquartered in Menlo Park, California. Meta owns and operates several prominent social media platforms and communication services, including Facebook, Instagram, WhatsApp, Messenger, and Threads. The company also operates an advertising network for its own sites and third parties; as of 2023, advertisin"
+    ],
+    "page_id": 62420226
+  },
+  "Parameterized complexity": {
+    "title": "Parameterized complexity",
+    "url": "https://en.wikipedia.org/wiki/Parameterized_complexity",
+    "summary": "In computer science, parameterized complexity is a branch of computational complexity theory that focuses on classifying computational problems according to their inherent difficulty with respect to multiple parameters of the input or output. The complexity of a problem is then measured as a function of those parameters. This allows the classification of NP-hard problems on a finer scale than in the classical setting, where the complexity of a problem is only measured as a function of the number",
+    "paragraphs": [
+      "In computer science, parameterized complexity is a branch of computational complexity theory that focuses on classifying computational problems according to their inherent difficulty with respect to multiple parameters of the input or output. The complexity of a problem is then measured as a function of those parameters. This allows the classification of NP-hard problems on a finer scale than in t"
+    ],
+    "page_id": 603026
+  },
+  "Prompt engineering": {
+    "title": "Prompt engineering",
+    "url": "https://en.wikipedia.org/wiki/Prompt_engineering",
+    "summary": "Prompt engineering is the process of structuring natural language inputs (known as prompts) to produce specified outputs from a generative artificial intelligence (GenAI) model. Context engineering is the related area of software engineering that focuses on the management of non-prompt and prompt contexts supplied to the GenAI model, such as system instructions, metadata, API tools and tokens.\nIt can also be defined as the practice of designing and refining input instructions given to a generati",
+    "paragraphs": [
+      "Prompt engineering is the process of structuring natural language inputs (known as prompts) to produce specified outputs from a generative artificial intelligence (GenAI) model. Context engineering is the related area of software engineering that focuses on the management of non-prompt and prompt contexts supplied to the GenAI model, such as system instructions, metadata, API tools and tokens.\nIt "
+    ],
+    "page_id": 69071767
+  },
+  "Prompt injection": {
+    "title": "Prompt injection",
+    "url": "https://en.wikipedia.org/wiki/Prompt_injection",
+    "summary": "Prompt injection is a cybersecurity exploit and an attack vector in which innocuous-looking inputs (i.e. prompts) are designed to cause unintended behavior in machine learning models, particularly large language models (LLMs). The attack takes advantage of the model's inability to distinguish between developer-defined prompts and user inputs to bypass safeguards and influence model behaviour. While LLMs are designed to follow trusted instructions, they can be manipulated into carrying out uninte",
+    "paragraphs": [
+      "Prompt injection is a cybersecurity exploit and an attack vector in which innocuous-looking inputs (i.e. prompts) are designed to cause unintended behavior in machine learning models, particularly large language models (LLMs). The attack takes advantage of the model's inability to distinguish between developer-defined prompts and user inputs to bypass safeguards and influence model behaviour. Whil"
+    ],
+    "page_id": 71850350
+  },
+  "Search engine optimization": {
+    "title": "Search engine optimization",
+    "url": "https://en.wikipedia.org/wiki/Search_engine_optimization",
+    "summary": "Search engine optimization (SEO) is the practice of improving the visibility and overall performance of websites and web pages in search engine results pages (SERPs). It focuses on increasing the quantity and quality of traffic from unpaid (organic) search results rather than paid advertising. SEO applies to multiple search formats, including web, image, video, news, academic, and vertical search engines, as well as AI-assisted search interfaces.\nSEO is commonly used as part of a broader digital",
+    "paragraphs": [
+      "Search engine optimization (SEO) is the practice of improving the visibility and overall performance of websites and web pages in search engine results pages (SERPs). It focuses on increasing the quantity and quality of traffic from unpaid (organic) search results rather than paid advertising. SEO applies to multiple search formats, including web, image, video, news, academic, and vertical search "
+    ],
+    "page_id": 187946
+  },
+  "Transformer (deep learning)": {
+    "title": "Transformer (deep learning)",
+    "url": "https://en.wikipedia.org/wiki/Transformer_(deep_learning)",
+    "summary": "In deep learning, the transformer is a family of artificial neural network architectures based on the multi-head attention mechanism, in which text is converted to numerical representations called tokens, and each token is converted into a vector via lookup from a word embedding table. At each layer, each token is then contextualized within the scope of the context window with other (unmasked) tokens via a parallel multi-head attention mechanism, allowing the signal for key tokens to be amplifie",
+    "paragraphs": [
+      "In deep learning, the transformer is a family of artificial neural network architectures based on the multi-head attention mechanism, in which text is converted to numerical representations called tokens, and each token is converted into a vector via lookup from a word embedding table. At each layer, each token is then contextualized within the scope of the context window with other (unmasked) tok",
+      "The original version of the transformer architecture was proposed in the 2017 paper \"Attention Is All You Need\" by researchers at Google. The predecessors of transformers were developed as an improvement over previous architectures for machine translation, but have found many applications since. They are used in large-scale natural language processing, computer vision (vision transformers), reinfo"
+    ],
+    "page_id": 61603971
+  }
+}

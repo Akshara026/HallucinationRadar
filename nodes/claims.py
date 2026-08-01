@@ -10,13 +10,14 @@ def claims_node(state: Dict[str, Any]) -> Dict[str, List[str]]:
     """
     Extract atomic factual claims from the answer text.
     Each claim should be independently verifiable.
+    Filters out vague/unverifiable claims.
     """
     answer = state.get("answer", "")
 
     if not answer or not answer.strip():
         return {"claims": []}
 
-    answer = answer.strip()  # just cleanin the ans
+    answer = answer.strip()
 
     prompt = f"""Extract atomic, verifiable factual claims from the following text.
 
@@ -29,24 +30,21 @@ CRITICAL EXTRACTION RULES:
 6. Preserve exact numbers, dates, and proper nouns from the source
 7. Include necessary context so each claim can be verified independently
 8. Format: Return ONLY the claims, one per line, no numbering or bullet points
+9. SKIP vague claims that cannot be fact-checked (see examples below)
 
-EXAMPLES:
-Bad: "The company was founded in 1995 and grew rapidly"
-Good:
-The company was founded in 1995
-The company experienced rapid growth after founding
+EXAMPLES OF CLAIMS TO SKIP (too vague to verify):
+- "The evolution of LLMs highlights the growing potential of AI"
+- "Advancements have enabled LLMs to scale effectively"
+- "LLMs represent a significant breakthrough in AI"
+- "The future of LLMs looks promising"
+- "LLMs have transformed the field of NLP"
 
-Bad: "He invented the telephone in 1876"
-Good:
-Alexander Graham Bell invented the telephone in 1876
-
-Bad: "It was the largest earthquake ever recorded"
-Good:
-The 1960 Valdivia earthquake was the largest earthquake ever recorded
-
-Bad: "The research shows promising results"
-Good:
-[No objective claim - skip subjective statements]
+EXAMPLES OF GOOD CLAIMS (specific and verifiable):
+- "GPT-3 was developed by OpenAI"
+- "BERT was released by Google in 2018"
+- "The transformer architecture was introduced in 2017"
+- "GPT-3 has 175 billion parameters"
+- "LLMs are trained on large text corpora including books and Wikipedia"
 
 TEXT TO PROCESS:
 {answer}
@@ -56,10 +54,15 @@ RETURN ONLY THE EXTRACTED CLAIMS (one per line):"""
     try:
         response = llm.invoke(prompt)
 
-        claims = extract_claims_from_response(response.content)  # Extractin claim
+        claims = extract_claims_from_response(response.content)
 
         # Post-process claims
         claims = clean_and_validate_claims(claims)
+
+        # Filter out vague/unverifiable claims
+        claims = filter_vague_claims(claims)
+
+        print(f"  Extracted {len(claims)} verifiable claims")
 
         return {"claims": claims}
 
@@ -79,13 +82,11 @@ def extract_claims_from_response(text: str) -> List[str]:
         if not line:
             continue
 
-        line = re.sub(r"^[\d]+[\.\)]\s*", "", line)  # removin numbering
-        line = re.sub(r"^[•\-\*\✓\✅\❌\⭐\►]\s*", "", line)  # Removin bullet points
-        line = line.strip('"\'""')  # Removin quotes
+        line = re.sub(r"^[\d]+[\.\)]\s*", "", line)  # Remove numbering
+        line = re.sub(r"^[•\-\*\✓\✅\❌\⭐\►]\s*", "", line)  # Remove bullet points
+        line = line.strip('"\'""')  # Remove quotes
 
-        if (
-            line and len(line.split()) >= 3
-        ):  # thr should be min 3 words for a valid claim
+        if line and len(line.split()) >= 3:  # Minimum 3 words for a valid claim
             claims.append(line)
 
     return claims
@@ -98,13 +99,11 @@ def clean_and_validate_claims(claims: List[str]) -> List[str]:
 
     for claim in claims:
         if not claim.endswith((".", "!", "?")):
-            claim += "."  # makin sure tht claim ends with proper pulstop
+            claim += "."
 
-        claim = (
-            claim[0].upper() + claim[1:] if claim else claim
-        )  # this just make first letter cap
+        claim = claim[0].upper() + claim[1:] if claim else claim
 
-        # checkin for duplicates
+        # Check for duplicates
         normalized = claim.lower().strip()
         if normalized not in seen:
             seen.add(normalized)
@@ -118,7 +117,7 @@ def clean_and_validate_claims(claims: List[str]) -> List[str]:
 
 def is_likely_factual(claim: str) -> bool:
     """Check if a claim appears to be factual rather than opinion."""
-    # Skip claims that are clearly opinions or subjective based on below thing
+    # Skip claims that are clearly opinions or subjective
     opinion_indicators = [
         "i think",
         "i believe",
@@ -152,3 +151,45 @@ def is_likely_factual(claim: str) -> bool:
     has_proper_noun = bool(re.search(r"\b[A-Z][a-z]+ [A-Z][a-z]+\b", claim))
 
     return has_number or has_proper_noun or len(claim.split()) > 5
+
+
+def filter_vague_claims(claims: List[str]) -> List[str]:
+    """
+    Filter out claims that are too vague to verify.
+    Uses pattern matching to catch common vague claim structures.
+    """
+    vague_patterns = [
+        r"^the (evolution|development|advancement|progress|future|rise|growth) of",
+        r"^advancements? (have|has) enabled",
+        r"^LLMs (represent|are|have become)",
+        r"(highlights?|demonstrates?|shows?|illustrates?) the (growing|increasing|potential|importance)",
+        r"^the (field|area|domain) of",
+        r"(transformed|revolutionized|changed) the (field|way|landscape)",
+        r"^as (AI|technology|LLMs) (continues|continue) to",
+        r"^ongoing (research|development|advancements)",
+        r"^future (developments|directions|work|research)",
+        r"^despite (these|the) (advancements|progress|challenges)",
+    ]
+
+    filtered = []
+    for claim in claims:
+        claim_lower = claim.lower()
+        is_vague = False
+
+        for pattern in vague_patterns:
+            if re.match(pattern, claim_lower):
+                is_vague = True
+                break
+
+        # Also check if claim has no specific entities
+        if not is_vague:
+            # Must have at least one of: number, proper noun, or specific technical term
+            has_specifics = (
+                bool(re.search(r"\d+", claim))  # Number
+                or bool(re.search(r"\b[A-Z][a-z]+ [A-Z][a-z]+\b", claim))  # Proper noun
+                or bool(re.search(r"\b[A-Z]{2,}\b", claim))  # Acronym (GPT, BERT, LLM)
+            )
+            if has_specifics:
+                filtered.append(claim)
+
+    return filtered
