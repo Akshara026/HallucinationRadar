@@ -8,10 +8,10 @@ Generated: 2026-08-02 14:58:07
 ┌──────────────────────────────────────────────────────────────┐
 │  OVERALL VERDICT                                             │
 │                                                              │
-│  🟡 MOSTLY_UNVERIFIED                              │
+│  🟡 MOSTLY_UNVERIFIED                                        │
 │                                                              │
-│  Hallucination Score: 0.642 / 1.000                            │
-│  Risk Level:         HIGH                                      │
+│  Hallucination Score: 0.642 / 1.000                          │
+│  Risk Level:         HIGH                                    │
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────┐
@@ -29,28 +29,28 @@ Generated: 2026-08-02 14:58:07
 │  ⚠️  LIKELY HALLUCINATIONS (2 found)                               │
 └──────────────────────────────────────────────────────────────┘
 
-  ❌ #1: 
+  ❌ #1:
        Fact: Models like ChatGPT have been trained on publicly
        available texts, limiting their ability to generalize beyond
        specific domains.
      Confidence: 70.0%
      Discrepancies:
-       • 
+       •
        Release date mismatch: Claim does not specify a release
        date, but evidence provides November 30, 2022.
-     Reason: 
+     Reason:
        The evidence states that ChatGPT is a generative
        artificial intelligence chatbot developed by OpenAI and
        was originally released on November 30, 2022. This
        contradicts the claim which suggests that mo
 
-  ❌ #2: 
+  ❌ #2:
        Fact: GPT-3.0, released in 2017, contains approximately 5
        billion parameters and processes over 6 trillion tokens.
      Confidence: 60.0%
      Discrepancies:
        • Release year: 2017 (claim) vs. 2020 (evidence)
-     Reason: 
+     Reason:
        The evidence states that GPT-3 was released in 2020,
        which contradicts the claim stating it was released in
        2017. Additionally, while the number of parameters is
@@ -60,26 +60,26 @@ Generated: 2026-08-02 14:58:07
 │  ✅ VERIFIED CLAIMS (4 confirmed)                               │
 └──────────────────────────────────────────────────────────────┘
 
-  ✅ #1: 
+  ✅ #1:
        Fact: These models are trained on diverse datasets to mimic
        patterns of human language understanding.
      Confidence: 70.0%
      Sources: Large language model, The Pile (dataset)
 
-  ✅ #2: 
+  ✅ #2:
        Fact: LLMs power applications like chatbots, content
        generation tools, and creative writing assistants.
      Confidence: 70.0%
      Sources: Large language model, List of chatbots
 
-  ✅ #3: 
+  ✅ #3:
        Fact: The architecture involves multi-head self-attention
        mechanisms that allow models to focus on relevant parts of
        input data.
      Confidence: 70.0%
      Sources: Attention (machine learning), Attention Is All You Need
 
-  ✅ #4: 
+  ✅ #4:
        Fact: GPT-3.0 achieved a 93.2% accuracy score on reading
        comprehension tasks but may exhibit biases based on training
        data sources like Wikipedia dumps, which lack diversity.

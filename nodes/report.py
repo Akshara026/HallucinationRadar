@@ -2,9 +2,10 @@
 report.py - Report Generation Node
 
 Generates a human-readable hallucination report.
-Pure formatting - no LLM calls needed.
+Outputs both text and PDF formats.
 """
 
+import os
 import re
 from datetime import datetime
 from typing import Any, Dict, List, Optional
@@ -16,6 +17,7 @@ def report_node(state: Dict[str, Any]) -> Dict[str, Any]:
 
     Input:  Full state dict with query, answer, claims, verdicts, score
     Output: state["report"] - formatted report string
+            state["report_pdf_path"] - path to saved PDF
     """
     query = state.get("query", "Unknown")
     answer = state.get("answer", "")
@@ -23,11 +25,13 @@ def report_node(state: Dict[str, Any]) -> Dict[str, Any]:
     verdicts = state.get("verdicts", {})
     score_data = state.get("score", {})
 
-    report = generate_report(query, answer, claims, verdicts, score_data)
+    report_text = generate_report(query, answer, claims, verdicts, score_data)
 
-    print(f"📄 Report generated ({len(report)} characters)")
+    print(f"📄 Report generated ({len(report_text)} characters)")
 
-    return {"report": report}
+    return {
+        "report": report_text,
+    }
 
 
 def generate_report(
@@ -337,19 +341,62 @@ def collect_all_sources(verdicts: Dict[str, Any]) -> List[str]:
     return sorted(sources)
 
 
-def save_report(report: str, filepath: Optional[str] = None) -> str:
+def save_report_pdf(report_text: str, filepath: Optional[str] = None) -> str:
     """
-    Save report to file. If no path given, saves to data/reports/ with timestamp.
+    Save report as PDF using fpdf2 (lightweight, no external dependencies).
+
+    Install: pip install fpdf2
     """
-    import os
+    from fpdf import FPDF
 
     if filepath is None:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         os.makedirs("data/reports", exist_ok=True)
-        filepath = f"data/reports/report_{timestamp}.txt"
+        filepath = f"data/reports/report_{timestamp}.pdf"
 
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(report)
+    pdf = FPDF()
+    pdf.add_page()
 
-    print(f" Report saved to: {filepath}")
+    # Use built-in Courier as monospace font
+    pdf.set_font("Courier", size=8)
+
+    # Split report into lines and add to PDF
+    for line in report_text.split("\n"):
+        # Replace Unicode box-drawing chars with ASCII equivalents
+        line_ascii = line
+        line_ascii = (
+            line_ascii.replace("╔", "+")
+            .replace("╗", "+")
+            .replace("╚", "+")
+            .replace("╝", "+")
+        )
+        line_ascii = (
+            line_ascii.replace("║", "|")
+            .replace("─", "-")
+            .replace("├", "+")
+            .replace("┤", "+")
+        )
+        line_ascii = (
+            line_ascii.replace("┌", "+")
+            .replace("┐", "+")
+            .replace("└", "+")
+            .replace("┘", "+")
+        )
+        line_ascii = (
+            line_ascii.replace("│", "|")
+            .replace("┬", "+")
+            .replace("┴", "+")
+            .replace("┼", "+")
+        )
+
+        # Remove emoji for PDF (they don't render in Courier)
+        line_ascii = re.sub(r"[^\x00-\x7F]+", "", line_ascii)
+
+        # Encode to latin-1, replace chars that don't fit
+        line_ascii = line_ascii.encode("latin-1", errors="replace").decode("latin-1")
+
+        pdf.cell(0, 4, line_ascii, ln=True)
+
+    pdf.output(filepath)
+    print(f" PDF report saved to: {filepath}")
     return filepath

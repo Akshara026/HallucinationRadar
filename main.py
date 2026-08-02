@@ -1,12 +1,12 @@
 from nodes.answer import answer_node
 from nodes.claims import claims_node
-from nodes.report import report_node, save_report
+from nodes.report import report_node, save_report_pdf
 from nodes.retrieval import retrieval_node
 from nodes.score import score_node
 from nodes.verify import verify_node
 
 
-def run_pipeline(query, save=True):
+def run_pipeline(query, save_pdf=True):
     state = {"query": query}
 
     # Step 1: Generate answer
@@ -32,9 +32,9 @@ def run_pipeline(query, save=True):
     # Step 6: Generate report
     state.update(report_node(state))
 
-    # Save report to file
-    if save:
-        save_report(state["report"])
+    # Save report to PDF
+    if save_pdf:
+        save_report_pdf(state["report"])
 
     return state
 
