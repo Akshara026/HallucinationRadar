@@ -1,0 +1,136 @@
+╔══════════════════════════════════════════════════════════════╗
+║              HALLUCINATION RADAR REPORT                      ║
+╚══════════════════════════════════════════════════════════════╝
+
+Query:     "What is an LLM?"
+Generated: 2026-08-02 14:58:07
+
+┌──────────────────────────────────────────────────────────────┐
+│  OVERALL VERDICT                                             │
+│                                                              │
+│  🟡 MOSTLY_UNVERIFIED                              │
+│                                                              │
+│  Hallucination Score: 0.642 / 1.000                            │
+│  Risk Level:         HIGH                                      │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│  CLAIM BREAKDOWN                                             │
+│                                                              │
+│  Total Claims Analyzed: 7                                    │
+│                                                              │
+│  ✅ Supported:            4    ( 57.1%)                │
+│  ❌ Contradicted:         2    ( 28.6%)                │
+│  ❓ Unverifiable:         0    (  0.0%)                │
+│  ⚠️  Insufficient Evidence: 1    ( 14.3%)                │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│  ⚠️  LIKELY HALLUCINATIONS (2 found)                               │
+└──────────────────────────────────────────────────────────────┘
+
+  ❌ #1: 
+       Fact: Models like ChatGPT have been trained on publicly
+       available texts, limiting their ability to generalize beyond
+       specific domains.
+     Confidence: 70.0%
+     Discrepancies:
+       • 
+       Release date mismatch: Claim does not specify a release
+       date, but evidence provides November 30, 2022.
+     Reason: 
+       The evidence states that ChatGPT is a generative
+       artificial intelligence chatbot developed by OpenAI and
+       was originally released on November 30, 2022. This
+       contradicts the claim which suggests that mo
+
+  ❌ #2: 
+       Fact: GPT-3.0, released in 2017, contains approximately 5
+       billion parameters and processes over 6 trillion tokens.
+     Confidence: 60.0%
+     Discrepancies:
+       • Release year: 2017 (claim) vs. 2020 (evidence)
+     Reason: 
+       The evidence states that GPT-3 was released in 2020,
+       which contradicts the claim stating it was released in
+       2017. Additionally, while the number of parameters is
+       not explicitly mentioned for GPT-3 in
+
+┌──────────────────────────────────────────────────────────────┐
+│  ✅ VERIFIED CLAIMS (4 confirmed)                               │
+└──────────────────────────────────────────────────────────────┘
+
+  ✅ #1: 
+       Fact: These models are trained on diverse datasets to mimic
+       patterns of human language understanding.
+     Confidence: 70.0%
+     Sources: Large language model, The Pile (dataset)
+
+  ✅ #2: 
+       Fact: LLMs power applications like chatbots, content
+       generation tools, and creative writing assistants.
+     Confidence: 70.0%
+     Sources: Large language model, List of chatbots
+
+  ✅ #3: 
+       Fact: The architecture involves multi-head self-attention
+       mechanisms that allow models to focus on relevant parts of
+       input data.
+     Confidence: 70.0%
+     Sources: Attention (machine learning), Attention Is All You Need
+
+  ✅ #4: 
+       Fact: GPT-3.0 achieved a 93.2% accuracy score on reading
+       comprehension tasks but may exhibit biases based on training
+       data sources like Wikipedia dumps, which lack diversity.
+     Confidence: 70.0%
+     Sources: Large language model, Stochastic parrot
+
+┌──────────────────────────────────────────────────────────────┐
+│  ANNOTATED ANSWER                                            │
+│  ✅ = Supported  ❌ = Contradicted  ❓ = Unverified          │
+└──────────────────────────────────────────────────────────────┘
+
+  ❓ An LLM (Large Language Model) is a type of AI model designed to perform general-purpose language tasks such as generating text, answering questions, and providing reasoning.
+  ❓ 1.
+  ❓ The first major LLM was developed by OpenAI in 2017 under the name GPT-3.0, with subsequent models like ChatGPT following.
+  ❌ - Fact: GPT-3.0, released in 2017, contains approximately 5 billion parameters and processes over 6 trillion tokens.
+  ❓ 2.
+  ❓ LLMs can generate human-like text by processing vast datasets including books, articles, and web content.
+  ✅ - Fact: These models are trained on diverse datasets to mimic patterns of human language understanding.
+  ❓ 3.
+  ❓ They are used across various fields such as content creation, customer support, and creative industries.
+  ✅ - Fact: LLMs power applications like chatbots, content generation tools, and creative writing assistants.
+  ❓ 4.
+  ❓ LLMs are typically based on transformer-based architectures, similar to BERT or GPT-3.
+  ✅ - Fact: The architecture involves multi-head self-attention mechanisms that allow models to focus on relevant parts of input data.
+  ❓ 5.
+  ❓ These models process information through layers of computation to understand context and generate responses.
+  ⚠️ - Fact: Each layer in the model transforms input data, enabling the extraction of complex patterns from text.
+  ❓ 6.
+  ❓ LLMs have limitations including understanding only the text they are trained on and potential biases.
+  ✅ - Fact: GPT-3.0 achieved a 93.2% accuracy score on reading comprehension tasks but may exhibit biases based on training data sources like Wikipedia dumps, which lack diversity.
+  ❓ 7.
+  ❓ LLMs are designed to understand context within their training datasets and generate responses accordingly.
+  ❌ - Fact: Models like ChatGPT have been trained on publicly available texts, limiting their ability to generalize beyond specific domains.
+
+┌──────────────────────────────────────────────────────────────┐
+│  EVIDENCE SOURCES                                            │
+└──────────────────────────────────────────────────────────────┘
+
+  📚 Attention (machine learning)
+  📚 Attention Is All You Need
+  📚 ChatGPT
+  📚 GPT-2
+  📚 GPT-3
+  📚 GPT-5
+  📚 Large language model
+  📚 List of chatbots
+  📚 Stochastic parrot
+  📚 The Pile (dataset)
+  📚 Training, validation, and test data sets
+
+──────────────────────────────────────────────────────────────────
+Report generated by HallucinationRadar on 2026-08-02 14:58:07
+Evidence sourced from Wikipedia
+──────────────────────────────────────────────────────────────────

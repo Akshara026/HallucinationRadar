@@ -161,5 +161,353 @@
       "The original version of the transformer architecture was proposed in the 2017 paper \"Attention Is All You Need\" by researchers at Google. The predecessors of transformers were developed as an improvement over previous architectures for machine translation, but have found many applications since. They are used in large-scale natural language processing, computer vision (vision transformers), reinfo"
     ],
     "page_id": 61603971
+  },
+  "search:llm foundation vaswani": [
+    "Large language model",
+    "Generative pre-trained transformer"
+  ],
+  "search:gpt-3 openai": [
+    "GPT-5",
+    "GPT-4"
+  ],
+  "search:transformer architecture vaswani 2017": [],
+  "search:chatgpt meta": [
+    "ChatGPT",
+    "Deaths linked to chatbots"
+  ],
+  "ChatGPT": {
+    "title": "ChatGPT",
+    "url": "https://en.wikipedia.org/wiki/ChatGPT",
+    "summary": "ChatGPT is a generative artificial intelligence chatbot developed by OpenAI. Originally released on November 30, 2022, the product uses large language models\u2014specifically generative pre-trained transformers (GPTs)\u2014to generate text, speech, and images in response to user prompts. ChatGPT accelerated the AI boom, an ongoing period marked by rapid investment and public attention toward the field of artificial intelligence (AI). OpenAI operates the service on a freemium model. Users can interact wit",
+    "paragraphs": [
+      "ChatGPT is a generative artificial intelligence chatbot developed by OpenAI. Originally released on November 30, 2022, the product uses large language models\u2014specifically generative pre-trained transformers (GPTs)\u2014to generate text, speech, and images in response to user prompts. ChatGPT accelerated the AI boom, an ongoing period marked by rapid investment and public attention toward the field of a"
+    ],
+    "page_id": 72417803
+  },
+  "Deaths linked to chatbots": {
+    "title": "Deaths linked to chatbots",
+    "url": "https://en.wikipedia.org/wiki/Deaths_linked_to_chatbots",
+    "summary": "There have been multiple incidents where interaction with a large language model (LLM) chatbot has been cited as a direct or contributing factor in a person's suicide or other fatal outcome. In some cases, legal action was taken against the companies that developed the AI involved.",
+    "paragraphs": [
+      "There have been multiple incidents where interaction with a large language model (LLM) chatbot has been cited as a direct or contributing factor in a person's suicide or other fatal outcome. In some cases, legal action was taken against the companies that developed the AI involved."
+    ],
+    "page_id": 81076210
+  },
+  "GPT-5": {
+    "title": "GPT-5",
+    "url": "https://en.wikipedia.org/wiki/GPT-5",
+    "summary": "GPT-5 is a multimodal large language model developed by OpenAI and the fifth in its series of generative pre-trained transformer (GPT) foundation models. Preceded in the series by GPT-4, it was launched on August 7, 2025. It is publicly accessible to users of the chatbot products ChatGPT and Microsoft Copilot as well as to developers through the OpenAI API.",
+    "paragraphs": [
+      "GPT-5 is a multimodal large language model developed by OpenAI and the fifth in its series of generative pre-trained transformer (GPT) foundation models. Preceded in the series by GPT-4, it was launched on August 7, 2025. It is publicly accessible to users of the chatbot products ChatGPT and Microsoft Copilot as well as to developers through the OpenAI API."
+    ],
+    "page_id": 76831925
+  },
+  "Generative pre-trained transformer": {
+    "title": "Generative pre-trained transformer",
+    "url": "https://en.wikipedia.org/wiki/Generative_pre-trained_transformer",
+    "summary": "A generative pre-trained transformer (GPT) is a type of large language model (LLM) that is widely used in generative artificial intelligence chatbots. GPTs are based on a deep learning architecture called the transformer. They are pre-trained on large datasets of unlabeled content, and able to generate novel content.\nOpenAI was the first to apply generative pre-training to the transformer architecture, introducing the GPT-1 model in 2018. The chatbot ChatGPT, released in late 2022 (using GPT-3.5",
+    "paragraphs": [
+      "A generative pre-trained transformer (GPT) is a type of large language model (LLM) that is widely used in generative artificial intelligence chatbots. GPTs are based on a deep learning architecture called the transformer. They are pre-trained on large datasets of unlabeled content, and able to generate novel content.\nOpenAI was the first to apply generative pre-training to the transformer architec"
+    ],
+    "page_id": 72970020
+  },
+  "search:llms image speech recognition": [
+    "Large language model",
+    "Whisper (speech recognition system)"
+  ],
+  "search:computer vision transformers llms": [
+    "Large language model",
+    "Transformer (deep learning)"
+  ],
+  "Whisper (speech recognition system)": {
+    "title": "Whisper (speech recognition system)",
+    "url": "https://en.wikipedia.org/wiki/Whisper_(speech_recognition_system)",
+    "summary": "Whisper is a machine learning model for speech recognition and transcription, created by OpenAI and first released as open-source software in September 2022.\nIt is capable of transcribing speech in English and multiple other languages, and can translate several non-English languages into English. Whisper is a weakly-supervised deep learning acoustic model, made using an encoder-decoder transformer architecture. OpenAI claims that the combination of different training data and post-training filte",
+    "paragraphs": [
+      "Whisper is a machine learning model for speech recognition and transcription, created by OpenAI and first released as open-source software in September 2022.\nIt is capable of transcribing speech in English and multiple other languages, and can translate several non-English languages into English. Whisper is a weakly-supervised deep learning acoustic model, made using an encoder-decoder transformer"
+    ],
+    "page_id": 74575461
+  },
+  "search:meta gpt-3.5-turbo type": [
+    "GPT-3",
+    "Large language model"
+  ],
+  "search:openai chatgpt llm": [
+    "ChatGPT",
+    "GPT-5.5"
+  ],
+  "search:meta gpt-3.5-turbo llm": [
+    "Large language model",
+    "GPT-4"
+  ],
+  "search:google bard example": [
+    "Google Gemini",
+    "Gemini (language model)"
+  ],
+  "search:openai chatgpt model": [
+    "ChatGPT",
+    "ChatGPT Atlas"
+  ],
+  "ChatGPT Atlas": {
+    "title": "ChatGPT Atlas",
+    "url": "https://en.wikipedia.org/wiki/ChatGPT_Atlas",
+    "summary": "ChatGPT Atlas is an AI browser developed by OpenAI. It is based on Chromium and was only available on macOS. The browser integrates ChatGPT into the browsing interface via a sidebar assistant that can answer questions about the current page, summarize content, and rewrite selected text. It uses a freemium model, with some capabilities (including an optional \"agent mode\" that can carry out tasks on websites) reserved for paid plans, and has drawn criticism over its effect on links to the open web",
+    "paragraphs": [
+      "ChatGPT Atlas is an AI browser developed by OpenAI. It is based on Chromium and was only available on macOS. The browser integrates ChatGPT into the browsing interface via a sidebar assistant that can answer questions about the current page, summarize content, and rewrite selected text. It uses a freemium model, with some capabilities (including an optional \"agent mode\" that can carry out tasks on"
+    ],
+    "page_id": 81396399
+  },
+  "GPT-3": {
+    "title": "GPT-3",
+    "url": "https://en.wikipedia.org/wiki/GPT-3",
+    "summary": "Generative Pre-trained Transformer 3 (GPT-3) is a large language model released by OpenAI in 2020 as part of the company's GPT series of models.\nLike its predecessor, GPT-2, it is a decoder-only transformer model of deep neural network, which supersedes recurrence and convolution-based architectures with a technique known as \"attention\". This attention mechanism allows the model to focus selectively on segments of input text it predicts to be most relevant. GPT-3 has 175 billion parameters, each",
+    "paragraphs": [
+      "Generative Pre-trained Transformer 3 (GPT-3) is a large language model released by OpenAI in 2020 as part of the company's GPT series of models.\nLike its predecessor, GPT-2, it is a decoder-only transformer model of deep neural network, which supersedes recurrence and convolution-based architectures with a technique known as \"attention\". This attention mechanism allows the model to focus selective"
+    ],
+    "page_id": 64695824
+  },
+  "GPT-5.5": {
+    "title": "GPT-5.5",
+    "url": "https://en.wikipedia.org/wiki/GPT-5.5",
+    "summary": "GPT-5.5 (Generative Pre-trained Transformer 5.5) is a large language model (LLM) released by OpenAI on April 23, 2026. The model is also known by its codename \"Spud\".\nOpenAI reported GPT-5.5 benchmark scores including 82.7% on Terminal-Bench 2.0, 51.7% on FrontierMath Tier 1\u20133, and 35.4% on FrontierMath Tier 4, while listing lower scores for Claude Opus 4.7 and Gemini 3.1 Pro on the same benchmarks.\nOpenAI said a recurring tendency in its models to mention goblins, gremlins, and other creatures ",
+    "paragraphs": [
+      "GPT-5.5 (Generative Pre-trained Transformer 5.5) is a large language model (LLM) released by OpenAI on April 23, 2026. The model is also known by its codename \"Spud\".\nOpenAI reported GPT-5.5 benchmark scores including 82.7% on Terminal-Bench 2.0, 51.7% on FrontierMath Tier 1\u20133, and 35.4% on FrontierMath Tier 4, while listing lower scores for Claude Opus 4.7 and Gemini 3.1 Pro on the same benchmark"
+    ],
+    "page_id": 83021667
+  },
+  "Gemini (language model)": {
+    "title": "Gemini (language model)",
+    "url": "https://en.wikipedia.org/wiki/Gemini_(language_model)",
+    "summary": "Gemini is a family of multimodal large language models (LLMs) developed by Google DeepMind, and the successor to LaMDA and PaLM 2. Comprising Gemini Pro, Gemini Deep Think, Gemini Flash, and Gemini Flash Lite, it was announced on December 6, 2023. It powers the Gemini chatbot, and was named after the Gemini zodiac sign.\n\n",
+    "paragraphs": [
+      "Gemini is a family of multimodal large language models (LLMs) developed by Google DeepMind, and the successor to LaMDA and PaLM 2. Comprising Gemini Pro, Gemini Deep Think, Gemini Flash, and Gemini Flash Lite, it was announced on December 6, 2023. It powers the Gemini chatbot, and was named after the Gemini zodiac sign."
+    ],
+    "page_id": 74637995
+  },
+  "Google Gemini": {
+    "title": "Google Gemini",
+    "url": "https://en.wikipedia.org/wiki/Google_Gemini",
+    "summary": "Gemini (also known as Google Gemini and formerly known as Bard) is a generative artificial intelligence chatbot and virtual assistant developed by Google. It is powered by the family of large language models (LLMs) of the same name, after previously being based on LaMDA and PaLM 2.\nThe Gemini architecture is trained natively on multiple data types, allowing the models to process and generate text, computer code, images, audio, and video simultaneously. Google distributes the technology in varyin",
+    "paragraphs": [
+      "Gemini (also known as Google Gemini and formerly known as Bard) is a generative artificial intelligence chatbot and virtual assistant developed by Google. It is powered by the family of large language models (LLMs) of the same name, after previously being based on LaMDA and PaLM 2.\nThe Gemini architecture is trained natively on multiple data types, allowing the models to process and generate text,"
+    ],
+    "page_id": 73363598
+  },
+  "search:trained on datasets": [
+    "IBM Granite",
+    "Generative pre-trained transformer"
+  ],
+  "search:machine llms machine learning": [
+    "Machine learning",
+    "Online machine learning"
+  ],
+  "search:llms operate generative analyzing": [
+    "Large language model",
+    "Generative AI"
+  ],
+  "search:llms generate responses": [
+    "Retrieval-augmented generation",
+    "Large language model"
+  ],
+  "search:llms process text": [
+    "Large language model",
+    "List of large language models"
+  ],
+  "search:llms designation training": [
+    "Master of Laws",
+    "Claude (AI)"
+  ],
+  "search:models bert bookscorpus english": [
+    "BERT (language model)",
+    "Large language model"
+  ],
+  "search:extensive dataset books": [
+    "List of datasets for machine-learning research",
+    "Google Play Books"
+  ],
+  "BERT (language model)": {
+    "title": "BERT (language model)",
+    "url": "https://en.wikipedia.org/wiki/BERT_(language_model)",
+    "summary": "Bidirectional encoder representations from transformers (BERT) is a language model introduced in October 2018 by researchers at Google. It learns to represent text as a sequence of vectors using self-supervised learning. It uses the encoder-only transformer architecture. BERT dramatically improved the state of the art for large language models. As of 2020, BERT is a ubiquitous baseline in natural language processing (NLP) experiments. \nBERT is trained by masked token prediction and next sentence",
+    "paragraphs": [
+      "Bidirectional encoder representations from transformers (BERT) is a language model introduced in October 2018 by researchers at Google. It learns to represent text as a sequence of vectors using self-supervised learning. It uses the encoder-only transformer architecture. BERT dramatically improved the state of the art for large language models. As of 2020, BERT is a ubiquitous baseline in natural "
+    ],
+    "page_id": 62026514
+  },
+  "Claude (AI)": {
+    "title": "Claude (AI)",
+    "url": "https://en.wikipedia.org/wiki/Claude_(AI)",
+    "summary": "Claude is a series of large language models developed by American software company Anthropic. Claude was released as an AI-based chatbot in March 2023. It is also used in AI-assisted software development.\nClaude is trained using a constitution, a technique developed by Anthropic to improve ethical and legal compliance. Since Claude 3, each generation has typically been released in three sizes, named Haiku (the least capable), Sonnet, and Opus (the most capable). In 2026, an additional model name",
+    "paragraphs": [
+      "Claude is a series of large language models developed by American software company Anthropic. Claude was released as an AI-based chatbot in March 2023. It is also used in AI-assisted software development.\nClaude is trained using a constitution, a technique developed by Anthropic to improve ethical and legal compliance. Since Claude 3, each generation has typically been released in three sizes, nam"
+    ],
+    "page_id": 75879512
+  },
+  "Generative AI": {
+    "title": "Generative AI",
+    "url": "https://en.wikipedia.org/wiki/Generative_AI",
+    "summary": "Generative artificial intelligence (GenAI) is a subfield of artificial intelligence (AI) that uses generative models to generate text, images, videos, audio, software code or other forms of data. These models learn the underlying patterns and structures of their training data, and use them to generate new data in response to input, which often takes the form of natural language prompts.\nThe prevalence of generative AI tools has increased significantly since the AI boom in the 2020s. This boom wa",
+    "paragraphs": [
+      "Generative artificial intelligence (GenAI) is a subfield of artificial intelligence (AI) that uses generative models to generate text, images, videos, audio, software code or other forms of data. These models learn the underlying patterns and structures of their training data, and use them to generate new data in response to input, which often takes the form of natural language prompts.\nThe preval"
+    ],
+    "page_id": 73291755
+  },
+  "Google Play Books": {
+    "title": "Google Play Books",
+    "url": "https://en.wikipedia.org/wiki/Google_Play_Books",
+    "summary": "Google Play Books, formerly Google eBooks, is an ebook digital distribution service operated by Google, part of its Google Play product line. Users can purchase and download ebooks and audiobooks from Google Play, which offers over five million titles, with Google claiming it to be the \"largest ebooks collection in the world\". Books can be read on a dedicated Books section on the Google Play website, through the use of a mobile app available for Android and iOS, through the use of select e-reade",
+    "paragraphs": [
+      "Google Play Books, formerly Google eBooks, is an ebook digital distribution service operated by Google, part of its Google Play product line. Users can purchase and download ebooks and audiobooks from Google Play, which offers over five million titles, with Google claiming it to be the \"largest ebooks collection in the world\". Books can be read on a dedicated Books section on the Google Play websi"
+    ],
+    "page_id": 42960975
+  },
+  "IBM Granite": {
+    "title": "IBM Granite",
+    "url": "https://en.wikipedia.org/wiki/IBM_Granite",
+    "summary": "IBM Granite is a series of decoder-only AI foundation models created by IBM. It was announced on September 7, 2023, and an initial paper was published 4 days later. Initially intended for use in the IBM's cloud-based data and generative AI platform Watsonx along with other models, IBM opened the source code of some code models. Granite models are trained on datasets curated from Internet, academic publishings, code datasets, legal and finance documents.\n\n",
+    "paragraphs": [
+      "IBM Granite is a series of decoder-only AI foundation models created by IBM. It was announced on September 7, 2023, and an initial paper was published 4 days later. Initially intended for use in the IBM's cloud-based data and generative AI platform Watsonx along with other models, IBM opened the source code of some code models. Granite models are trained on datasets curated from Internet, academic"
+    ],
+    "page_id": 76093849
+  },
+  "List of datasets for machine-learning research": {
+    "title": "List of datasets for machine-learning research",
+    "url": "https://en.wikipedia.org/wiki/List_of_datasets_for_machine-learning_research",
+    "summary": "These datasets are used in machine learning (ML) research and have been cited in peer-reviewed academic journals. Datasets are an integral part of the field of machine learning. Major advances in this field can result from advances in learning algorithms (such as deep learning), computer hardware, and, less intuitively, the availability of high-quality training datasets. High-quality labeled training datasets for supervised and semi-supervised machine-learning algorithms are usually difficult an",
+    "paragraphs": [
+      "These datasets are used in machine learning (ML) research and have been cited in peer-reviewed academic journals. Datasets are an integral part of the field of machine learning. Major advances in this field can result from advances in learning algorithms (such as deep learning), computer hardware, and, less intuitively, the availability of high-quality training datasets. High-quality labeled train"
+    ],
+    "page_id": 49082762
+  },
+  "Machine learning": {
+    "title": "Machine learning",
+    "url": "https://en.wikipedia.org/wiki/Machine_learning",
+    "summary": "Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from  data and generalize to unseen data, and thus perform tasks without being explicitly programmed. Advances in the field of deep learning have allowed neural networks, a class of statistical algorithms, to surpass many previous machine learning approaches in performance.\nStatistics and mathematical optimisation methods compose the foundations o",
+    "paragraphs": [
+      "Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from  data and generalize to unseen data, and thus perform tasks without being explicitly programmed. Advances in the field of deep learning have allowed neural networks, a class of statistical algorithms, to surpass many previous machine learning a"
+    ],
+    "page_id": 233488
+  },
+  "Master of Laws": {
+    "title": "Master of Laws",
+    "url": "https://en.wikipedia.org/wiki/Master_of_Laws",
+    "summary": "A Master of Laws (M.L. or LL.M.; Latin: Magister Legum or Legum Magister) is a postgraduate academic degree, pursued by those either holding an undergraduate academic law degree or a professional law degree.\nIn many jurisdictions, the LL.M. is an advanced professional degree for those already admitted to legal practice.\n\n",
+    "paragraphs": [
+      "A Master of Laws (M.L. or LL.M.; Latin: Magister Legum or Legum Magister) is a postgraduate academic degree, pursued by those either holding an undergraduate academic law degree or a professional law degree.\nIn many jurisdictions, the LL.M. is an advanced professional degree for those already admitted to legal practice."
+    ],
+    "page_id": 464522
+  },
+  "Online machine learning": {
+    "title": "Online machine learning",
+    "url": "https://en.wikipedia.org/wiki/Online_machine_learning",
+    "summary": "In computer science, online machine learning is a method of machine learning in which data becomes available in a sequential order and is used to update the best predictor for future data at each step, as opposed to batch learning techniques which generate the best predictor by learning on the entire training data set at once. Online learning is a common technique used in areas of machine learning where it is computationally infeasible to train over the entire dataset, requiring the need of out-",
+    "paragraphs": [
+      "In computer science, online machine learning is a method of machine learning in which data becomes available in a sequential order and is used to update the best predictor for future data at each step, as opposed to batch learning techniques which generate the best predictor by learning on the entire training data set at once. Online learning is a common technique used in areas of machine learning"
+    ],
+    "page_id": 19892153
+  },
+  "Retrieval-augmented generation": {
+    "title": "Retrieval-augmented generation",
+    "url": "https://en.wikipedia.org/wiki/Retrieval-augmented_generation",
+    "summary": "Retrieval-augmented generation (RAG) is a technique that enables large language models (LLMs) to retrieve and incorporate new information from external data sources. With RAG, LLMs first refer to a specified set of documents, then respond to user queries. These documents supplement information from the LLM's pre-existing training data. This allows LLMs to use domain-specific and/or updated information that is not available in the training data. For example, this enables LLM-based chatbots to acc",
+    "paragraphs": [
+      "Retrieval-augmented generation (RAG) is a technique that enables large language models (LLMs) to retrieve and incorporate new information from external data sources. With RAG, LLMs first refer to a specified set of documents, then respond to user queries. These documents supplement information from the LLM's pre-existing training data. This allows LLMs to use domain-specific and/or updated informa"
+    ],
+    "page_id": 75229858
+  },
+  "search:language models training datasets": [
+    "The Pile (dataset)",
+    "Large language model"
+  ],
+  "search:chatgpt trained texts": [
+    "ChatGPT",
+    "GPT-5"
+  ],
+  "search:gpt-3 accuracy reading comprehension": [
+    "Large language model",
+    "Stochastic parrot"
+  ],
+  "search:model layers input data": [
+    "Training, validation, and test data sets",
+    "Large language model"
+  ],
+  "search:gpt-3 5 billion parameters": [
+    "GPT-2",
+    "GPT-3"
+  ],
+  "search:gpt-3 6 trillion tokens": [
+    "GPT-4",
+    "ChatGPT"
+  ],
+  "search:llms chatbots applications": [
+    "List of chatbots",
+    "Large language model"
+  ],
+  "search:multi-head self-attention mechanisms": [
+    "Attention (machine learning)",
+    "Attention Is All You Need"
+  ],
+  "Attention (machine learning)": {
+    "title": "Attention (machine learning)",
+    "url": "https://en.wikipedia.org/wiki/Attention_(machine_learning)",
+    "summary": "In machine learning, attention is a method that determines the importance of each component in a sequence relative to the other components in that sequence. In natural language processing, importance is represented by \"soft\" weights assigned to each word in a sentence. More generally, attention encodes vectors called token embeddings across a fixed-width sequence that can range from tens to millions of tokens in size.\nUnlike \"hard\" weights, which are computed during the backwards training pass, ",
+    "paragraphs": [
+      "In machine learning, attention is a method that determines the importance of each component in a sequence relative to the other components in that sequence. In natural language processing, importance is represented by \"soft\" weights assigned to each word in a sentence. More generally, attention encodes vectors called token embeddings across a fixed-width sequence that can range from tens to millio"
+    ],
+    "page_id": 66001552
+  },
+  "Attention Is All You Need": {
+    "title": "Attention Is All You Need",
+    "url": "https://en.wikipedia.org/wiki/Attention_Is_All_You_Need",
+    "summary": "\"Attention Is All You Need\" is a 2017 research paper in machine learning authored by eight scientists and engineers working at Google. The paper introduced a new deep learning architecture known as the transformer, based on the attention mechanism proposed in 2014 by Bahdanau et al. The transformer approach it describes has become the main architecture of a wide variety of artificial intelligence systems, including large language models. At the time, the focus of the research was on improving Se",
+    "paragraphs": [
+      "\"Attention Is All You Need\" is a 2017 research paper in machine learning authored by eight scientists and engineers working at Google. The paper introduced a new deep learning architecture known as the transformer, based on the attention mechanism proposed in 2014 by Bahdanau et al. The transformer approach it describes has become the main architecture of a wide variety of artificial intelligence "
+    ],
+    "page_id": 75477752
+  },
+  "GPT-2": {
+    "title": "GPT-2",
+    "url": "https://en.wikipedia.org/wiki/GPT-2",
+    "summary": "Generative Pre-trained Transformer 2 (GPT-2) is a large language model (LLM) by OpenAI and the second in their foundational series of GPT models. GPT-2 was pre-trained on a dataset of 8 million web pages. It was partially released in February 2019, followed by full release of the 1.5-billion-parameter model on November 5, 2019.\nGPT-2 was created as a \"direct scale-up\" of GPT-1 with a ten-fold increase in both its parameter count and the size of its training dataset. It is a general-purpose learn",
+    "paragraphs": [
+      "Generative Pre-trained Transformer 2 (GPT-2) is a large language model (LLM) by OpenAI and the second in their foundational series of GPT models. GPT-2 was pre-trained on a dataset of 8 million web pages. It was partially released in February 2019, followed by full release of the 1.5-billion-parameter model on November 5, 2019.\nGPT-2 was created as a \"direct scale-up\" of GPT-1 with a ten-fold incr"
+    ],
+    "page_id": 66045029
+  },
+  "List of chatbots": {
+    "title": "List of chatbots",
+    "url": "https://en.wikipedia.org/wiki/List_of_chatbots",
+    "summary": "A chatbot is a software application or web interface that is designed to mimic human conversation through text or voice interactions. Modern chatbots are typically online and use generative AI systems that are capable of maintaining a conversation with a user in natural language and simulating the way a human would behave as a conversational partner. Such chatbots often use large language models (LLMs) and natural language processing, but simpler chatbots have existed for decades.",
+    "paragraphs": [
+      "A chatbot is a software application or web interface that is designed to mimic human conversation through text or voice interactions. Modern chatbots are typically online and use generative AI systems that are capable of maintaining a conversation with a user in natural language and simulating the way a human would behave as a conversational partner. Such chatbots often use large language models ("
+    ],
+    "page_id": 8693793
+  },
+  "Stochastic parrot": {
+    "title": "Stochastic parrot",
+    "url": "https://en.wikipedia.org/wiki/Stochastic_parrot",
+    "summary": "In machine learning, the term stochastic parrot is a metaphor that frames large language models as systems that statistically mimic text without real understanding. The word \"stochastic\" \u2013 from the ancient Greek \"\u03c3\u03c4\u03bf\u03c7\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc\u03c2\" (stokhastikos, 'based on guesswork') \u2013 is a term from probability theory meaning \"randomly determined\". The word \"parrot\" refers to parrots' ability to mimic human speech. \nThe term was introduced in a 2021 paper on AI ethics titled \"On the Dangers of Stochastic Parrots: Ca",
+    "paragraphs": [
+      "In machine learning, the term stochastic parrot is a metaphor that frames large language models as systems that statistically mimic text without real understanding. The word \"stochastic\" \u2013 from the ancient Greek \"\u03c3\u03c4\u03bf\u03c7\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc\u03c2\" (stokhastikos, 'based on guesswork') \u2013 is a term from probability theory meaning \"randomly determined\". The word \"parrot\" refers to parrots' ability to mimic human speech. \nT"
+    ],
+    "page_id": 73761282
+  },
+  "The Pile (dataset)": {
+    "title": "The Pile (dataset)",
+    "url": "https://en.wikipedia.org/wiki/The_Pile_(dataset)",
+    "summary": "The Pile is an 886 GB diverse, open-source dataset of English text created as a training dataset for large language models (LLMs). It was constructed by EleutherAI in 2020 and publicly released on December 31 of that year. It is composed of 22 component sub-datasets. The Pile and Common Crawl had been, as of 2024, the two main training datasets being used to train AI models.\nCopyright disputes centering around use of The Pile escalated in 2023, prompting Eleuther to start removing some datasets.",
+    "paragraphs": [
+      "The Pile is an 886 GB diverse, open-source dataset of English text created as a training dataset for large language models (LLMs). It was constructed by EleutherAI in 2020 and publicly released on December 31 of that year. It is composed of 22 component sub-datasets. The Pile and Common Crawl had been, as of 2024, the two main training datasets being used to train AI models.\nCopyright disputes cen"
+    ],
+    "page_id": 73281585
+  },
+  "Training, validation, and test data sets": {
+    "title": "Training, validation, and test data sets",
+    "url": "https://en.wikipedia.org/wiki/Training,_validation,_and_test_data_sets",
+    "summary": "In machine learning, a common task is the study and construction of algorithms that can learn from and make predictions on data. Such algorithms function by making data-driven predictions or decisions, through building a mathematical model from input data. These input data used to build the model are usually divided into multiple data sets. In particular, three data sets are commonly used in different stages of the creation of the model: training, validation, and testing sets.\nThe model is initi",
+    "paragraphs": [
+      "In machine learning, a common task is the study and construction of algorithms that can learn from and make predictions on data. Such algorithms function by making data-driven predictions or decisions, through building a mathematical model from input data. These input data used to build the model are usually divided into multiple data sets. In particular, three data sets are commonly used in diffe"
+    ],
+    "page_id": 1514392
   }
 }

@@ -1,3 +1,10 @@
+"""
+claims.py - Claim Extraction Node
+
+Extracts atomic factual claims from generated answer text.
+Filters out vague/unverifiable claims while keeping verifiable ones.
+"""
+
 import re
 from typing import Any, Dict, List
 
@@ -45,6 +52,7 @@ EXAMPLES OF GOOD CLAIMS (specific and verifiable):
 - "The transformer architecture was introduced in 2017"
 - "GPT-3 has 175 billion parameters"
 - "LLMs are trained on large text corpora including books and Wikipedia"
+- "LLMs are trained using extensive web-scale datasets processing trillions of tokens"
 
 TEXT TO PROCESS:
 {answer}
@@ -116,8 +124,10 @@ def clean_and_validate_claims(claims: List[str]) -> List[str]:
 
 
 def is_likely_factual(claim: str) -> bool:
-    """Check if a claim appears to be factual rather than opinion."""
-    # Skip claims that are clearly opinions or subjective
+    """
+    Check if a claim appears to be factual rather than opinion.
+    Uses multiple signals to determine if claim is verifiable.
+    """
     opinion_indicators = [
         "i think",
         "i believe",
@@ -130,33 +140,34 @@ def is_likely_factual(claim: str) -> bool:
         "might be",
         "seems to",
         "appears to",
-        "best",
-        "worst",
-        "greatest",
-        "may struggle",
-        "might lose",
-        "may have errors",
-        "may lack",
     ]
 
     claim_lower = claim.lower()
-
-    # Check for opinion indicators
     for indicator in opinion_indicators:
         if indicator in claim_lower:
             return False
 
-    # Must contain at least one factual element (number, proper noun, or specific entity)
+    # Multiple signals that a claim is verifiable
     has_number = bool(re.search(r"\d+", claim))
-    has_proper_noun = bool(re.search(r"\b[A-Z][a-z]+ [A-Z][a-z]+\b", claim))
+    has_proper_noun = bool(
+        re.search(r"\b[A-Z][a-zA-Z]+\b", claim)
+    )  # single capitalized word is enough (GPT, BERT, etc.)
+    is_long_enough = len(claim.split()) >= 8  # at least 8 words for substantive claim
+    has_technical_term = bool(
+        re.search(
+            r"\b(transformer|neural|attention|token|parameter|layer|dataset|training|model|architecture)\b",
+            claim_lower,
+        )
+    )
 
-    return has_number or has_proper_noun or len(claim.split()) > 5
+    return has_number or has_proper_noun or is_long_enough or has_technical_term
 
 
 def filter_vague_claims(claims: List[str]) -> List[str]:
     """
     Filter out claims that are too vague to verify.
     Uses pattern matching to catch common vague claim structures.
+    Does NOT double-filter claims that already passed is_likely_factual.
     """
     vague_patterns = [
         r"^the (evolution|development|advancement|progress|future|rise|growth) of",
@@ -181,15 +192,7 @@ def filter_vague_claims(claims: List[str]) -> List[str]:
                 is_vague = True
                 break
 
-        # Also check if claim has no specific entities
         if not is_vague:
-            # Must have at least one of: number, proper noun, or specific technical term
-            has_specifics = (
-                bool(re.search(r"\d+", claim))  # Number
-                or bool(re.search(r"\b[A-Z][a-z]+ [A-Z][a-z]+\b", claim))  # Proper noun
-                or bool(re.search(r"\b[A-Z]{2,}\b", claim))  # Acronym (GPT, BERT, LLM)
-            )
-            if has_specifics:
-                filtered.append(claim)
+            filtered.append(claim)
 
     return filtered
