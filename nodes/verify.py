@@ -173,34 +173,40 @@ def verify_with_evidence_combined(
         evidence_text += f"\n--- Source {i}: {ev['title']} (relevance: {ev.get('relevance', 0):.1%}) ---\n"
         evidence_text += f"{ev['content'][:400]}\n"
 
-    prompt = f"""You are a strict fact-checker. Your task has TWO steps:
+    prompt = f"""You are a strict fact-checker. Your task is to verify the claim against the evidence.
 
-STEP 1: Determine if the evidence is about the same topic as the claim.
-- If the evidence is about something completely different (wrong person, wrong concept, wrong field), it's IRRELEVANT.
-- If the evidence shares the same topic but focuses on different aspects, it's RELEVANT but may be insufficient.
+CRITICAL RULES - FOLLOW EXACTLY:
 
-STEP 2: If evidence is relevant, verify the claim with STRICT rules.
+1. FIRST: Check if evidence is about the same topic as the claim.
+   - If completely different topic → verdict: "IRRELEVANT"
 
-STRICT VERIFICATION RULES:
-- SUPPORTED: Evidence confirms ALL parts of the claim with matching facts
-- CONTRADICTED: Evidence states facts that conflict with ANY part of the claim
-- INSUFFICIENT_EVIDENCE: Evidence is about the right topic but doesn't have enough detail
+2. SECOND: If evidence is relevant, compare EVERY fact in the claim:
 
-DATE RULES (STRICT - NO EXCEPTIONS):
-- If claim says year X and evidence says year Y where X ≠ Y → CONTRADICTED
-- If claim says "developed in 2019" and evidence says "released in 2020" → CONTRADICTED
-- One year difference is still a contradiction → CONTRADICTED
-- Only mark SUPPORTED if years match exactly
+   DATE CHECKING (STRICTEST):
+   - Extract ALL years/dates from claim
+   - Extract ALL years/dates from evidence
+   - ANY year mismatch → verdict: "CONTRADICTED"
+   - Example: Claim says "2019", evidence says "2020" → CONTRADICTED
+   - Example: Claim says "developed in 2019", evidence says "released in 2020" → CONTRADICTED
+   - No exceptions for off-by-one-year
 
-NUMBER RULES (STRICT):
-- If claim says "175 billion parameters" and evidence says "175 million" → CONTRADICTED
-- If claim says "12 layers" and evidence says "96 layers" → CONTRADICTED
-- Number mismatch of more than 5% → CONTRADICTED
-- Only mark SUPPORTED if numbers match within 5%
+   NUMBER CHECKING:
+   - Extract ALL numbers from claim (parameters, layers, percentages, etc.)
+   - Extract ALL numbers from evidence
+   - Any number mismatch > 5% → verdict: "CONTRADICTED"
+   - Claim says "175 billion" but evidence says "175 million" → CONTRADICTED
+   - Claim says "12 layers" but evidence says "96 layers" → CONTRADICTED
 
-NAME RULES (STRICT):
-- If claim says "developed by OpenAI" and evidence says "developed by Google" → CONTRADICTED
-- Creator/originator mismatch → CONTRADICTED
+   NAME CHECKING:
+   - Extract ALL named entities (people, companies, products)
+   - Claim says "developed by OpenAI", evidence says "developed by Google" → CONTRADICTED
+   - Any creator/originator mismatch → CONTRADICTED
+
+   VERDICT DEFINITIONS:
+   - SUPPORTED: ALL facts in claim match evidence (dates, numbers, names)
+   - CONTRADICTED: ANY fact in claim contradicts evidence
+   - INSUFFICIENT_EVIDENCE: Evidence is relevant but missing specific details to confirm/deny
+   - IRRELEVANT: Evidence is about a different topic
 
 CLAIM TO VERIFY:
 "{claim}"
@@ -212,12 +218,17 @@ Return JSON only:
 {{
     "verdict": "SUPPORTED" or "CONTRADICTED" or "INSUFFICIENT_EVIDENCE" or "IRRELEVANT",
     "confidence": 0.0 to 1.0,
-    "reasoning": "Explain EXACTLY what the evidence says and how it compares to the claim. Point out specific matching or mismatching facts.",
-    "key_facts_matched": ["fact1 from evidence that matches claim"],
-    "discrepancies": ["any contradictions between claim and evidence - dates, numbers, names, facts"]
+    "reasoning": "List EVERY date, number, and name in the claim. Then list what the evidence says for each. Point out any mismatches explicitly.",
+    "key_facts_matched": ["specific facts from evidence that match claim"],
+    "discrepancies": ["specific contradictions - include the claim value and evidence value"]
 }}
 
-CRITICAL: If you find ANY contradiction in dates, numbers, or names, verdict MUST be CONTRADICTED, not SUPPORTED.
+Example reasoning for CONTRADICTED:
+"Claim states GPT-3 was developed in 2019. Evidence states GPT-3 was released in 2020. Year mismatch: 2019 ≠ 2020."
+
+Example reasoning for SUPPORTED:
+"Claim states GPT-3 has 175 billion parameters. Evidence confirms 175 billion parameters. No date mismatch found. No name mismatch found."
+
 Return ONLY the JSON object, no other text."""
 
     try:
@@ -232,12 +243,18 @@ Return ONLY the JSON object, no other text."""
             # Apply normalization immediately
             verdict = normalize_verdict(result.get("verdict", "INSUFFICIENT_EVIDENCE"))
 
+            # Additional check: if LLM says SUPPORTED but has discrepancies, force CONTRADICTED
+            discrepancies = result.get("discrepancies", [])
+            if verdict == "SUPPORTED" and discrepancies:
+                verdict = "CONTRADICTED"
+                result["reasoning"] = f"Contradictions found but marked SUPPORTED. {result.get('reasoning', '')}"
+
             return {
                 "verdict": verdict,
                 "confidence": result.get("confidence", 0.5),
                 "reasoning": result.get("reasoning", "No reasoning provided."),
                 "key_facts_matched": result.get("key_facts_matched", []),
-                "discrepancies": result.get("discrepancies", []),
+                "discrepancies": discrepancies,
             }
     except Exception as e:
         print(f"    Verification failed: {e}")

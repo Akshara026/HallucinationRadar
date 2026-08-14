@@ -3,6 +3,7 @@ claims.py - Claim Extraction Node
 
 Extracts atomic factual claims from generated answer text.
 Filters out vague/unverifiable claims while keeping verifiable ones.
+Splits compound claims into individual verifiable facts.
 """
 
 import re
@@ -18,6 +19,7 @@ def claims_node(state: Dict[str, Any]) -> Dict[str, List[str]]:
     Extract atomic factual claims from the answer text.
     Each claim should be independently verifiable.
     Filters out vague/unverifiable claims.
+    Splits compound claims.
     """
     answer = state.get("answer", "")
 
@@ -31,13 +33,30 @@ def claims_node(state: Dict[str, Any]) -> Dict[str, List[str]]:
 CRITICAL EXTRACTION RULES:
 1. Each claim must contain EXACTLY ONE verifiable fact
 2. Break compound sentences into separate claims
-3. Remove opinions, speculations, and subjective statements
-4. Each claim must be self-contained (no pronouns without clear referents)
-5. Replace pronouns (he, she, it, they, this, that) with their specific referents
-6. Preserve exact numbers, dates, and proper nouns from the source
-7. Include necessary context so each claim can be verified independently
-8. Format: Return ONLY the claims, one per line, no numbering or bullet points
-9. SKIP vague claims that cannot be fact-checked (see examples below)
+3. SPLIT claims connected by "while", "and", "or", "but" when they contain TWO separate facts
+4. Remove opinions, speculations, and subjective statements
+5. Each claim must be self-contained (no pronouns without clear referents)
+6. Replace pronouns (he, she, it, they, this, that) with their specific referents
+7. Preserve exact numbers, dates, and proper nouns from the source
+8. Include necessary context so each claim can be verified independently
+9. Format: Return ONLY the claims, one per line, no numbering or bullet points
+10. SKIP vague claims that cannot be fact-checked (see examples below)
+
+COMPOUND CLAIM SPLITTING EXAMPLES:
+Input: "The smallest version has 7 billion parameters, while the largest has over 100 billion"
+Output:
+The smallest version has 7 billion parameters.
+The largest version has over 100 billion parameters.
+
+Input: "GPT-3 was developed by OpenAI in 2019 and has 175 billion parameters"
+Output:
+GPT-3 was developed by OpenAI in 2019.
+GPT-3 has 175 billion parameters.
+
+Input: "LLMs use transformers for processing and are trained on large datasets"
+Output:
+LLMs use transformers for processing.
+LLMs are trained on large datasets.
 
 EXAMPLES OF CLAIMS TO SKIP (too vague to verify):
 - "The evolution of LLMs highlights the growing potential of AI"
@@ -52,7 +71,6 @@ EXAMPLES OF GOOD CLAIMS (specific and verifiable):
 - "The transformer architecture was introduced in 2017"
 - "GPT-3 has 175 billion parameters"
 - "LLMs are trained on large text corpora including books and Wikipedia"
-- "LLMs are trained using extensive web-scale datasets processing trillions of tokens"
 
 TEXT TO PROCESS:
 {answer}
@@ -63,6 +81,9 @@ RETURN ONLY THE EXTRACTED CLAIMS (one per line):"""
         response = llm.invoke(prompt)
 
         claims = extract_claims_from_response(response.content)
+
+        # Split compound claims
+        claims = split_compound_claims(claims)
 
         # Post-process claims
         claims = clean_and_validate_claims(claims)
@@ -77,6 +98,41 @@ RETURN ONLY THE EXTRACTED CLAIMS (one per line):"""
     except Exception as e:
         print(f"Error extracting claims: {e}")
         return {"claims": []}
+
+
+def split_compound_claims(claims: List[str]) -> List[str]:
+    """
+    Split compound claims into atomic claims.
+    Detects patterns like "X while Y", "X and Y" where both are separate facts.
+    """
+    split_claims = []
+
+    for claim in claims:
+        # Split on "while" when both sides have numbers/facts
+        if " while " in claim.lower():
+            parts = re.split(r'\s+while\s+', claim, flags=re.IGNORECASE)
+            if len(parts) == 2:
+                # Check if both parts are substantive
+                if (re.search(r'\d+', parts[0]) and re.search(r'\d+', parts[1])):
+                    split_claims.append(parts[0].strip().rstrip('.') + ".")
+                    split_claims.append(parts[1].strip().rstrip('.') + ".")
+                    continue
+
+        # Split on " and " when both sides have numbers
+        if " and " in claim.lower():
+            parts = re.split(r'\s+and\s+', claim, flags=re.IGNORECASE)
+            if len(parts) == 2:
+                # Both parts have numbers = likely two separate facts
+                if (re.search(r'\d+', parts[0]) and re.search(r'\d+', parts[1])):
+                    # Check they're not part of same fact
+                    if len(parts[0].split()) > 3 and len(parts[1].split()) > 3:
+                        split_claims.append(parts[0].strip().rstrip('.') + ".")
+                        split_claims.append(parts[1].strip().rstrip('.') + ".")
+                        continue
+
+        split_claims.append(claim)
+
+    return split_claims
 
 
 def extract_claims_from_response(text: str) -> List[str]:
