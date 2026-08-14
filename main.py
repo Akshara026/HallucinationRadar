@@ -1,47 +1,28 @@
-from nodes.answer import answer_node
-from nodes.claims import claims_node
-from nodes.report import report_node, save_report_pdf
-from nodes.retrieval import retrieval_node
-from nodes.score import score_node
-from nodes.verify import verify_node
+"""
+main.py - HallucinationRadar entry point
+Uses LangGraph pipeline for execution
+"""
 
-
-def run_pipeline(query, save_pdf=True):
-    state = {"query": query}
-
-    # Step 1: Generate answer
-    state.update(answer_node(state))
-    print(f"\nDEBUG: answer length = {len(state['answer'])}")
-    print(f"DEBUG: first 300 chars = {state['answer'][:300]}")
-
-    # Step 2: Extract claims
-    state.update(claims_node(state))
-    print(f"DEBUG: claims count = {len(state['claims'])}")
-    for i, c in enumerate(state["claims"], 1):
-        print(f"DEBUG: claim {i}: {c[:100]}...")
-
-    # Step 3: Retrieve evidence
-    state.update(retrieval_node(state))
-
-    # Step 4: Verify claims
-    state.update(verify_node(state))
-
-    # Step 5: Score hallucination
-    state.update(score_node(state))
-
-    # Step 6: Generate report
-    state.update(report_node(state))
-
-    # Save report to PDF
-    if save_pdf:
-        save_report_pdf(state["report"])
-
-    return state
+from graph import run_pipeline
+from nodes.report import save_report_pdf
 
 
 if __name__ == "__main__":
-    result = run_pipeline("What is an LLM?")
+    query = "What is an LLM?"
 
+    print("=" * 60)
+    print("HALLUCINATION RADAR")
+    print("=" * 60)
+    print(f"\nQuery: {query}")
+    print("\nStarting pipeline...\n")
+
+    # Run the graph pipeline
+    result = run_pipeline(query)
+
+    # Save PDF report
+    report_path = save_report_pdf(result["report"])
+
+    # Print final output
     print("\n" + "=" * 60)
     print("ANSWER")
     print("=" * 60)
@@ -90,3 +71,5 @@ if __name__ == "__main__":
     print("FULL REPORT")
     print("=" * 60)
     print(result["report"])
+
+    print(f"\nPDF Report saved to: {report_path}")

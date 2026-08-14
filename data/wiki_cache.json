@@ -944,5 +944,48 @@
     "page_id": 79013463
   },
   "Web scraping": null,
-  "Time management": null
+  "Time management": null,
+  "search:large language models ai systems": [
+    "Large language model",
+    "Generative AI"
+  ],
+  "search:gpt-3 openai 2020 developed": [
+    "GPT-3",
+    "Products and applications of OpenAI"
+  ],
+  "search:neural networks language models": [
+    "Neural network (machine learning)",
+    "Language model"
+  ],
+  "search:gpt-3 approximately billion parameters": [
+    "Large language model",
+    "Generative pre-trained transformer"
+  ],
+  "Language model": {
+    "title": "Language model",
+    "url": "https://en.wikipedia.org/wiki/Language_model",
+    "summary": "A language model is a computational model  that predicts sequences in natural language. Language models are useful for a variety of tasks, including speech recognition, machine translation, natural language generation (generating more human-like text), optical character recognition, route optimization, handwriting recognition, grammar induction, information retrieval and disaster response.\nLarge language models (LLMs), currently their most advanced form as of 2026, are predominantly based on tra",
+    "paragraphs": [
+      "A language model is a computational model  that predicts sequences in natural language. Language models are useful for a variety of tasks, including speech recognition, machine translation, natural language generation (generating more human-like text), optical character recognition, route optimization, handwriting recognition, grammar induction, information retrieval and disaster response.\nLarge l"
+    ],
+    "page_id": 1911810
+  },
+  "Neural network (machine learning)": {
+    "title": "Neural network (machine learning)",
+    "url": "https://en.wikipedia.org/wiki/Neural_network_(machine_learning)",
+    "summary": "In machine learning, a neural network (NN) or neural net, is a computational model inspired by the structure and functions of biological neural networks.\nA neural network consists of connected units or nodes called artificial neurons, which loosely model the neurons in the brain. These are connected by edges, which model the synapses in the brain. Each artificial neuron receives signals from connected neurons, then processes them and sends a signal to other connected neurons. The \"signal\" is a r",
+    "paragraphs": [
+      "In machine learning, a neural network (NN) or neural net, is a computational model inspired by the structure and functions of biological neural networks.\nA neural network consists of connected units or nodes called artificial neurons, which loosely model the neurons in the brain. These are connected by edges, which model the synapses in the brain. Each artificial neuron receives signals from conne"
+    ],
+    "page_id": 21523
+  },
+  "Products and applications of OpenAI": {
+    "title": "Products and applications of OpenAI",
+    "url": "https://en.wikipedia.org/wiki/Products_and_applications_of_OpenAI",
+    "summary": "The American artificial intelligence (AI) organization OpenAI has released a variety of products and applications since its founding in 2015.\n\n",
+    "paragraphs": [
+      "The American artificial intelligence (AI) organization OpenAI has released a variety of products and applications since its founding in 2015."
+    ],
+    "page_id": 80209622
+  }
 }
