@@ -987,5 +987,176 @@
       "The American artificial intelligence (AI) organization OpenAI has released a variety of products and applications since its founding in 2015."
     ],
     "page_id": 80209622
+  },
+  "search:llms subwords context granular": [
+    "List of datasets for machine-learning research"
+  ],
+  "search:reasoning steps llms": [
+    "Large language model",
+    "Reasoning model"
+  ],
+  "search:sequential dependencies llms": [
+    "Attention Is All You Need",
+    "Stance detection"
+  ],
+  "search:llms trained vast datasets": [
+    "Large language model",
+    "List of large language models"
+  ],
+  "search:llms tokenization input text": [
+    "Large language model",
+    "Retrieval-augmented generation"
+  ],
+  "search:large language models openai": [
+    "Large language model",
+    "Reasoning model"
+  ],
+  "search:llms introduced vaswani": [
+    "Large language model",
+    "Attention Is All You Need"
+  ],
+  "search:llms translation tasks attend specific": [
+    "DeepSeek",
+    "T5 (language model)"
+  ],
+  "search:llms attention mechanisms input processing": [
+    "Attention Is All You Need",
+    "Large language model"
+  ],
+  "search:tokenization llms": [
+    "Large language model",
+    "List of large language models"
+  ],
+  "search:subwords llms": [
+    "Byte-pair encoding",
+    "Neuro-symbolic AI"
+  ],
+  "search:chatgpt deepseek-r1": [
+    "DeepSeek",
+    "ChatGPT Deep Research"
+  ],
+  "search:attention is all you need paper": [
+    "Attention Is All You Need",
+    "Ashish Vaswani"
+  ],
+  "search:llms reasoning steps multiple": [
+    "Large language model",
+    "Reasoning model"
+  ],
+  "search:transformer neural networks 2017": [
+    "Residual neural network",
+    "Vision transformer"
+  ],
+  "search:llms machine translation text summarization": [
+    "Large language model",
+    "World model (artificial intelligence)"
+  ],
+  "search:llms sequential dependencies architecture": [
+    "Attention Is All You Need",
+    "Transformer (deep learning)"
+  ],
+  "search:translation tasks llms": [
+    "Large language model",
+    "Neural machine translation"
+  ],
+  "search:vast datasets llms": [
+    "Large language model",
+    "List of large language models"
+  ],
+  "search:llms natural language processing": [
+    "Large language model",
+    "List of large language models"
+  ],
+  "search:self attention mechanisms revolutionized": [],
+  "Byte-pair encoding": {
+    "title": "Byte-pair encoding",
+    "url": "https://en.wikipedia.org/wiki/Byte-pair_encoding",
+    "summary": "In computing, byte-pair encoding (BPE), or digram coding, is an algorithm, first described in 1994 by Philip Gage, for encoding strings of text into smaller strings by creating and using a translation table. A slightly modified version of the algorithm is used in large language model tokenizers.\nThe original version of the algorithm focused on compression. It replaces the highest-frequency pair of bytes with a new byte that was not contained in the initial dataset. A lookup table of the replacem",
+    "paragraphs": [
+      "In computing, byte-pair encoding (BPE), or digram coding, is an algorithm, first described in 1994 by Philip Gage, for encoding strings of text into smaller strings by creating and using a translation table. A slightly modified version of the algorithm is used in large language model tokenizers.\nThe original version of the algorithm focused on compression. It replaces the highest-frequency pair of"
+    ],
+    "page_id": 5825526
+  },
+  "ChatGPT Deep Research": {
+    "title": "ChatGPT Deep Research",
+    "url": "https://en.wikipedia.org/wiki/ChatGPT_Deep_Research",
+    "summary": "Deep Research is an AI agent integrated into ChatGPT, which generates cited reports on a user-specified topic by autonomously browsing the web for 5 to 30 minutes.",
+    "paragraphs": [
+      "Deep Research is an AI agent integrated into ChatGPT, which generates cited reports on a user-specified topic by autonomously browsing the web for 5 to 30 minutes."
+    ],
+    "page_id": 79132791
+  },
+  "DeepSeek": {
+    "title": "DeepSeek",
+    "url": "https://en.wikipedia.org/wiki/DeepSeek",
+    "summary": "Hangzhou DeepSeek Artificial Intelligence Basic Technology Research Co., Ltd., doing business as DeepSeek, is a Chinese artificial intelligence (AI) company that develops open weights large language models (LLMs). Based in Hangzhou, Zhejiang, DeepSeek is owned and funded by High-Flyer, a Chinese hedge fund. DeepSeek was founded in July 2023 by Liang Wenfeng, who serves as the CEO for both of the companies. The company launched an eponymous chatbot alongside its DeepSeek-R1 model in January 2025.",
+    "paragraphs": [
+      "Hangzhou DeepSeek Artificial Intelligence Basic Technology Research Co., Ltd., doing business as DeepSeek, is a Chinese artificial intelligence (AI) company that develops open weights large language models (LLMs). Based in Hangzhou, Zhejiang, DeepSeek is owned and funded by High-Flyer, a Chinese hedge fund. DeepSeek was founded in July 2023 by Liang Wenfeng, who serves as the CEO for both of the c"
+    ],
+    "page_id": 78452842
+  },
+  "Neural machine translation": {
+    "title": "Neural machine translation",
+    "url": "https://en.wikipedia.org/wiki/Neural_machine_translation",
+    "summary": "Neural machine translation (NMT) is an approach to machine translation that uses an artificial neural network to predict the likelihood of a sequence of words, typically modeling entire sentences in a single integrated model.\nIt is the dominant approach today and can produce translations that rival human translations when translating between high-resource languages under specific conditions. However, there still remain challenges, especially with languages that have less high-quality data availa",
+    "paragraphs": [
+      "Neural machine translation (NMT) is an approach to machine translation that uses an artificial neural network to predict the likelihood of a sequence of words, typically modeling entire sentences in a single integrated model.\nIt is the dominant approach today and can produce translations that rival human translations when translating between high-resource languages under specific conditions. Howev"
+    ],
+    "page_id": 47961606
+  },
+  "Neuro-symbolic AI": {
+    "title": "Neuro-symbolic AI",
+    "url": "https://en.wikipedia.org/wiki/Neuro-symbolic_AI",
+    "summary": "Neuro-symbolic AI is a subfield of artificial intelligence that combines neural networks and symbolic AI approaches, such as knowledge representation and automated reasoning, to create more robust, more reliable, and more trustworthy AI. This combination allows statistical patterns to be combined with explicitly defined rules and knowledge to give AI systems the ability to better represent, reason and generalize. Thus, neuro-symbolic AI provides a reasoning infrastructure to state-of-the-art mac",
+    "paragraphs": [
+      "Neuro-symbolic AI is a subfield of artificial intelligence that combines neural networks and symbolic AI approaches, such as knowledge representation and automated reasoning, to create more robust, more reliable, and more trustworthy AI. This combination allows statistical patterns to be combined with explicitly defined rules and knowledge to give AI systems the ability to better represent, reason",
+      "hybrid systems with a neural and a symbolic component (e.g., LLMs and Theorem Provers as in AlphaProof Nexus system by Google DeepMind, which was able to prove several open Erd\u0151s problems), and\nneuro-symbolic systems integrating learning and reasoning within a neural network, so that, informed by the theory of learning and formal reasoning under uncertainty, these systems are normally based on fuz"
+    ],
+    "page_id": 66170649
+  },
+  "Residual neural network": {
+    "title": "Residual neural network",
+    "url": "https://en.wikipedia.org/wiki/Residual_neural_network",
+    "summary": "A residual neural network (also referred to as a residual network or ResNet) is a deep learning architecture in which the layers learn residual functions with reference to the layer inputs. It was developed in 2015 for image recognition, and won the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) of that year.\nAs a point of terminology, \"residual connection\" refers to the specific architectural motif of \n  \n    \n      \n        x\n        \u21a6\n        f\n        (\n        x\n        )\n      ",
+    "paragraphs": [
+      "A residual neural network (also referred to as a residual network or ResNet) is a deep learning architecture in which the layers learn residual functions with reference to the layer inputs. It was developed in 2015 for image recognition, and won the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) of that year.\nAs a point of terminology, \"residual connection\" refers to the specific archi"
+    ],
+    "page_id": 55867424
+  },
+  "Stance detection": {
+    "title": "Stance detection",
+    "url": "https://en.wikipedia.org/wiki/Stance_detection",
+    "summary": "Stance detection, also known as stance classification, is a task in natural language processing (NLP) and computational linguistics that uses content analysis and text mining to identify an author's position or stance on a specific subject. The task is most commonly framed as a classification or textual entailment problem over a fixed label set. Applications of stance detection include political discourse analysis, public health monitoring, misinformation identification, and content moderation o",
+    "paragraphs": [
+      "Stance detection, also known as stance classification, is a task in natural language processing (NLP) and computational linguistics that uses content analysis and text mining to identify an author's position or stance on a specific subject. The task is most commonly framed as a classification or textual entailment problem over a fixed label set. Applications of stance detection include political d"
+    ],
+    "page_id": 83580654
+  },
+  "T5 (language model)": {
+    "title": "T5 (language model)",
+    "url": "https://en.wikipedia.org/wiki/T5_(language_model)",
+    "summary": "T5 (Text-to-Text Transfer Transformer) is a series of large language models developed by Google AI introduced in 2019. Like the original Transformer model, T5 models are encoder-decoder Transformers, where the encoder processes the input text, and the decoder generates the output text.\nT5 models are usually pretrained on a massive dataset of text and code, after which they can perform the text-based tasks that are similar to their pretrained tasks. They can also be finetuned to perform other tas",
+    "paragraphs": [
+      "T5 (Text-to-Text Transfer Transformer) is a series of large language models developed by Google AI introduced in 2019. Like the original Transformer model, T5 models are encoder-decoder Transformers, where the encoder processes the input text, and the decoder generates the output text.\nT5 models are usually pretrained on a massive dataset of text and code, after which they can perform the text-bas"
+    ],
+    "page_id": 76526800
+  },
+  "Vision transformer": {
+    "title": "Vision transformer",
+    "url": "https://en.wikipedia.org/wiki/Vision_transformer",
+    "summary": "A vision transformer (ViT) is a transformer designed for computer vision. A ViT decomposes an input image into a series of patches (rather than text into tokens), serializes each patch into a vector, and maps it to a smaller dimension with a single matrix multiplication. These vector embeddings are then processed by a transformer encoder as if they were token embeddings.\nViTs were designed as alternatives to convolutional neural networks (CNNs) in computer vision applications. They have differen",
+    "paragraphs": [
+      "A vision transformer (ViT) is a transformer designed for computer vision. A ViT decomposes an input image into a series of patches (rather than text into tokens), serializes each patch into a vector, and maps it to a smaller dimension with a single matrix multiplication. These vector embeddings are then processed by a transformer encoder as if they were token embeddings.\nViTs were designed as alte"
+    ],
+    "page_id": 68212199
+  },
+  "World model (artificial intelligence)": {
+    "title": "World model (artificial intelligence)",
+    "url": "https://en.wikipedia.org/wiki/World_model_(artificial_intelligence)",
+    "summary": "A world model in artificial intelligence is a machine learning system that builds an internal representation of an environment. Often this is via understanding objects within video, which predictive LLMs cannot. The model predicts how that environment changes over time in response to actions. Researchers design world models to help agents plan, reason, and act without constant real-world trial and error. World models differ from systems that merely classify or generate outputs. They simulate dyn",
+    "paragraphs": [
+      "A world model in artificial intelligence is a machine learning system that builds an internal representation of an environment. Often this is via understanding objects within video, which predictive LLMs cannot. The model predicts how that environment changes over time in response to actions. Researchers design world models to help agents plan, reason, and act without constant real-world trial and"
+    ],
+    "page_id": 82783584
   }
 }
