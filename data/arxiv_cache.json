@@ -1,0 +1,178 @@
+{
+  "search:parameters llms size": [
+    {
+      "title": "Are LLMs More Skeptical of Entertainment News? (arXiv, 2026)",
+      "url": "http://arxiv.org/abs/2605.01727v1",
+      "summary": "Large language models (LLMs) are increasingly used for automated news credibility assessment, yet it remains unclear whether they apply even-handed standards across journalistic genres. We examine whether zero-shot LLMs are more likely to misclassify legitimate entertainment news as fake than legitimate hard news, using a within-dataset design on GossipCop from FakeNewsNet. Across four frontier models, we find a clear but model-specific genre asymmetry: DeepSeek-V3.2 and GPT-5.2 show false-posit",
+      "paragraphs": [
+        "Large language models (LLMs) are increasingly used for automated news credibility assessment, yet it remains unclear whether they apply even-handed standards across journalistic genres. We examine whether zero-shot LLMs are more likely to misclassify legitimate entertainment news as fake than legitimate hard news, using a within-dataset design on GossipCop from FakeNewsNet. Across four frontier models, we find a clear but model-specific genre asymmetry: DeepSeek-V3.2 and GPT-5.2 show false-positive-rate gaps of 10.1 and 8.8 percentage points, respectively (both $p < .001$), whereas Claude Opus 4.6 and Gemini 3 Flash show no comparable difference. A style-swap experiment yields only limited and inconsistent changes, suggesting that the asymmetry is not reducible to stylistic register alone."
+      ],
+      "page_id": "2605.01727v1",
+      "source": "arxiv"
+    },
+    {
+      "title": "Current state of LLM Risks and AI Guardrails (arXiv, 2024)",
+      "url": "http://arxiv.org/abs/2406.12934v1",
+      "summary": "Large language models (LLMs) have become increasingly sophisticated, leading to widespread deployment in sensitive applications where safety and reliability are paramount. However, LLMs have inherent risks accompanying them, including bias, potential for unsafe actions, dataset poisoning, lack of explainability, hallucinations, and non-reproducibility. These risks necessitate the development of \"guardrails\" to align LLMs with desired behaviors and mitigate potential harm. This work explores the ",
+      "paragraphs": [
+        "Large language models (LLMs) have become increasingly sophisticated, leading to widespread deployment in sensitive applications where safety and reliability are paramount. However, LLMs have inherent risks accompanying them, including bias, potential for unsafe actions, dataset poisoning, lack of explainability, hallucinations, and non-reproducibility. These risks necessitate the development of \"guardrails\" to align LLMs with desired behaviors and mitigate potential harm. This work explores the risks associated with deploying LLMs and evaluates current approaches to implementing guardrails and model alignment techniques. We examine intrinsic and extrinsic bias evaluation methods and discuss the importance of fairness metrics for responsible AI development. The safety and reliability of age"
+      ],
+      "page_id": "2406.12934v1",
+      "source": "arxiv"
+    }
+  ],
+  "search:llms primarily natural language": [
+    {
+      "title": "A Comprehensive Review of State-of-The-Art Methods for Java Code Generation from Natural Language Text (arXiv, 2023)",
+      "url": "http://arxiv.org/abs/2306.06371v1",
+      "summary": "Java Code Generation consists in generating automatically Java code from a Natural Language Text. This NLP task helps in increasing programmers' productivity by providing them with immediate solutions to the simplest and most repetitive tasks. Code generation is a challenging task because of the hard syntactic rules and the necessity of a deep understanding of the semantic aspect of the programming language. Many works tried to tackle this task using either RNN-based, or Transformer-based models",
+      "paragraphs": [
+        "Java Code Generation consists in generating automatically Java code from a Natural Language Text. This NLP task helps in increasing programmers' productivity by providing them with immediate solutions to the simplest and most repetitive tasks. Code generation is a challenging task because of the hard syntactic rules and the necessity of a deep understanding of the semantic aspect of the programming language. Many works tried to tackle this task using either RNN-based, or Transformer-based models. The latter achieved remarkable advancement in the domain and they can be divided into three groups: (1) encoder-only models, (2) decoder-only models, and (3) encoder-decoder models. In this paper, we provide a comprehensive review of the evolution and progress of deep learning models in Java code "
+      ],
+      "page_id": "2306.06371v1",
+      "source": "arxiv"
+    },
+    {
+      "title": "Time, Tense and Aspect in Natural Language Database Interfaces (arXiv, 1998)",
+      "url": "http://arxiv.org/abs/cmp-lg/9803002v1",
+      "summary": "Most existing natural language database interfaces (NLDBs) were designed to be used with database systems that provide very limited facilities for manipulating time-dependent data, and they do not support adequately temporal linguistic mechanisms (verb tenses, temporal adverbials, temporal subordinate clauses, etc.). The database community is becoming increasingly interested in temporal database systems, that are intended to store and manipulate in a principled manner information not only about ",
+      "paragraphs": [
+        "Most existing natural language database interfaces (NLDBs) were designed to be used with database systems that provide very limited facilities for manipulating time-dependent data, and they do not support adequately temporal linguistic mechanisms (verb tenses, temporal adverbials, temporal subordinate clauses, etc.). The database community is becoming increasingly interested in temporal database systems, that are intended to store and manipulate in a principled manner information not only about the present, but also about the past and future. When interfacing to temporal databases, supporting temporal linguistic mechanisms becomes crucial. We present a framework for constructing natural language interfaces for temporal databases (NLTDBs), that draws on research in tense and aspect theories"
+      ],
+      "page_id": "9803002v1",
+      "source": "arxiv"
+    }
+  ],
+  "search:llms trained text data": [
+    {
+      "title": "Data Encoding for Byzantine-Resilient Distributed Optimization (arXiv, 2019)",
+      "url": "http://arxiv.org/abs/1907.02664v2",
+      "summary": "We study distributed optimization in the presence of Byzantine adversaries, where both data and computation are distributed among $m$ worker machines, $t$ of which may be corrupt. The compromised nodes may collaboratively and arbitrarily deviate from their pre-specified programs, and a designated (master) node iteratively computes the model/parameter vector for generalized linear models. In this work, we primarily focus on two iterative algorithms: Proximal Gradient Descent (PGD) and Coordinate ",
+      "paragraphs": [
+        "We study distributed optimization in the presence of Byzantine adversaries, where both data and computation are distributed among $m$ worker machines, $t$ of which may be corrupt. The compromised nodes may collaboratively and arbitrarily deviate from their pre-specified programs, and a designated (master) node iteratively computes the model/parameter vector for generalized linear models. In this work, we primarily focus on two iterative algorithms: Proximal Gradient Descent (PGD) and Coordinate Descent (CD). Gradient descent (GD) is a special case of these algorithms. PGD is typically used in the data-parallel setting, where data is partitioned across different samples, whereas, CD is used in the model-parallelism setting, where data is partitioned across the parameter space. In this paper"
+      ],
+      "page_id": "1907.02664v2",
+      "source": "arxiv"
+    },
+    {
+      "title": "Byzantine-Resilient SGD in High Dimensions on Heterogeneous Data (arXiv, 2020)",
+      "url": "http://arxiv.org/abs/2005.07866v1",
+      "summary": "We study distributed stochastic gradient descent (SGD) in the master-worker architecture under Byzantine attacks. We consider the heterogeneous data model, where different workers may have different local datasets, and we do not make any probabilistic assumptions on data generation. At the core of our algorithm, we use the polynomial-time outlier-filtering procedure for robust mean estimation proposed by Steinhardt et al. (ITCS 2018) to filter-out corrupt gradients. In order to be able to apply ",
+      "paragraphs": [
+        "We study distributed stochastic gradient descent (SGD) in the master-worker architecture under Byzantine attacks. We consider the heterogeneous data model, where different workers may have different local datasets, and we do not make any probabilistic assumptions on data generation. At the core of our algorithm, we use the polynomial-time outlier-filtering procedure for robust mean estimation proposed by Steinhardt et al. (ITCS 2018) to filter-out corrupt gradients. In order to be able to apply their filtering procedure in our {\\em heterogeneous} data setting where workers compute {\\em stochastic} gradients, we derive a new matrix concentration result, which may be of independent interest. We provide convergence analyses for smooth strongly-convex and non-convex objectives. We derive our r"
+      ],
+      "page_id": "2005.07866v1",
+      "source": "arxiv"
+    }
+  ],
+  "search:llms apis accessible through": [
+    {
+      "title": "The Midas Touch: Triggering the Capability of LLMs for RM-API Misuse Detection (arXiv, 2024)",
+      "url": "http://arxiv.org/abs/2409.09380v2",
+      "summary": "In this paper, we propose an LLM-empowered RM-API misuse detection solution, ChatDetector, which fully automates LLMs for documentation understanding which helps RM-API constraints retrieval and RM-API misuse detection. To correctly retrieve the RM-API constraints, ChatDetector is inspired by the ReAct framework which is optimized based on Chain-of-Thought (CoT) to decompose the complex task into allocation APIs identification, RM-object (allocated/released by RM APIs) extraction and RM-APIs pai",
+      "paragraphs": [
+        "In this paper, we propose an LLM-empowered RM-API misuse detection solution, ChatDetector, which fully automates LLMs for documentation understanding which helps RM-API constraints retrieval and RM-API misuse detection. To correctly retrieve the RM-API constraints, ChatDetector is inspired by the ReAct framework which is optimized based on Chain-of-Thought (CoT) to decompose the complex task into allocation APIs identification, RM-object (allocated/released by RM APIs) extraction and RM-APIs pairing (RM APIs usually exist in pairs). It first verifies the semantics of allocation APIs based on the retrieved RM sentences from API documentation through LLMs. Inspired by the LLMs' performance on various prompting methods,ChatDetector adopts a two-dimensional prompting approach for cross-validat"
+      ],
+      "page_id": "2409.09380v2",
+      "source": "arxiv"
+    },
+    {
+      "title": "Improving Self Consistency in LLMs through Probabilistic Tokenization (arXiv, 2024)",
+      "url": "http://arxiv.org/abs/2407.03678v1",
+      "summary": "Prior research has demonstrated noticeable performance gains through the use of probabilistic tokenizations, an approach that involves employing multiple tokenizations of the same input string during the training phase of a language model. Despite these promising findings, modern large language models (LLMs) have yet to be trained using probabilistic tokenizations. Interestingly, while the tokenizers of these contemporary LLMs have the capability to generate multiple tokenizations, this property",
+      "paragraphs": [
+        "Prior research has demonstrated noticeable performance gains through the use of probabilistic tokenizations, an approach that involves employing multiple tokenizations of the same input string during the training phase of a language model. Despite these promising findings, modern large language models (LLMs) have yet to be trained using probabilistic tokenizations. Interestingly, while the tokenizers of these contemporary LLMs have the capability to generate multiple tokenizations, this property remains underutilized. In this work, we propose a novel method to leverage the multiple tokenization capabilities of modern LLM tokenizers, aiming to enhance the self-consistency of LLMs in reasoning tasks. Our experiments indicate that when utilizing probabilistic tokenizations, LLMs generate logi"
+      ],
+      "page_id": "2407.03678v1",
+      "source": "arxiv"
+    }
+  ],
+  "search:some llms gpus tpus": [
+    {
+      "title": "Energy efficiency in Edge TPU vs. embedded GPU for computer-aided medical imaging segmentation and classification (arXiv, 2023)",
+      "url": "http://arxiv.org/abs/2311.12876v1",
+      "summary": "In this work, we evaluate the energy usage of fully embedded medical diagnosis aids based on both segmentation and classification of medical images implemented on Edge TPU and embedded GPU processors. We use glaucoma diagnosis based on color fundus images as an example to show the possibility of performing segmentation and classification in real time on embedded boards and to highlight the different energy requirements of the studied implementations. Several other works develop the use of segmen",
+      "paragraphs": [
+        "In this work, we evaluate the energy usage of fully embedded medical diagnosis aids based on both segmentation and classification of medical images implemented on Edge TPU and embedded GPU processors. We use glaucoma diagnosis based on color fundus images as an example to show the possibility of performing segmentation and classification in real time on embedded boards and to highlight the different energy requirements of the studied implementations. Several other works develop the use of segmentation and feature extraction techniques to detect glaucoma, among many other pathologies, with deep neural networks. Memory limitations and low processing capabilities of embedded accelerated systems (EAS) limit their use for deep network-based system training. However, including specific accelerat"
+      ],
+      "page_id": "2311.12876v1",
+      "source": "arxiv"
+    },
+    {
+      "title": "Are LLMs More Skeptical of Entertainment News? (arXiv, 2026)",
+      "url": "http://arxiv.org/abs/2605.01727v1",
+      "summary": "Large language models (LLMs) are increasingly used for automated news credibility assessment, yet it remains unclear whether they apply even-handed standards across journalistic genres. We examine whether zero-shot LLMs are more likely to misclassify legitimate entertainment news as fake than legitimate hard news, using a within-dataset design on GossipCop from FakeNewsNet. Across four frontier models, we find a clear but model-specific genre asymmetry: DeepSeek-V3.2 and GPT-5.2 show false-posit",
+      "paragraphs": [
+        "Large language models (LLMs) are increasingly used for automated news credibility assessment, yet it remains unclear whether they apply even-handed standards across journalistic genres. We examine whether zero-shot LLMs are more likely to misclassify legitimate entertainment news as fake than legitimate hard news, using a within-dataset design on GossipCop from FakeNewsNet. Across four frontier models, we find a clear but model-specific genre asymmetry: DeepSeek-V3.2 and GPT-5.2 show false-positive-rate gaps of 10.1 and 8.8 percentage points, respectively (both $p < .001$), whereas Claude Opus 4.6 and Gemini 3 Flash show no comparable difference. A style-swap experiment yields only limited and inconsistent changes, suggesting that the asymmetry is not reducible to stylistic register alone."
+      ],
+      "page_id": "2605.01727v1",
+      "source": "arxiv"
+    }
+  ],
+  "search:trillions parameters models": [
+    {
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models (arXiv, 2019)",
+      "url": "http://arxiv.org/abs/1910.02054v3",
+      "summary": "Large deep learning models offer significant accuracy gains, but training billions to trillions of parameters is challenging. Existing solutions such as data and model parallelisms exhibit fundamental limitations to fit these models into limited device memory, while obtaining computation, communication and development efficiency. We develop a novel solution, Zero Redundancy Optimizer (ZeRO), to optimize memory, vastly improving training speed while increasing the model size that can be efficient",
+      "paragraphs": [
+        "Large deep learning models offer significant accuracy gains, but training billions to trillions of parameters is challenging. Existing solutions such as data and model parallelisms exhibit fundamental limitations to fit these models into limited device memory, while obtaining computation, communication and development efficiency. We develop a novel solution, Zero Redundancy Optimizer (ZeRO), to optimize memory, vastly improving training speed while increasing the model size that can be efficiently trained. ZeRO eliminates memory redundancies in data- and model-parallel training while retaining low communication volume and high computational granularity, allowing us to scale the model size proportional to the number of devices with sustained high efficiency. Our analysis on memory requireme"
+      ],
+      "page_id": "1910.02054v3",
+      "source": "arxiv"
+    },
+    {
+      "title": "Support Recovery in Mixture Models with Sparse Parameters (arXiv, 2022)",
+      "url": "http://arxiv.org/abs/2202.11940v2",
+      "summary": "Mixture models are widely used to fit complex and multimodal datasets. In this paper we study mixtures with high dimensional sparse latent parameter vectors and consider the problem of support recovery of those vectors. While parameter learning in mixture models is well-studied, the sparsity constraint remains relatively unexplored. Sparsity of parameter vectors is a natural constraint in variety of settings, and support recovery is a major step towards parameter estimation. We provide efficient",
+      "paragraphs": [
+        "Mixture models are widely used to fit complex and multimodal datasets. In this paper we study mixtures with high dimensional sparse latent parameter vectors and consider the problem of support recovery of those vectors. While parameter learning in mixture models is well-studied, the sparsity constraint remains relatively unexplored. Sparsity of parameter vectors is a natural constraint in variety of settings, and support recovery is a major step towards parameter estimation. We provide efficient algorithms for support recovery that have a logarithmic sample complexity dependence on the dimensionality of the latent space. Our algorithms are quite general, namely they are applicable to 1) mixtures of many different canonical distributions including Uniform, Poisson, Laplace, Gaussians, etc. "
+      ],
+      "page_id": "2202.11940v2",
+      "source": "arxiv"
+    }
+  ],
+  "search:ethical ethical considerations surrounding": [
+    {
+      "title": "Ethically Collecting Multi-Modal Spontaneous Conversations with People that have Cognitive Impairments (arXiv, 2020)",
+      "url": "http://arxiv.org/abs/2009.14361v1",
+      "summary": "In order to make spoken dialogue systems (such as Amazon Alexa or Google Assistant) more accessible and naturally interactive for people with cognitive impairments, appropriate data must be obtainable. Recordings of multi-modal spontaneous conversations with vulnerable user groups are scarce however and this valuable data is challenging to collect. Researchers that call for this data are commonly inexperienced in ethical and legal issues around working with vulnerable participants. Additionally,",
+      "paragraphs": [
+        "In order to make spoken dialogue systems (such as Amazon Alexa or Google Assistant) more accessible and naturally interactive for people with cognitive impairments, appropriate data must be obtainable. Recordings of multi-modal spontaneous conversations with vulnerable user groups are scarce however and this valuable data is challenging to collect. Researchers that call for this data are commonly inexperienced in ethical and legal issues around working with vulnerable participants. Additionally, standard recording equipment is insecure and should not be used to capture sensitive data. We spent a year consulting experts on how to ethically capture and share recordings of multi-modal spontaneous conversations with vulnerable user groups. In this paper we provide guidance, collated from these"
+      ],
+      "page_id": "2009.14361v1",
+      "source": "arxiv"
+    },
+    {
+      "title": "Towards ethical multimodal systems (arXiv, 2023)",
+      "url": "http://arxiv.org/abs/2304.13765v3",
+      "summary": "Generative AI systems (ChatGPT, DALL-E, etc) are expanding into multiple areas of our lives, from art Rombach et al. [2021] to mental health Rob Morris and Kareem Kouddous [2022]; their rapidly growing societal impact opens new opportunities, but also raises ethical concerns. The emerging field of AI alignment aims to make AI systems reflect human values. This paper focuses on evaluating the ethics of multimodal AI systems involving both text and images - a relatively under-explored area, as mos",
+      "paragraphs": [
+        "Generative AI systems (ChatGPT, DALL-E, etc) are expanding into multiple areas of our lives, from art Rombach et al. [2021] to mental health Rob Morris and Kareem Kouddous [2022]; their rapidly growing societal impact opens new opportunities, but also raises ethical concerns. The emerging field of AI alignment aims to make AI systems reflect human values. This paper focuses on evaluating the ethics of multimodal AI systems involving both text and images - a relatively under-explored area, as most alignment work is currently focused on language models. We first create a multimodal ethical database from human feedback on ethicality. Then, using this database, we develop algorithms, including a RoBERTa-large classifier and a multilayer perceptron, to automatically assess the ethicality of sys"
+      ],
+      "page_id": "2304.13765v3",
+      "source": "arxiv"
+    }
+  ],
+  "search:vast amounts llms data": [
+    {
+      "title": "Data Encoding for Byzantine-Resilient Distributed Optimization (arXiv, 2019)",
+      "url": "http://arxiv.org/abs/1907.02664v2",
+      "summary": "We study distributed optimization in the presence of Byzantine adversaries, where both data and computation are distributed among $m$ worker machines, $t$ of which may be corrupt. The compromised nodes may collaboratively and arbitrarily deviate from their pre-specified programs, and a designated (master) node iteratively computes the model/parameter vector for generalized linear models. In this work, we primarily focus on two iterative algorithms: Proximal Gradient Descent (PGD) and Coordinate ",
+      "paragraphs": [
+        "We study distributed optimization in the presence of Byzantine adversaries, where both data and computation are distributed among $m$ worker machines, $t$ of which may be corrupt. The compromised nodes may collaboratively and arbitrarily deviate from their pre-specified programs, and a designated (master) node iteratively computes the model/parameter vector for generalized linear models. In this work, we primarily focus on two iterative algorithms: Proximal Gradient Descent (PGD) and Coordinate Descent (CD). Gradient descent (GD) is a special case of these algorithms. PGD is typically used in the data-parallel setting, where data is partitioned across different samples, whereas, CD is used in the model-parallelism setting, where data is partitioned across the parameter space. In this paper"
+      ],
+      "page_id": "1907.02664v2",
+      "source": "arxiv"
+    },
+    {
+      "title": "Byzantine-Resilient SGD in High Dimensions on Heterogeneous Data (arXiv, 2020)",
+      "url": "http://arxiv.org/abs/2005.07866v1",
+      "summary": "We study distributed stochastic gradient descent (SGD) in the master-worker architecture under Byzantine attacks. We consider the heterogeneous data model, where different workers may have different local datasets, and we do not make any probabilistic assumptions on data generation. At the core of our algorithm, we use the polynomial-time outlier-filtering procedure for robust mean estimation proposed by Steinhardt et al. (ITCS 2018) to filter-out corrupt gradients. In order to be able to apply ",
+      "paragraphs": [
+        "We study distributed stochastic gradient descent (SGD) in the master-worker architecture under Byzantine attacks. We consider the heterogeneous data model, where different workers may have different local datasets, and we do not make any probabilistic assumptions on data generation. At the core of our algorithm, we use the polynomial-time outlier-filtering procedure for robust mean estimation proposed by Steinhardt et al. (ITCS 2018) to filter-out corrupt gradients. In order to be able to apply their filtering procedure in our {\\em heterogeneous} data setting where workers compute {\\em stochastic} gradients, we derive a new matrix concentration result, which may be of independent interest. We provide convergence analyses for smooth strongly-convex and non-convex objectives. We derive our r"
+      ],
+      "page_id": "2005.07866v1",
+      "source": "arxiv"
+    }
+  ]
+}

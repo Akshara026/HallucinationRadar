@@ -157,7 +157,8 @@ def generate_report(
     if answer and claims:
         lines.append("┌──────────────────────────────────────────────────────────────┐")
         lines.append("│  ANNOTATED ANSWER                                            │")
-        lines.append("│  ✅ = Supported  ❌ = Contradicted  ⚠️ = Mixed  ❓ = Unverified│")
+        lines.append("│  ✅ = Supported  ❌ = Contradicted  ⚠️ = Insufficient Evidence │")
+        lines.append("│  ❓ = Unverified / no matching claim                          │")
         lines.append("└──────────────────────────────────────────────────────────────┘")
         lines.append("")
 

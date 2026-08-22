@@ -111,14 +111,23 @@ def verify_claim(claim: str, evidence_list: List[Dict[str, Any]]) -> Dict[str, A
             "discrepancies": [],
         }
 
-    real_evidence = [e for e in evidence_list if e.get("relevance", 0) > 0]
+    # arXiv abstracts are dense and technical — they can superficially keyword-match
+    # without being topically relevant, more so than Wikipedia intro text. Require a
+    # higher bar for arXiv evidence to be considered "real" evidence at all.
+    real_evidence = []
+    for e in evidence_list:
+        relevance = e.get("relevance", 0)
+        source = e.get("source", "wikipedia")
+        min_bar = 0.55 if source == "arxiv" else 0.0
+        if relevance > min_bar:
+            real_evidence.append(e)
 
     if not real_evidence:
         return {
             "claim": claim,
             "verdict": "UNVERIFIABLE",
             "confidence": 0.0,
-            "reasoning": "No relevant Wikipedia evidence found.",
+            "reasoning": "No relevant evidence found.",
             "evidence_used": [],
             "key_facts_matched": [],
             "discrepancies": [],
@@ -133,7 +142,7 @@ def verify_claim(claim: str, evidence_list: List[Dict[str, Any]]) -> Dict[str, A
             "verdict": "UNVERIFIABLE",
             "confidence": 0.0,
             "reasoning": f"Evidence relevance too low ({max_relevance:.1%}). "
-            f"Retrieved articles do not specifically address this claim.",
+            f"Retrieved sources do not specifically address this claim.",
             "evidence_used": [e["title"] for e in real_evidence[:2]],
             "key_facts_matched": [],
             "discrepancies": [],
@@ -223,10 +232,21 @@ NAME CHECKING:
 - If claim does NOT mention a creator, do NOT invent a name mismatch
 
 VERDICT DEFINITIONS:
-- SUPPORTED: ALL specific facts stated in the claim match evidence
+- SUPPORTED: Evidence EXPLICITLY confirms the specific facts stated in the claim.
+  Being about the same general topic is NOT enough — the evidence must actually
+  state the specific detail the claim makes.
 - CONTRADICTED: At least ONE specific fact in claim DIRECTLY conflicts with evidence
-- INSUFFICIENT_EVIDENCE: Evidence is relevant but does not contain the specific facts needed to confirm/deny
+- INSUFFICIENT_EVIDENCE: Evidence is relevant/related but does NOT explicitly confirm
+  or deny the specific facts in the claim. This is the DEFAULT when evidence is
+  merely topically related without confirming the actual detail.
 - IRRELEVANT: Evidence is about a different topic entirely
+
+SELF-CHECK BEFORE RETURNING SUPPORTED:
+- Does the evidence EXPLICITLY state the specific fact(s) the claim makes, not just
+  discuss the same general topic?
+- If your own reasoning includes phrases like "does not directly address", "does not
+  explicitly state", or "does not mention" — that is INSUFFICIENT_EVIDENCE, not SUPPORTED.
+- When in doubt between SUPPORTED and INSUFFICIENT_EVIDENCE, choose INSUFFICIENT_EVIDENCE.
 
 SELF-CHECK BEFORE RETURNING CONTRADICTED:
 - Does the claim make a specific factual assertion that evidence EXPLICITLY disagrees with?
@@ -274,6 +294,25 @@ Return ONLY the JSON object, no other text."""
             elif verdict == "CONTRADICTED" and not discrepancies:
                 verdict = "INSUFFICIENT_EVIDENCE"
                 reasoning = f"Marked CONTRADICTED without a stated discrepancy (auto-corrected to INSUFFICIENT_EVIDENCE). {reasoning}"
+
+            # Case 3: SUPPORTED but the model's own reasoning admits evidence doesn't
+            # actually confirm the detail (hedging language) -> downgrade to INSUFFICIENT_EVIDENCE.
+            # This is a code-level backstop in case the LLM ignores its self-check instruction.
+            hedge_patterns = [
+                r"does not (directly )?(explicitly )?(address|mention|state|provide|confirm|specify)",
+                r"none of the (provided )?(evidence|sources?) (directly |explicitly )?(mention|address|state|confirm|discuss)",
+                r"no (specific |direct |explicit )?(evidence|mention|indication) (that|of|explicitly)",
+                r"not (explicitly |directly )?(stated|mentioned|specified|confirmed|addressed)",
+                r"(evidence|source)s? (do|does) not (directly |explicitly )?(mention|address|state|confirm)",
+                r"no (provided )?(evidence|source) (directly |explicitly )?(mentions?|addresses?|states?|confirms?)",
+                r"without (explicitly |directly )?(mentioning|stating|confirming)",
+            ]
+            reasoning_lower = reasoning.lower()
+            hedged = any(re.search(p, reasoning_lower) for p in hedge_patterns)
+
+            if verdict == "SUPPORTED" and hedged:
+                verdict = "INSUFFICIENT_EVIDENCE"
+                reasoning = f"Auto-corrected: marked SUPPORTED but reasoning admits evidence doesn't confirm the specific detail. {reasoning}"
 
             return {
                 "verdict": verdict,

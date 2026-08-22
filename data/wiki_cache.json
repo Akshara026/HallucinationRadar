@@ -1158,5 +1158,263 @@
       "A world model in artificial intelligence is a machine learning system that builds an internal representation of an environment. Often this is via understanding objects within video, which predictive LLMs cannot. The model predicts how that environment changes over time in response to actions. Researchers design world models to help agents plan, reason, and act without constant real-world trial and"
     ],
     "page_id": 82783584
+  },
+  "search:contextual understanding llms": [
+    "Gemini (language model)",
+    "AI trust paradox"
+  ],
+  "search:history literature llms": [
+    "Large language model",
+    "AI-assisted software development"
+  ],
+  "search:search engine applications llms": [
+    "Search engine results page",
+    "Large language model"
+  ],
+  "search:gpt-4 architecture layers": [
+    "Large language model",
+    "GPT-1"
+  ],
+  "search:gpt-3 training datasets": [
+    "Generative pre-trained transformer",
+    "GPT-1"
+  ],
+  "search:enhance chatbots multilingual": [
+    "Gemma (language model)",
+    "Competition in artificial intelligence"
+  ],
+  "search:vast datasets gpt-3": [
+    "Large language model",
+    "List of large language models"
+  ],
+  "search:summarize extensive training": [
+    "Large language model",
+    "Decision tree learning"
+  ],
+  "search:generate answers science": [
+    "ChatGPT",
+    "Generative AI"
+  ],
+  "search:computational power models": [
+    "Model of computation",
+    "Computational geophysics"
+  ],
+  "search:architectural gpt-4": [
+    "GPT-4",
+    "Generative pre-trained transformer"
+  ],
+  "search:llms text data": [
+    "Large language model",
+    "Retrieval-augmented generation"
+  ],
+  "search:condense lengthy texts": [
+    "Condensed milk",
+    "Medovik"
+  ],
+  "search:diverse linguistic materials": [
+    "Linguistic purism in English",
+    "Linguistic prescription"
+  ],
+  "search:improve virtual assistants": [
+    "Virtual assistant",
+    "Virtual assistant (occupation)"
+  ],
+  "search:performance computational power": [
+    "Model of computation",
+    "Computer performance"
+  ],
+  "search:vast amounts llms": [
+    "Large language model",
+    "List of large language models"
+  ],
+  "search:pre trained datasets llms": [
+    "Large language model",
+    "Generative pre-trained transformer"
+  ],
+  "search:chatbot applications llms": [
+    "Chatbot",
+    "Large language model"
+  ],
+  "search:boost search engines precision": [
+    "MatrixNet",
+    "List of arbitrary-precision arithmetic software"
+  ],
+  "Search engine results page": null,
+  "Virtual assistant": null,
+  "Medovik": null,
+  "List of arbitrary-precision arithmetic software": null,
+  "Virtual assistant (occupation)": null,
+  "Condensed milk": null,
+  "Decision tree learning": null,
+  "Competition in artificial intelligence": null,
+  "Computational geophysics": null,
+  "AI-assisted software development": null,
+  "Computer performance": null,
+  "AI trust paradox": null,
+  "Linguistic purism in English": null,
+  "Linguistic prescription": null,
+  "Model of computation": null,
+  "MatrixNet": null,
+  "search:llms extensive training translation": [
+    "Large language model",
+    "DeepSeek"
+  ],
+  "search:pre trained text data llms": [
+    "Generative pre-trained transformer",
+    "Large language model"
+  ],
+  "search:some llms implementations necessitate": [
+    "Language model benchmark",
+    "Cognitive load"
+  ],
+  "search:training training requires significant": [
+    "Training",
+    "Training camp"
+  ],
+  "search:llm natural language processing": [
+    "Large language model",
+    "LLM-as-a-Judge"
+  ],
+  "search:gpt-4 175 approximately billion": [
+    "Generative pre-trained transformer",
+    "GPT-2"
+  ],
+  "Cognitive load": {
+    "title": "Cognitive load",
+    "url": "https://en.wikipedia.org/wiki/Cognitive_load",
+    "summary": "In cognitive psychology, cognitive load is the effort being used in the working memory. According to work conducted in the field of instructional design and pedagogy, broadly, there are three types of cognitive load:\n\nIntrinsic cognitive load is the effort associated with a specific topic.\nGermane cognitive load refers to the work put into creating a permanent store of knowledge (a schema).\nExtraneous cognitive load refers to the way information or tasks are presented to a learner.\nHowever, over",
+    "paragraphs": [
+      "In cognitive psychology, cognitive load is the effort being used in the working memory. According to work conducted in the field of instructional design and pedagogy, broadly, there are three types of cognitive load:",
+      "Intrinsic cognitive load is the effort associated with a specific topic.\nGermane cognitive load refers to the work put into creating a permanent store of knowledge (a schema).\nExtraneous cognitive load refers to the way information or tasks are presented to a learner.\nHowever, over the years, the additivity of these types of cognitive load has been investigated and questioned. Now it is believed t"
+    ],
+    "page_id": 1532957
+  },
+  "LLM-as-a-Judge": {
+    "title": "LLM-as-a-Judge",
+    "url": "https://en.wikipedia.org/wiki/LLM-as-a-Judge",
+    "summary": "LLM-as-a-Judge (also LLM-based evaluation or language model-based evaluation) is a technique in natural language processing in which a large language model (LLM) is used to assess the quality, relevance, or correctness of a text output, typically one generated by another model, against predefined criteria. It is used as a scalable, lower-cost alternative to human annotation and to reference-based metrics such as BLEU and ROUGE, which measure word overlap rather than meaning.",
+    "paragraphs": [
+      "LLM-as-a-Judge (also LLM-based evaluation or language model-based evaluation) is a technique in natural language processing in which a large language model (LLM) is used to assess the quality, relevance, or correctness of a text output, typically one generated by another model, against predefined criteria. It is used as a scalable, lower-cost alternative to human annotation and to reference-based "
+    ],
+    "page_id": 79975879
+  },
+  "Language model benchmark": {
+    "title": "Language model benchmark",
+    "url": "https://en.wikipedia.org/wiki/Language_model_benchmark",
+    "summary": "A language model benchmark is a standardized test designed to evaluate the performance of language models on various natural language processing tasks. These tests are intended for comparing different models' capabilities in areas such as language understanding, generation, and reasoning.\nBenchmarks generally consist of a dataset and corresponding evaluation metrics. The dataset provides text samples and annotations, while the metrics measure a model's performance on tasks like answering questio",
+    "paragraphs": [
+      "A language model benchmark is a standardized test designed to evaluate the performance of language models on various natural language processing tasks. These tests are intended for comparing different models' capabilities in areas such as language understanding, generation, and reasoning.\nBenchmarks generally consist of a dataset and corresponding evaluation metrics. The dataset provides text samp"
+    ],
+    "page_id": 79100184
+  },
+  "Training": {
+    "title": "Training",
+    "url": "https://en.wikipedia.org/wiki/Training",
+    "summary": "Training is teaching, or developing in oneself or others, any skills and knowledge  or fitness that relate to specific useful competencies. Training has specific goals of improving one's capability, capacity, productivity and performance. It forms the core of apprenticeships and provides the backbone of content at institutes of technology (also known as technical colleges or polytechnics). In addition to the basic training required for a trade, occupation or profession, training may continue bey",
+    "paragraphs": [
+      "Training is teaching, or developing in oneself or others, any skills and knowledge  or fitness that relate to specific useful competencies. Training has specific goals of improving one's capability, capacity, productivity and performance. It forms the core of apprenticeships and provides the backbone of content at institutes of technology (also known as technical colleges or polytechnics). In addi"
+    ],
+    "page_id": 156423
+  },
+  "Training camp": {
+    "title": "Training camp",
+    "url": "https://en.wikipedia.org/wiki/Training_camp",
+    "summary": "A training camp is an organized period in which military personnel or athletes participate in a rigorous and focused schedule of training in order to learn or improve skills. Athletes typically utilise training camps to prepare for upcoming events, and in competitive sports, to focus on developing skills and strategies to defeat their opponents. A military training camp generally refers to the period of boot camp, or further or refresher training.",
+    "paragraphs": [
+      "A training camp is an organized period in which military personnel or athletes participate in a rigorous and focused schedule of training in order to learn or improve skills. Athletes typically utilise training camps to prepare for upcoming events, and in competitive sports, to focus on developing skills and strategies to defeat their opponents. A military training camp generally refers to the per"
+    ],
+    "page_id": 14432162
+  },
+  "search:parameters llms size": [
+    "Large language model",
+    "List of large language models"
+  ],
+  "search:llms primarily natural language": [
+    "Large language model",
+    "Prompt engineering"
+  ],
+  "search:llms trained text data": [
+    "Large language model",
+    "Generative pre-trained transformer"
+  ],
+  "search:llms apis accessible through": [
+    "Large language model",
+    "Ollama"
+  ],
+  "search:some llms gpus tpus": [
+    "Gemma (language model)",
+    "Lists of open-source artificial intelligence software"
+  ],
+  "search:trillions parameters models": [
+    "Small language model",
+    "Qwen"
+  ],
+  "search:ethical ethical considerations surrounding": [
+    "Ethical consumerism",
+    "Ethics of technology"
+  ],
+  "search:vast amounts llms data": [
+    "Large language model",
+    "List of large language models"
+  ],
+  "Ethical consumerism": {
+    "title": "Ethical consumerism",
+    "url": "https://en.wikipedia.org/wiki/Ethical_consumerism",
+    "summary": "Ethical consumerism, also known as ethical consumption, ethical purchasing, moral purchasing, ethical sourcing, or ethical shopping, and is also associated with sustainable and green consumerism. It is a type of consumer activism based on the concept of dollar voting. People engage in ethical consumerism by purchasing ethically made products that support small-scale manufacturers or local artisans and protect animals and the environment. Conversely, they boycott products that exploit children as",
+    "paragraphs": [
+      "Ethical consumerism, also known as ethical consumption, ethical purchasing, moral purchasing, ethical sourcing, or ethical shopping, and is also associated with sustainable and green consumerism. It is a type of consumer activism based on the concept of dollar voting. People engage in ethical consumerism by purchasing ethically made products that support small-scale manufacturers or local artisans"
+    ],
+    "page_id": 441852,
+    "source": "wikipedia"
+  },
+  "Ethics of technology": {
+    "title": "Ethics of technology",
+    "url": "https://en.wikipedia.org/wiki/Ethics_of_technology",
+    "summary": "The ethics of technology is a sub-field of ethics addressing ethical questions specific to the technology age, the transitional shift in society wherein personal computers and subsequent devices provide for the quick and easy transfer of information. Technology ethics is the application of ethical thinking to growing concerns as new technologies continue to rise in prominence.\nThe topic has evolved as technologies have developed. Technology poses an ethical dilemma on producers and consumers ali",
+    "paragraphs": [
+      "The ethics of technology is a sub-field of ethics addressing ethical questions specific to the technology age, the transitional shift in society wherein personal computers and subsequent devices provide for the quick and easy transfer of information. Technology ethics is the application of ethical thinking to growing concerns as new technologies continue to rise in prominence.\nThe topic has evolve"
+    ],
+    "page_id": 699052,
+    "source": "wikipedia"
+  },
+  "Lists of open-source artificial intelligence software": {
+    "title": "Lists of open-source artificial intelligence software",
+    "url": "https://en.wikipedia.org/wiki/Lists_of_open-source_artificial_intelligence_software",
+    "summary": "These lists include projects which release their software under open-source licenses and are related to artificial intelligence projects. These include software libraries, frameworks, platforms, and tools used for machine learning, deep learning, natural language processing, computer vision, reinforcement learning, artificial general intelligence, and more.",
+    "paragraphs": [
+      "These lists include projects which release their software under open-source licenses and are related to artificial intelligence projects. These include software libraries, frameworks, platforms, and tools used for machine learning, deep learning, natural language processing, computer vision, reinforcement learning, artificial general intelligence, and more."
+    ],
+    "page_id": 80481906,
+    "source": "wikipedia"
+  },
+  "Ollama": {
+    "title": "Ollama",
+    "url": "https://en.wikipedia.org/wiki/Ollama",
+    "summary": "Ollama is an open-source software platform developed by Jeffrey Morgan and Michael Chiang in 2023 for running and managing large language models on local computers and through hosted cloud models. It provides a command-line interface, a native GUI, a local REST API, model-management tools, and integrations for using open-weight models with coding assistants and other applications.\n\n",
+    "paragraphs": [
+      "Ollama is an open-source software platform developed by Jeffrey Morgan and Michael Chiang in 2023 for running and managing large language models on local computers and through hosted cloud models. It provides a command-line interface, a native GUI, a local REST API, model-management tools, and integrations for using open-weight models with coding assistants and other applications."
+    ],
+    "page_id": 83067225,
+    "source": "wikipedia"
+  },
+  "Qwen": {
+    "title": "Qwen",
+    "url": "https://en.wikipedia.org/wiki/Qwen",
+    "summary": "Qwen (also known as Tongyi Qianwen, Chinese: \u901a\u4e49\u5343\u95ee; pinyin: T\u014dngy\u00ec Qi\u0101nw\u00e8n) is a family of large language models developed by Alibaba Cloud.",
+    "paragraphs": [
+      "Qwen (also known as Tongyi Qianwen, Chinese: \u901a\u4e49\u5343\u95ee; pinyin: T\u014dngy\u00ec Qi\u0101nw\u00e8n) is a family of large language models developed by Alibaba Cloud."
+    ],
+    "page_id": 78475283,
+    "source": "wikipedia"
+  },
+  "Small language model": {
+    "title": "Small language model",
+    "url": "https://en.wikipedia.org/wiki/Small_language_model",
+    "summary": "Small language models (SLM) or compact language models are artificial intelligence language models designed for human natural language processing including language and text generation. Small language models typically range have less than forty billion parameters. This make them feasible to train or host entirely on consumer electronics such as personal computers, laptops, or smart devices.\nA large language model typically contains hundreds of billions of training parameters, with some models ex",
+    "paragraphs": [
+      "Small language models (SLM) or compact language models are artificial intelligence language models designed for human natural language processing including language and text generation. Small language models typically range have less than forty billion parameters. This make them feasible to train or host entirely on consumer electronics such as personal computers, laptops, or smart devices.\nA larg"
+    ],
+    "page_id": 77621280,
+    "source": "wikipedia"
   }
 }
