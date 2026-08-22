@@ -148,6 +148,8 @@ def extract_claims_from_response(text: str) -> List[str]:
 
         line = re.sub(r"^[\d]+[\.\)]\s*", "", line)  # Remove numbering
         line = re.sub(r"^[•\-\*\✓\✅\❌\⭐\►]\s*", "", line)  # Remove bullet points
+        line = re.sub(r"^[Ff]act:\s*", "", line)  # Remove "Fact:" prefix
+        line = re.sub(r"^[Cc]laim:\s*", "", line)  # Remove "Claim:" prefix
         line = line.strip('"\'""')  # Remove quotes
 
         if line and len(line.split()) >= 3:  # Minimum 3 words for a valid claim

@@ -5,6 +5,7 @@ Verifies each claim against retrieved Wikipedia evidence.
 Single LLM call per claim (combines relevance check + verification).
 Handles evidence quality with confidence capping.
 Strict date/number matching to prevent false SUPPORTED verdicts.
+Enforces symmetric consistency between verdict and discrepancies.
 """
 
 import json
@@ -26,7 +27,6 @@ def normalize_verdict(verdict: str) -> str:
     """Fix common misspellings and invalid verdicts."""
     verdict = verdict.upper().strip()
 
-    # Fix common misspellings
     if "CONTRADICT" in verdict or "CONTRADADICT" in verdict:
         return "CONTRADICTED"
     if "SUPPORT" in verdict:
@@ -36,12 +36,21 @@ def normalize_verdict(verdict: str) -> str:
     if "INSUFFICIENT" in verdict or "INSUFFICENT" in verdict:
         return "INSUFFICIENT_EVIDENCE"
     if "IRRELEVANT" in verdict:
-        return "UNVERIFIABLE"  # Map IRRELEVANT to UNVERIFIABLE
+        return "UNVERIFIABLE"
 
     if verdict not in VALID_VERDICTS:
-        return "INSUFFICIENT_EVIDENCE"  # Safe default
+        return "INSUFFICIENT_EVIDENCE"
 
     return verdict
+
+
+def clamp_confidence(value: Any) -> float:
+    """Ensure confidence is always a valid float between 0.0 and 1.0."""
+    try:
+        v = float(value)
+    except (TypeError, ValueError):
+        return 0.5
+    return max(0.0, min(1.0, v))
 
 
 def verify_node(state: Dict[str, Any]) -> Dict[str, Any]:
@@ -49,9 +58,9 @@ def verify_node(state: Dict[str, Any]) -> Dict[str, Any]:
     Verify all claims against their retrieved evidence.
 
     Input:  state["claims"] - list of claims
-            state["evidence"] - dict mapping claim → list of evidence dicts
+            state["evidence"] - dict mapping claim -> list of evidence dicts
 
-    Output: state["verdicts"] - dict mapping claim → verification result
+    Output: state["verdicts"] - dict mapping claim -> verification result
     """
     claims = state.get("claims", [])
     evidence = state.get("evidence", {})
@@ -72,7 +81,6 @@ def verify_node(state: Dict[str, Any]) -> Dict[str, Any]:
 
     elapsed = time.time() - start_time
 
-    # Print summary
     counts = Counter(v["verdict"] for v in verdicts.values())
 
     print(f"✅ Verification complete in {elapsed:.1f}s")
@@ -92,7 +100,6 @@ def verify_claim(claim: str, evidence_list: List[Dict[str, Any]]) -> Dict[str, A
     Single LLM call per claim.
     """
 
-    # No evidence at all
     if not evidence_list:
         return {
             "claim": claim,
@@ -100,9 +107,10 @@ def verify_claim(claim: str, evidence_list: List[Dict[str, Any]]) -> Dict[str, A
             "confidence": 0.0,
             "reasoning": "No Wikipedia evidence found for this claim.",
             "evidence_used": [],
+            "key_facts_matched": [],
+            "discrepancies": [],
         }
 
-    # Filter out the "No evidence found" fallback
     real_evidence = [e for e in evidence_list if e.get("relevance", 0) > 0]
 
     if not real_evidence:
@@ -112,12 +120,13 @@ def verify_claim(claim: str, evidence_list: List[Dict[str, Any]]) -> Dict[str, A
             "confidence": 0.0,
             "reasoning": "No relevant Wikipedia evidence found.",
             "evidence_used": [],
+            "key_facts_matched": [],
+            "discrepancies": [],
         }
 
-    # Get evidence quality stats
     max_relevance = max(e.get("relevance", 0) for e in real_evidence)
 
-    # All evidence below 40% → skip LLM call, mark unverifiable
+    # All evidence below 40% -> skip LLM call entirely
     if max_relevance < 0.40:
         return {
             "claim": claim,
@@ -126,17 +135,16 @@ def verify_claim(claim: str, evidence_list: List[Dict[str, Any]]) -> Dict[str, A
             "reasoning": f"Evidence relevance too low ({max_relevance:.1%}). "
             f"Retrieved articles do not specifically address this claim.",
             "evidence_used": [e["title"] for e in real_evidence[:2]],
+            "key_facts_matched": [],
+            "discrepancies": [],
         }
 
-    # One LLM call that handles both relevance check AND verification
     result = verify_with_evidence_combined(claim, real_evidence[:3])
 
-    # Normalize verdict to handle typos (CONTRADADICTED → CONTRADICTED)
     result["verdict"] = normalize_verdict(
         result.get("verdict", "INSUFFICIENT_EVIDENCE")
     )
 
-    # Map IRRELEVANT to UNVERIFIABLE (consistent verdict types)
     if result.get("verdict") == "IRRELEVANT":
         result["verdict"] = "UNVERIFIABLE"
         result["reasoning"] = (
@@ -151,6 +159,7 @@ def verify_claim(claim: str, evidence_list: List[Dict[str, Any]]) -> Dict[str, A
             f" (Evidence relevance: {max_relevance:.1%}, confidence capped)"
         )
 
+    result["confidence"] = clamp_confidence(result.get("confidence"))
     result["claim"] = claim
     result["evidence_used"] = [e["title"] for e in real_evidence[:3]]
 
@@ -165,9 +174,12 @@ def verify_with_evidence_combined(
     1. Checks if evidence is relevant to the claim
     2. If relevant, verifies support/contradiction with STRICT rules
     3. If not relevant, returns IRRELEVANT
+
+    Enforces symmetric consistency:
+    - SUPPORTED + real discrepancies -> forced to CONTRADICTED
+    - CONTRADICTED + no discrepancies -> forced to INSUFFICIENT_EVIDENCE
     """
 
-    # Prepare evidence
     evidence_text = ""
     for i, ev in enumerate(evidence_list[:3], 1):
         evidence_text += f"\n--- Source {i}: {ev['title']} (relevance: {ev.get('relevance', 0):.1%}) ---\n"
@@ -178,35 +190,48 @@ def verify_with_evidence_combined(
 CRITICAL RULES - FOLLOW EXACTLY:
 
 1. FIRST: Check if evidence is about the same topic as the claim.
-   - If completely different topic → verdict: "IRRELEVANT"
+   - If completely different topic -> verdict: "IRRELEVANT"
 
-2. SECOND: If evidence is relevant, compare EVERY fact in the claim:
+2. SECOND: If evidence is relevant, verify ONLY the specific facts stated in the claim.
 
-   DATE CHECKING (STRICTEST):
-   - Extract ALL years/dates from claim
-   - Extract ALL years/dates from evidence
-   - ANY year mismatch → verdict: "CONTRADICTED"
-   - Example: Claim says "2019", evidence says "2020" → CONTRADICTED
-   - Example: Claim says "developed in 2019", evidence says "released in 2020" → CONTRADICTED
-   - No exceptions for off-by-one-year
+CONTRADICTION RULES (STRICT):
+- ONLY mark CONTRADICTED if the claim states a SPECIFIC fact (date, number, name)
+  that DIRECTLY conflicts with a SPECIFIC fact in evidence
+- Do NOT mark CONTRADICTED just because evidence mentions additional details not in the claim
+- If evidence is SILENT on something the claim states -> INSUFFICIENT_EVIDENCE
+- If evidence mentions EXTRA facts not in the claim -> do NOT mark CONTRADICTED
+- Before marking CONTRADICTED, you MUST state exactly which specific fact conflicts
+  in the "discrepancies" field
+- If you cannot state a specific conflicting fact -> use INSUFFICIENT_EVIDENCE instead
 
-   NUMBER CHECKING:
-   - Extract ALL numbers from claim (parameters, layers, percentages, etc.)
-   - Extract ALL numbers from evidence
-   - Any number mismatch > 5% → verdict: "CONTRADICTED"
-   - Claim says "175 billion" but evidence says "175 million" → CONTRADICTED
-   - Claim says "12 layers" but evidence says "96 layers" → CONTRADICTED
+DATE CHECKING:
+- Extract years/dates FROM THE CLAIM
+- Only check dates THAT THE CLAIM EXPLICITLY STATES
+- If claim says "2019" and evidence says "2020" -> CONTRADICTED
+- If claim does NOT mention a date, do NOT invent a date mismatch
 
-   NAME CHECKING:
-   - Extract ALL named entities (people, companies, products)
-   - Claim says "developed by OpenAI", evidence says "developed by Google" → CONTRADICTED
-   - Any creator/originator mismatch → CONTRADICTED
+NUMBER CHECKING:
+- Extract numbers FROM THE CLAIM
+- Only check numbers THAT THE CLAIM EXPLICITLY STATES
+- If claim says "17 billion" and evidence says "175 billion" -> CONTRADICTED
+- If claim does NOT mention a number, do NOT invent a number mismatch
 
-   VERDICT DEFINITIONS:
-   - SUPPORTED: ALL facts in claim match evidence (dates, numbers, names)
-   - CONTRADICTED: ANY fact in claim contradicts evidence
-   - INSUFFICIENT_EVIDENCE: Evidence is relevant but missing specific details to confirm/deny
-   - IRRELEVANT: Evidence is about a different topic
+NAME CHECKING:
+- Extract named entities FROM THE CLAIM
+- Only check names THAT THE CLAIM EXPLICITLY STATES
+- If claim says "OpenAI" and evidence says "Google" -> CONTRADICTED
+- If claim does NOT mention a creator, do NOT invent a name mismatch
+
+VERDICT DEFINITIONS:
+- SUPPORTED: ALL specific facts stated in the claim match evidence
+- CONTRADICTED: At least ONE specific fact in claim DIRECTLY conflicts with evidence
+- INSUFFICIENT_EVIDENCE: Evidence is relevant but does not contain the specific facts needed to confirm/deny
+- IRRELEVANT: Evidence is about a different topic entirely
+
+SELF-CHECK BEFORE RETURNING CONTRADICTED:
+- Does the claim make a specific factual assertion that evidence EXPLICITLY disagrees with?
+- Can I state the exact contradiction in the "discrepancies" field?
+- If NO to either question -> do NOT use CONTRADICTED, use INSUFFICIENT_EVIDENCE instead
 
 CLAIM TO VERIFY:
 "{claim}"
@@ -218,16 +243,10 @@ Return JSON only:
 {{
     "verdict": "SUPPORTED" or "CONTRADICTED" or "INSUFFICIENT_EVIDENCE" or "IRRELEVANT",
     "confidence": 0.0 to 1.0,
-    "reasoning": "List EVERY date, number, and name in the claim. Then list what the evidence says for each. Point out any mismatches explicitly.",
-    "key_facts_matched": ["specific facts from evidence that match claim"],
-    "discrepancies": ["specific contradictions - include the claim value and evidence value"]
+    "reasoning": "State what the claim says. Then state what the evidence says. Only point out mismatches for facts the claim EXPLICITLY states.",
+    "key_facts_matched": ["specific facts from evidence that match the claim"],
+    "discrepancies": ["ONLY list contradictions where the claim states a specific fact and evidence DIRECTLY disagrees"]
 }}
-
-Example reasoning for CONTRADICTED:
-"Claim states GPT-3 was developed in 2019. Evidence states GPT-3 was released in 2020. Year mismatch: 2019 ≠ 2020."
-
-Example reasoning for SUPPORTED:
-"Claim states GPT-3 has 175 billion parameters. Evidence confirms 175 billion parameters. No date mismatch found. No name mismatch found."
 
 Return ONLY the JSON object, no other text."""
 
@@ -235,24 +254,31 @@ Return ONLY the JSON object, no other text."""
         response = llm.invoke(prompt)
         content = clean_response(response.content)
 
-        # Extract JSON
         json_match = re.search(r"\{.*\}", content, re.DOTALL)
         if json_match:
             result = json.loads(json_match.group(0))
 
-            # Apply normalization immediately
             verdict = normalize_verdict(result.get("verdict", "INSUFFICIENT_EVIDENCE"))
+            discrepancies = result.get("discrepancies", []) or []
+            reasoning = result.get("reasoning", "No reasoning provided.")
 
-            # Additional check: if LLM says SUPPORTED but has discrepancies, force CONTRADICTED
-            discrepancies = result.get("discrepancies", [])
+            # Symmetric enforcement between verdict and discrepancies:
+
+            # Case 1: SUPPORTED but real discrepancies exist -> should be CONTRADICTED
             if verdict == "SUPPORTED" and discrepancies:
                 verdict = "CONTRADICTED"
-                result["reasoning"] = f"Contradictions found but marked SUPPORTED. {result.get('reasoning', '')}"
+                reasoning = f"Contradictions found but model marked SUPPORTED (auto-corrected). {reasoning}"
+
+            # Case 2: CONTRADICTED but no discrepancies stated -> model broke its own rule,
+            # downgrade to INSUFFICIENT_EVIDENCE per the self-check instruction
+            elif verdict == "CONTRADICTED" and not discrepancies:
+                verdict = "INSUFFICIENT_EVIDENCE"
+                reasoning = f"Marked CONTRADICTED without a stated discrepancy (auto-corrected to INSUFFICIENT_EVIDENCE). {reasoning}"
 
             return {
                 "verdict": verdict,
-                "confidence": result.get("confidence", 0.5),
-                "reasoning": result.get("reasoning", "No reasoning provided."),
+                "confidence": clamp_confidence(result.get("confidence", 0.5)),
+                "reasoning": reasoning,
                 "key_facts_matched": result.get("key_facts_matched", []),
                 "discrepancies": discrepancies,
             }

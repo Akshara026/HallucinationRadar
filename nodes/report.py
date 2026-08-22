@@ -153,7 +153,7 @@ def generate_report(
         lines.append("  ⚠️  No claims could be verified with high confidence.")
         lines.append("")
 
-    # ANNOTATED ANSWER - IMPROVED WITH CONTRADICTION DETECTION
+    # ANNOTATED ANSWER
     if answer and claims:
         lines.append("┌──────────────────────────────────────────────────────────────┐")
         lines.append("│  ANNOTATED ANSWER                                            │")
@@ -161,7 +161,7 @@ def generate_report(
         lines.append("└──────────────────────────────────────────────────────────────┘")
         lines.append("")
 
-        annotated = annotate_answer_with_mixed_detection(answer, claims, verdicts)
+        annotated = annotate_answer_with_worst_verdict(answer, claims, verdicts)
         lines.append(annotated)
         lines.append("")
 
@@ -187,15 +187,33 @@ def generate_report(
     return "\n".join(lines)
 
 
-def annotate_answer_with_mixed_detection(
+def get_sentence_verdict(matched_claims: List[Dict[str, Any]]) -> str:
+    """
+    Determine the verdict indicator for a sentence based on all matching claims.
+    Uses the WORST verdict (CONTRADICTED beats SUPPORTED).
+    """
+    verdicts = [c.get("verdict", "UNVERIFIABLE") for c in matched_claims]
+
+    if "CONTRADICTED" in verdicts:
+        return "❌"
+    if "INSUFFICIENT_EVIDENCE" in verdicts:
+        return "⚠️"
+    if "SUPPORTED" in verdicts:
+        # Check confidence of supported claims
+        supported = [c for c in matched_claims if c.get("verdict") == "SUPPORTED"]
+        max_conf = max((c.get("confidence", 0) for c in supported), default=0)
+        return "✅" if max_conf >= 0.7 else "🟢"
+    return "❓"
+
+
+def annotate_answer_with_worst_verdict(
     answer: str,
     claims: List[str],
     verdicts: Dict[str, Any]
 ) -> str:
     """
     Annotate each sentence with its verification status.
-    Detects sentences that contain MULTIPLE claims with different verdicts.
-    Marks as ⚠️ MIXED if sentence has both supported and contradicted claims.
+    Uses WORST verdict when multiple claims match (CONTRADICTED wins).
     """
     sentences = re.split(r'(?<=[.!?])\s+', answer)
     sentences = [s.strip() for s in sentences if s.strip()]
@@ -206,46 +224,15 @@ def annotate_answer_with_mixed_detection(
     annotated_lines = []
 
     for sentence in sentences:
-        # Find ALL claims that match this sentence
         matching_claims = find_all_matching_claims(sentence, claims, verdicts)
 
         if not matching_claims:
             annotated_lines.append(f"  ❓ {sentence}")
             continue
 
-        # Check if there are multiple verdicts for this sentence
-        verdicts_in_sentence = set()
-        has_contradiction = False
-        has_support = False
-
-        for claim_data in matching_claims:
-            verdict = claim_data.get("verdict", "UNVERIFIABLE")
-            verdicts_in_sentence.add(verdict)
-
-            if verdict == "CONTRADICTED":
-                has_contradiction = True
-            elif verdict == "SUPPORTED":
-                has_support = True
-
-        # Determine indicator
-        if has_contradiction and has_support:
-            # MIXED - both true and false facts in this sentence
-            indicator = "⚠️"
-            annotation = " MIXED"
-        elif has_contradiction:
-            indicator = "❌"
-            annotation = ""
-        elif has_support:
-            # Check confidence of supported claims
-            supported_claims = [c for c in matching_claims if c.get("verdict") == "SUPPORTED"]
-            max_confidence = max((c.get("confidence", 0) for c in supported_claims), default=0)
-            indicator = "✅" if max_confidence >= 0.7 else "🟢"
-            annotation = ""
-        else:
-            indicator = "❓"
-            annotation = ""
-
-        annotated_lines.append(f"  {indicator}{annotation} {sentence}")
+        # Use worst verdict - CONTRADICTED beats everything
+        indicator = get_sentence_verdict(matching_claims)
+        annotated_lines.append(f"  {indicator} {sentence}")
 
     return "\n".join(annotated_lines)
 
@@ -281,7 +268,7 @@ def find_all_matching_claims(
         score = overlap / union
 
         # Lower threshold to catch partial matches
-        if score > 0.15:  # Was 0.3, now more lenient
+        if score > 0.15:
             if claim in verdicts:
                 matching_claims.append(verdicts[claim])
 
@@ -357,5 +344,5 @@ def save_report_pdf(report_text: str, filepath: Optional[str] = None) -> str:
         pdf.cell(0, 4, line_ascii, ln=True)
 
     pdf.output(filepath)
-    print(f"💾 PDF report saved to: {filepath}")
+    print(f" PDF report saved to: {filepath}")
     return filepath
