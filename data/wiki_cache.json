@@ -1416,5 +1416,74 @@
     ],
     "page_id": 77621280,
     "source": "wikipedia"
+  },
+  "search:llm applications text generation": [
+    "List of large language models",
+    "Retrieval-augmented generation"
+  ],
+  "search:llm multiple languages processing": [
+    "Large language model",
+    "LLM-as-a-Judge"
+  ],
+  "search:llm evolution context understanding": [
+    "Large language model",
+    "Prompt engineering"
+  ],
+  "search:llm public data handling": [
+    "Large language model",
+    "Moonshot AI"
+  ],
+  "search:llm chatbots customer support": [
+    "Chatbot",
+    "Grok (chatbot)"
+  ],
+  "search:llm transformer layers number": [
+    "Transformer (deep learning)",
+    "Large language model"
+  ],
+  "search:llm ai model trained": [
+    "Large language model",
+    "Gemini (language model)"
+  ],
+  "search:openai transparency dataset usage": [
+    "OpenAI",
+    "Large language model"
+  ],
+  "search:tokenization llm bos eos": [],
+  "search:llms summarization translation": [
+    "Large language model",
+    "Hallucination (artificial intelligence)"
+  ],
+  "search:llm content creation domains": [],
+  "Grok (chatbot)": {
+    "title": "Grok (chatbot)",
+    "url": "https://en.wikipedia.org/wiki/Grok_(chatbot)",
+    "summary": "Grok is a series of generative large language models developed by SpaceXAI. It was launched in November 2023 by Elon Musk as an initiative based on the large language model (LLM) of the same name. Grok has apps for iOS and Android and is integrated with the X social network and Tesla's Optimus robot where it has chatbot functionality. Grok is named after the verb to grok, created by the American science fiction author Robert A. Heinlein to convey a form of deep, intuitive understanding.\nSpaceXAI",
+    "paragraphs": [
+      "Grok is a series of generative large language models developed by SpaceXAI. It was launched in November 2023 by Elon Musk as an initiative based on the large language model (LLM) of the same name. Grok has apps for iOS and Android and is integrated with the X social network and Tesla's Optimus robot where it has chatbot functionality. Grok is named after the verb to grok, created by the American s",
+      "Grok generates articles for the encyclopedia website Grokipedia, launched in October 2025 by Musk as an alternative to Wikipedia, which he described as \"woke\" and politically biased."
+    ],
+    "page_id": 75223933,
+    "source": "wikipedia"
+  },
+  "Moonshot AI": {
+    "title": "Moonshot AI",
+    "url": "https://en.wikipedia.org/wiki/Moonshot_AI",
+    "summary": "Moonshot AI (Moonshot; Chinese: \u6708\u4e4b\u6697\u9762; pinyin: Yu\u00e8 Zh\u012b \u00c0nmi\u00e0n; lit. 'Dark Side of the Moon') is an artificial intelligence (AI) company based in Beijing, China. It is one of China's 6 \"AI Tigers\".",
+    "paragraphs": [
+      "Moonshot AI (Moonshot; Chinese: \u6708\u4e4b\u6697\u9762; pinyin: Yu\u00e8 Zh\u012b \u00c0nmi\u00e0n; lit. 'Dark Side of the Moon') is an artificial intelligence (AI) company based in Beijing, China. It is one of China's 6 \"AI Tigers\"."
+    ],
+    "page_id": 77833324,
+    "source": "wikipedia"
+  },
+  "OpenAI": {
+    "title": "OpenAI",
+    "url": "https://en.wikipedia.org/wiki/OpenAI",
+    "summary": "OpenAI is an American artificial intelligence (AI) research organization headquartered in San Francisco. It develops generative AI models, particularly the generative pre-trained transformer (GPT) series of large language models (LLMs). Its release of ChatGPT in November 2022 has been credited with catalyzing the AI boom; as of 2026 ChatGPT is the fifth-most-visited website globally. OpenAI also releases Codex, an AI coding agent, and the GPT Image models.\nOpenAI was founded in 2015 in Delaware ",
+    "paragraphs": [
+      "OpenAI is an American artificial intelligence (AI) research organization headquartered in San Francisco. It develops generative AI models, particularly the generative pre-trained transformer (GPT) series of large language models (LLMs). Its release of ChatGPT in November 2022 has been credited with catalyzing the AI boom; as of 2026 ChatGPT is the fifth-most-visited website globally. OpenAI also r"
+    ],
+    "page_id": 48795986,
+    "source": "wikipedia"
   }
 }

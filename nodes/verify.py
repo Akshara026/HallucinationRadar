@@ -298,14 +298,18 @@ Return ONLY the JSON object, no other text."""
             # Case 3: SUPPORTED but the model's own reasoning admits evidence doesn't
             # actually confirm the detail (hedging language) -> downgrade to INSUFFICIENT_EVIDENCE.
             # This is a code-level backstop in case the LLM ignores its self-check instruction.
+            # Uses windowed patterns (word gaps allowed) instead of rigid phrase matching,
+            # so variations like "none of the provided evidence directly mentions" still hit.
             hedge_patterns = [
-                r"does not (directly )?(explicitly )?(address|mention|state|provide|confirm|specify)",
-                r"none of the (provided )?(evidence|sources?) (directly |explicitly )?(mention|address|state|confirm|discuss)",
-                r"no (specific |direct |explicit )?(evidence|mention|indication) (that|of|explicitly)",
-                r"not (explicitly |directly )?(stated|mentioned|specified|confirmed|addressed)",
-                r"(evidence|source)s? (do|does) not (directly |explicitly )?(mention|address|state|confirm)",
-                r"no (provided )?(evidence|source) (directly |explicitly )?(mentions?|addresses?|states?|confirms?)",
-                r"without (explicitly |directly )?(mentioning|stating|confirming)",
+                r"does not.{0,40}(address|mention|state|provide|confirm|specify)",
+                r"none of.{0,60}(mention|address|state|confirm|discuss)",
+                r"no (specific|direct|explicit).{0,30}(evidence|mention|indication)",
+                r"not.{0,30}(stated|mentioned|specified|confirmed|addressed)",
+                r"(evidence|source)s?.{0,20}(do|does) not.{0,40}(mention|address|state|confirm)",
+                r"no.{0,20}(evidence|source).{0,30}(mentions?|addresses?|states?|confirms?)",
+                r"without.{0,30}(mentioning|stating|confirming)",
+                r"while none.{0,60}(mention|address|state|confirm|discuss)",
+                r"(evidence|source)s?.{0,20}(is|are) silent",
             ]
             reasoning_lower = reasoning.lower()
             hedged = any(re.search(p, reasoning_lower) for p in hedge_patterns)

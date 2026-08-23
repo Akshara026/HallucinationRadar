@@ -174,5 +174,247 @@
       "page_id": "2005.07866v1",
       "source": "arxiv"
     }
+  ],
+  "search:llm applications text generation": [
+    {
+      "title": "YouZhi: Towards High-Concurrency Financial LLMs via Adaptive GQA-to-MLA Transition (arXiv, 2026)",
+      "url": "http://arxiv.org/abs/2606.05868v1",
+      "summary": "Large language models (LLMs) drive significant financial innovations, yet their high-concurrency deployment is severely bottlenecked by KV cache memory overhead, which inflates infrastructure costs and throttles scalability. To address this, we propose YouZhi-LLM, a highly efficient financial LLM empowered by a comprehensive structural transition and training pipeline natively built on the Huawei Ascend ecosystem. At its algorithmic core, YouZhi-LLM features a layer-adaptive GQA-to-MLA transitio",
+      "paragraphs": [
+        "Large language models (LLMs) drive significant financial innovations, yet their high-concurrency deployment is severely bottlenecked by KV cache memory overhead, which inflates infrastructure costs and throttles scalability. To address this, we propose YouZhi-LLM, a highly efficient financial LLM empowered by a comprehensive structural transition and training pipeline natively built on the Huawei Ascend ecosystem. At its algorithmic core, YouZhi-LLM features a layer-adaptive GQA-to-MLA transition framework that dynamically assigns per-layer FreqFold sizes, maximizing KV-cache compression while minimizing perplexity degradation. To recover representation capacity and inject domain expertise, the Ascend-based training pipeline seamlessly integrates generalized knowledge distillation with fin"
+      ],
+      "page_id": "2606.05868v1",
+      "source": "arxiv"
+    },
+    {
+      "title": "JaCoText: A Pretrained Model for Java Code-Text Generation (arXiv, 2023)",
+      "url": "http://arxiv.org/abs/2303.12869v1",
+      "summary": "Pretrained transformer-based models have shown high performance in natural language generation task. However, a new wave of interest has surged: automatic programming language generation. This task consists of translating natural language instructions to a programming code. Despite the fact that well-known pretrained models on language generation have achieved good performance in learning programming languages, effort is still needed in automatic code generation. In this paper, we introduce JaCo",
+      "paragraphs": [
+        "Pretrained transformer-based models have shown high performance in natural language generation task. However, a new wave of interest has surged: automatic programming language generation. This task consists of translating natural language instructions to a programming code. Despite the fact that well-known pretrained models on language generation have achieved good performance in learning programming languages, effort is still needed in automatic code generation. In this paper, we introduce JaCoText, a model based on Transformers neural network. It aims to generate java source code from natural language text. JaCoText leverages advantages of both natural language and code generation models. More specifically, we study some findings from the state of the art and use them to (1) initialize o"
+      ],
+      "page_id": "2303.12869v1",
+      "source": "arxiv"
+    }
+  ],
+  "search:llm multiple languages processing": [
+    {
+      "title": "A novel datatype architecture support for programming languages (arXiv, 2014)",
+      "url": "http://arxiv.org/abs/1402.0087v1",
+      "summary": "In programmers point of view, Datatypes in programming language level have a simple description but inside hardware, huge machine codes are responsible to describe type features. Datatype architecture design is a novel approach to match programming features along with hardware design. In this paper a novel Data type-Based Code Reducer (TYPELINE) architecture is proposed and implemented according to significant data types (SDT) of programming languages. TYPELINE uses TEUs for processing various S",
+      "paragraphs": [
+        "In programmers point of view, Datatypes in programming language level have a simple description but inside hardware, huge machine codes are responsible to describe type features. Datatype architecture design is a novel approach to match programming features along with hardware design. In this paper a novel Data type-Based Code Reducer (TYPELINE) architecture is proposed and implemented according to significant data types (SDT) of programming languages. TYPELINE uses TEUs for processing various SDT operations. This architecture design leads to reducing the number of machine codes, and increases execution speed, and also improves some parallelism level. This is because this architecture supports some operation for the execution of Abstract Data Types in parallel. Also it ensures to maintain "
+      ],
+      "page_id": "1402.0087v1",
+      "source": "arxiv"
+    },
+    {
+      "title": "YouZhi: Towards High-Concurrency Financial LLMs via Adaptive GQA-to-MLA Transition (arXiv, 2026)",
+      "url": "http://arxiv.org/abs/2606.05868v1",
+      "summary": "Large language models (LLMs) drive significant financial innovations, yet their high-concurrency deployment is severely bottlenecked by KV cache memory overhead, which inflates infrastructure costs and throttles scalability. To address this, we propose YouZhi-LLM, a highly efficient financial LLM empowered by a comprehensive structural transition and training pipeline natively built on the Huawei Ascend ecosystem. At its algorithmic core, YouZhi-LLM features a layer-adaptive GQA-to-MLA transitio",
+      "paragraphs": [
+        "Large language models (LLMs) drive significant financial innovations, yet their high-concurrency deployment is severely bottlenecked by KV cache memory overhead, which inflates infrastructure costs and throttles scalability. To address this, we propose YouZhi-LLM, a highly efficient financial LLM empowered by a comprehensive structural transition and training pipeline natively built on the Huawei Ascend ecosystem. At its algorithmic core, YouZhi-LLM features a layer-adaptive GQA-to-MLA transition framework that dynamically assigns per-layer FreqFold sizes, maximizing KV-cache compression while minimizing perplexity degradation. To recover representation capacity and inject domain expertise, the Ascend-based training pipeline seamlessly integrates generalized knowledge distillation with fin"
+      ],
+      "page_id": "2606.05868v1",
+      "source": "arxiv"
+    }
+  ],
+  "search:llm evolution context understanding": [
+    {
+      "title": "Fixation probability of rare nonmutator and evolution of mutation rates (arXiv, 2015)",
+      "url": "http://arxiv.org/abs/1501.03632v2",
+      "summary": "Although mutations drive the evolutionary process, the rates at which the mutations occur are themselves subject to evolutionary forces. Our purpose here is to understand the role of selection and random genetic drift in the evolution of mutation rates, and we address this question in asexual populations at mutation-selection equilibrium neglecting selective sweeps. Using a multitype branching process, we calculate the fixation probability of a rare nonmutator in a large asexual population of mu",
+      "paragraphs": [
+        "Although mutations drive the evolutionary process, the rates at which the mutations occur are themselves subject to evolutionary forces. Our purpose here is to understand the role of selection and random genetic drift in the evolution of mutation rates, and we address this question in asexual populations at mutation-selection equilibrium neglecting selective sweeps. Using a multitype branching process, we calculate the fixation probability of a rare nonmutator in a large asexual population of mutators, and find that a nonmutator is more likely to fix when the deleterious mutation rate of the mutator population is high. Compensatory mutations in the mutator population are found to decrease the fixation probability of a nonmutator when the selection coefficient is large. But, surprisingly, t"
+      ],
+      "page_id": "1501.03632v2",
+      "source": "arxiv"
+    },
+    {
+      "title": "Exploiting Context to Identify Lexical Atoms -- A Statistical View of Linguistic Context (arXiv, 1997)",
+      "url": "http://arxiv.org/abs/cmp-lg/9701001v1",
+      "summary": "Interpretation of natural language is inherently context-sensitive. Most words in natural language are ambiguous and their meanings are heavily dependent on the linguistic context in which they are used. The study of lexical semantics can not be separated from the notion of context. This paper takes a contextual approach to lexical semantics and studies the linguistic context of lexical atoms, or \"sticky\" phrases such as \"hot dog\". Since such lexical atoms may occur frequently in unrestricted na",
+      "paragraphs": [
+        "Interpretation of natural language is inherently context-sensitive. Most words in natural language are ambiguous and their meanings are heavily dependent on the linguistic context in which they are used. The study of lexical semantics can not be separated from the notion of context. This paper takes a contextual approach to lexical semantics and studies the linguistic context of lexical atoms, or \"sticky\" phrases such as \"hot dog\". Since such lexical atoms may occur frequently in unrestricted natural language text, recognizing them is crucial for understanding naturally-occurring text. The paper proposes several heuristic approaches to exploiting the linguistic context to identify lexical atoms from arbitrary natural language text."
+      ],
+      "page_id": "9701001v1",
+      "source": "arxiv"
+    }
+  ],
+  "search:llm public data handling": [
+    {
+      "title": "Data Encoding for Byzantine-Resilient Distributed Optimization (arXiv, 2019)",
+      "url": "http://arxiv.org/abs/1907.02664v2",
+      "summary": "We study distributed optimization in the presence of Byzantine adversaries, where both data and computation are distributed among $m$ worker machines, $t$ of which may be corrupt. The compromised nodes may collaboratively and arbitrarily deviate from their pre-specified programs, and a designated (master) node iteratively computes the model/parameter vector for generalized linear models. In this work, we primarily focus on two iterative algorithms: Proximal Gradient Descent (PGD) and Coordinate ",
+      "paragraphs": [
+        "We study distributed optimization in the presence of Byzantine adversaries, where both data and computation are distributed among $m$ worker machines, $t$ of which may be corrupt. The compromised nodes may collaboratively and arbitrarily deviate from their pre-specified programs, and a designated (master) node iteratively computes the model/parameter vector for generalized linear models. In this work, we primarily focus on two iterative algorithms: Proximal Gradient Descent (PGD) and Coordinate Descent (CD). Gradient descent (GD) is a special case of these algorithms. PGD is typically used in the data-parallel setting, where data is partitioned across different samples, whereas, CD is used in the model-parallelism setting, where data is partitioned across the parameter space. In this paper"
+      ],
+      "page_id": "1907.02664v2",
+      "source": "arxiv"
+    },
+    {
+      "title": "Byzantine-Resilient SGD in High Dimensions on Heterogeneous Data (arXiv, 2020)",
+      "url": "http://arxiv.org/abs/2005.07866v1",
+      "summary": "We study distributed stochastic gradient descent (SGD) in the master-worker architecture under Byzantine attacks. We consider the heterogeneous data model, where different workers may have different local datasets, and we do not make any probabilistic assumptions on data generation. At the core of our algorithm, we use the polynomial-time outlier-filtering procedure for robust mean estimation proposed by Steinhardt et al. (ITCS 2018) to filter-out corrupt gradients. In order to be able to apply ",
+      "paragraphs": [
+        "We study distributed stochastic gradient descent (SGD) in the master-worker architecture under Byzantine attacks. We consider the heterogeneous data model, where different workers may have different local datasets, and we do not make any probabilistic assumptions on data generation. At the core of our algorithm, we use the polynomial-time outlier-filtering procedure for robust mean estimation proposed by Steinhardt et al. (ITCS 2018) to filter-out corrupt gradients. In order to be able to apply their filtering procedure in our {\\em heterogeneous} data setting where workers compute {\\em stochastic} gradients, we derive a new matrix concentration result, which may be of independent interest. We provide convergence analyses for smooth strongly-convex and non-convex objectives. We derive our r"
+      ],
+      "page_id": "2005.07866v1",
+      "source": "arxiv"
+    }
+  ],
+  "search:llm chatbots customer support": [
+    {
+      "title": "YouZhi: Towards High-Concurrency Financial LLMs via Adaptive GQA-to-MLA Transition (arXiv, 2026)",
+      "url": "http://arxiv.org/abs/2606.05868v1",
+      "summary": "Large language models (LLMs) drive significant financial innovations, yet their high-concurrency deployment is severely bottlenecked by KV cache memory overhead, which inflates infrastructure costs and throttles scalability. To address this, we propose YouZhi-LLM, a highly efficient financial LLM empowered by a comprehensive structural transition and training pipeline natively built on the Huawei Ascend ecosystem. At its algorithmic core, YouZhi-LLM features a layer-adaptive GQA-to-MLA transitio",
+      "paragraphs": [
+        "Large language models (LLMs) drive significant financial innovations, yet their high-concurrency deployment is severely bottlenecked by KV cache memory overhead, which inflates infrastructure costs and throttles scalability. To address this, we propose YouZhi-LLM, a highly efficient financial LLM empowered by a comprehensive structural transition and training pipeline natively built on the Huawei Ascend ecosystem. At its algorithmic core, YouZhi-LLM features a layer-adaptive GQA-to-MLA transition framework that dynamically assigns per-layer FreqFold sizes, maximizing KV-cache compression while minimizing perplexity degradation. To recover representation capacity and inject domain expertise, the Ascend-based training pipeline seamlessly integrates generalized knowledge distillation with fin"
+      ],
+      "page_id": "2606.05868v1",
+      "source": "arxiv"
+    },
+    {
+      "title": "Customizing Emotional Support: How Do Individuals Construct and Interact With LLM-Powered Chatbots (arXiv, 2025)",
+      "url": "http://arxiv.org/abs/2504.12943v2",
+      "summary": "Personalized support is essential to fulfill individuals' emotional needs and sustain their mental well-being. Large language models (LLMs), with great customization flexibility, hold promises to enable individuals to create their own emotional support agents. In this work, we developed ChatLab, where users could construct LLM-powered chatbots with additional interaction features including voices and avatars. Using a Research through Design approach, we conducted a week-long field study followed",
+      "paragraphs": [
+        "Personalized support is essential to fulfill individuals' emotional needs and sustain their mental well-being. Large language models (LLMs), with great customization flexibility, hold promises to enable individuals to create their own emotional support agents. In this work, we developed ChatLab, where users could construct LLM-powered chatbots with additional interaction features including voices and avatars. Using a Research through Design approach, we conducted a week-long field study followed by interviews and design activities (N = 22), which uncovered how participants created diverse chatbot personas for emotional reliance, confronting stressors, connecting to intellectual discourse, reflecting mirrored selves, etc. We found that participants actively enriched the personas they constr"
+      ],
+      "page_id": "2504.12943v2",
+      "source": "arxiv"
+    }
+  ],
+  "search:llm transformer layers number": [
+    {
+      "title": "YouZhi: Towards High-Concurrency Financial LLMs via Adaptive GQA-to-MLA Transition (arXiv, 2026)",
+      "url": "http://arxiv.org/abs/2606.05868v1",
+      "summary": "Large language models (LLMs) drive significant financial innovations, yet their high-concurrency deployment is severely bottlenecked by KV cache memory overhead, which inflates infrastructure costs and throttles scalability. To address this, we propose YouZhi-LLM, a highly efficient financial LLM empowered by a comprehensive structural transition and training pipeline natively built on the Huawei Ascend ecosystem. At its algorithmic core, YouZhi-LLM features a layer-adaptive GQA-to-MLA transitio",
+      "paragraphs": [
+        "Large language models (LLMs) drive significant financial innovations, yet their high-concurrency deployment is severely bottlenecked by KV cache memory overhead, which inflates infrastructure costs and throttles scalability. To address this, we propose YouZhi-LLM, a highly efficient financial LLM empowered by a comprehensive structural transition and training pipeline natively built on the Huawei Ascend ecosystem. At its algorithmic core, YouZhi-LLM features a layer-adaptive GQA-to-MLA transition framework that dynamically assigns per-layer FreqFold sizes, maximizing KV-cache compression while minimizing perplexity degradation. To recover representation capacity and inject domain expertise, the Ascend-based training pipeline seamlessly integrates generalized knowledge distillation with fin"
+      ],
+      "page_id": "2606.05868v1",
+      "source": "arxiv"
+    },
+    {
+      "title": "On the Frobenius fields of abelian varieties over number fields (arXiv, 2024)",
+      "url": "http://arxiv.org/abs/2402.07935v3",
+      "summary": "Let $A$ be a non-CM simple abelian variety over a number field $K$. For a place $v$ of $K$ such that $A$ has good reduction at $v$, let $F(A,v)$ denote the Frobenius field generated by the corresponding Frobenius eigenvalues. Assuming $A$ has connected monodromy groups, we show that the set of places $v$ such that $F(A,v)$ is isomorphic to a fixed number field has upper Dirichlet density zero. Assuming the GRH, we give a power saving upper bound for the number of such places.",
+      "paragraphs": [
+        "Let $A$ be a non-CM simple abelian variety over a number field $K$. For a place $v$ of $K$ such that $A$ has good reduction at $v$, let $F(A,v)$ denote the Frobenius field generated by the corresponding Frobenius eigenvalues. Assuming $A$ has connected monodromy groups, we show that the set of places $v$ such that $F(A,v)$ is isomorphic to a fixed number field has upper Dirichlet density zero. Assuming the GRH, we give a power saving upper bound for the number of such places."
+      ],
+      "page_id": "2402.07935v3",
+      "source": "arxiv"
+    }
+  ],
+  "search:llm ai model trained": [
+    {
+      "title": "Foundations of GenIR (arXiv, 2025)",
+      "url": "http://arxiv.org/abs/2501.02842v1",
+      "summary": "The chapter discusses the foundational impact of modern generative AI models on information access (IA) systems. In contrast to traditional AI, the large-scale training and superior data modeling of generative AI models enable them to produce high-quality, human-like responses, which brings brand new opportunities for the development of IA paradigms. In this chapter, we identify and introduce two of them in details, i.e., information generation and information synthesis. Information generation a",
+      "paragraphs": [
+        "The chapter discusses the foundational impact of modern generative AI models on information access (IA) systems. In contrast to traditional AI, the large-scale training and superior data modeling of generative AI models enable them to produce high-quality, human-like responses, which brings brand new opportunities for the development of IA paradigms. In this chapter, we identify and introduce two of them in details, i.e., information generation and information synthesis. Information generation allows AI to create tailored content addressing user needs directly, enhancing user experience with immediate, relevant outputs. Information synthesis leverages the ability of generative AI to integrate and reorganize existing information, providing grounded responses and mitigating issues like model"
+      ],
+      "page_id": "2501.02842v1",
+      "source": "arxiv"
+    },
+    {
+      "title": "Faith in AI can narrow the futures individuals consider (arXiv, 2026)",
+      "url": "http://arxiv.org/abs/2603.28944v2",
+      "summary": "Artificial intelligence (AI) predictions are increasingly used to inform human decisions. Here, using a behavioral implementation of the classic Newcomb's paradox in 1,305 participants, we show that AI predictions can also shape the reasoning people use to make a decision. In this paradigm, perceived predictive authority can alter how people reason about their future actions, leading them to forgo a guaranteed reward. Over 40% of participants treated AI as such a predictive authority about their",
+      "paragraphs": [
+        "Artificial intelligence (AI) predictions are increasingly used to inform human decisions. Here, using a behavioral implementation of the classic Newcomb's paradox in 1,305 participants, we show that AI predictions can also shape the reasoning people use to make a decision. In this paradigm, perceived predictive authority can alter how people reason about their future actions, leading them to forgo a guaranteed reward. Over 40% of participants treated AI as such a predictive authority about their own behavior, significantly increasing the odds of forgoing the guaranteed reward by a factor of 3.39 (95% CI: 2.45-4.70) and reducing earnings by 10.7-42.9%. The effect appeared across AI presentations and decision contexts and remained detectable even when predictions repeatedly failed. When peop"
+      ],
+      "page_id": "2603.28944v2",
+      "source": "arxiv"
+    }
+  ],
+  "search:openai transparency dataset usage": [
+    {
+      "title": "Learning Dexterous In-Hand Manipulation (arXiv, 2018)",
+      "url": "http://arxiv.org/abs/1808.00177v5",
+      "summary": "We use reinforcement learning (RL) to learn dexterous in-hand manipulation policies which can perform vision-based object reorientation on a physical Shadow Dexterous Hand. The training is performed in a simulated environment in which we randomize many of the physical properties of the system like friction coefficients and an object's appearance. Our policies transfer to the physical robot despite being trained entirely in simulation. Our method does not rely on any human demonstrations, but man",
+      "paragraphs": [
+        "We use reinforcement learning (RL) to learn dexterous in-hand manipulation policies which can perform vision-based object reorientation on a physical Shadow Dexterous Hand. The training is performed in a simulated environment in which we randomize many of the physical properties of the system like friction coefficients and an object's appearance. Our policies transfer to the physical robot despite being trained entirely in simulation. Our method does not rely on any human demonstrations, but many behaviors found in human manipulation emerge naturally, including finger gaiting, multi-finger coordination, and the controlled use of gravity. Our results were obtained using the same distributed RL system that was used to train OpenAI Five. We also include a video of our results: https://youtu.b"
+      ],
+      "page_id": "1808.00177v5",
+      "source": "arxiv"
+    },
+    {
+      "title": "The RSNA Abdominal Traumatic Injury CT (RATIC) Dataset (arXiv, 2024)",
+      "url": "http://arxiv.org/abs/2405.19595v1",
+      "summary": "The RSNA Abdominal Traumatic Injury CT (RATIC) dataset is the largest publicly available collection of adult abdominal CT studies annotated for traumatic injuries. This dataset includes 4,274 studies from 23 institutions across 14 countries. The dataset is freely available for non-commercial use via Kaggle at https://www.kaggle.com/competitions/rsna-2023-abdominal-trauma-detection. Created for the RSNA 2023 Abdominal Trauma Detection competition, the dataset encourages the development of advance",
+      "paragraphs": [
+        "The RSNA Abdominal Traumatic Injury CT (RATIC) dataset is the largest publicly available collection of adult abdominal CT studies annotated for traumatic injuries. This dataset includes 4,274 studies from 23 institutions across 14 countries. The dataset is freely available for non-commercial use via Kaggle at https://www.kaggle.com/competitions/rsna-2023-abdominal-trauma-detection. Created for the RSNA 2023 Abdominal Trauma Detection competition, the dataset encourages the development of advanced machine learning models for detecting abdominal injuries on CT scans. The dataset encompasses detection and classification of traumatic injuries across multiple organs, including the liver, spleen, kidneys, bowel, and mesentery. Annotations were created by expert radiologists from the American Soc"
+      ],
+      "page_id": "2405.19595v1",
+      "source": "arxiv"
+    }
+  ],
+  "search:tokenization llm bos eos": [
+    {
+      "title": "Competition between intermediate plaquette phases in SrCu$_2$(BO$_3$)$_2$ under pressure (arXiv, 2019)",
+      "url": "http://arxiv.org/abs/1903.07887v2",
+      "summary": "Building on the growing evidence based on NMR, magnetization, neutron scattering, ESR, and specific heat that, under pressure, SrCu$_2$(BO$_3$)$_2$ has an intermediate phase between the dimer and the N\u00e9el phase, we study the competition between two candidate phases in the context of a minimal model that includes two types of intra- and inter-dimer interactions without enlarging the unit cell. We show that the empty plaquette phase of the Shastry-Sutherland model is quickly replaced by a quasi-1D",
+      "paragraphs": [
+        "Building on the growing evidence based on NMR, magnetization, neutron scattering, ESR, and specific heat that, under pressure, SrCu$_2$(BO$_3$)$_2$ has an intermediate phase between the dimer and the N\u00e9el phase, we study the competition between two candidate phases in the context of a minimal model that includes two types of intra- and inter-dimer interactions without enlarging the unit cell. We show that the empty plaquette phase of the Shastry-Sutherland model is quickly replaced by a quasi-1D full plaquette phase when intra- and/or inter-dimer couplings take different values, and that this full plaquette phase is in much better agreement with available experimental data than the empty plaquette one."
+      ],
+      "page_id": "1903.07887v2",
+      "source": "arxiv"
+    },
+    {
+      "title": "The Eos detector: a demonstrator of hybrid optical detection technology (arXiv, 2026)",
+      "url": "http://arxiv.org/abs/2607.20285v2",
+      "summary": "Eos is an R&D testbed for hybrid detector technologies, featuring state-of-the-art sub-ns photosensors, the first implementation of dichroicons in a large-scale demonstrator, and the deployment of novel detection media such as water-based liquid scintillator (WbLS). By separating Cherenkov and scintillation light, Eos leverages the benefits of both to explore the potential of next-generation neutrino technologies. An extensive radioactive source calibration program enables the characterization o",
+      "paragraphs": [
+        "Eos is an R&D testbed for hybrid detector technologies, featuring state-of-the-art sub-ns photosensors, the first implementation of dichroicons in a large-scale demonstrator, and the deployment of novel detection media such as water-based liquid scintillator (WbLS). By separating Cherenkov and scintillation light, Eos leverages the benefits of both to explore the potential of next-generation neutrino technologies. An extensive radioactive source calibration program enables the characterization of position, direction, and energy reconstruction performance of a variety of target materials. Furthermore, Eos will provide data to refine optical models and inform the development and simulation of future neutrino experiments. This paper describes the as-built design and data-taking plan of Eos, o"
+      ],
+      "page_id": "2607.20285v2",
+      "source": "arxiv"
+    }
+  ],
+  "search:llms summarization translation": [
+    {
+      "title": "Beam Search Strategies for Neural Machine Translation (arXiv, 2017)",
+      "url": "http://arxiv.org/abs/1702.01806v2",
+      "summary": "The basic concept in Neural Machine Translation (NMT) is to train a large Neural Network that maximizes the translation performance on a given parallel corpus. NMT is then using a simple left-to-right beam-search decoder to generate new translations that approximately maximize the trained conditional probability. The current beam search strategy generates the target sentence word by word from left-to- right while keeping a fixed amount of active candidates at each time step. First, this simple s",
+      "paragraphs": [
+        "The basic concept in Neural Machine Translation (NMT) is to train a large Neural Network that maximizes the translation performance on a given parallel corpus. NMT is then using a simple left-to-right beam-search decoder to generate new translations that approximately maximize the trained conditional probability. The current beam search strategy generates the target sentence word by word from left-to- right while keeping a fixed amount of active candidates at each time step. First, this simple search is less adaptive as it also expands candidates whose scores are much worse than the current best. Secondly, it does not expand hypotheses if they are not within the best scoring candidates, even if their scores are close to the best one. The latter one can be avoided by increasing the beam siz"
+      ],
+      "page_id": "1702.01806v2",
+      "source": "arxiv"
+    },
+    {
+      "title": "DMDTEval: An Evaluation and Analysis of LLMs on Disambiguation in Multi-domain Translation (arXiv, 2025)",
+      "url": "http://arxiv.org/abs/2504.20371v3",
+      "summary": "Currently, Large Language Models (LLMs) have achieved remarkable results in machine translation. However, their performance in multi-domain translation (MDT) is less satisfactory, the meanings of words can vary across different domains, highlighting the significant ambiguity inherent in MDT. Therefore, evaluating the disambiguation ability of LLMs in MDT, remains an open problem. To this end, we present an evaluation and analysis of LLMs on disambiguation in multi-domain translation (DMDTEval), ",
+      "paragraphs": [
+        "Currently, Large Language Models (LLMs) have achieved remarkable results in machine translation. However, their performance in multi-domain translation (MDT) is less satisfactory, the meanings of words can vary across different domains, highlighting the significant ambiguity inherent in MDT. Therefore, evaluating the disambiguation ability of LLMs in MDT, remains an open problem. To this end, we present an evaluation and analysis of LLMs on disambiguation in multi-domain translation (DMDTEval), our systematic evaluation framework consisting of three critical aspects: (1) we construct a translation test set with multi-domain ambiguous word annotation, (2) we curate a diverse set of disambiguation prompt strategies, and (3) we design precise disambiguation metrics, and study the efficacy of "
+      ],
+      "page_id": "2504.20371v3",
+      "source": "arxiv"
+    }
+  ],
+  "search:llm content creation domains": [
+    {
+      "title": "Automatic Non-Linear Video Editing Transfer (arXiv, 2021)",
+      "url": "http://arxiv.org/abs/2105.06988v1",
+      "summary": "We propose an automatic approach that extracts editing styles in a source video and applies the edits to matched footage for video creation. Our Computer Vision based techniques considers framing, content type, playback speed, and lighting of each input video segment. By applying a combination of these features, we demonstrate an effective method that automatically transfers the visual and temporal styles from professionally edited videos to unseen raw footage. We evaluated our approach with rea",
+      "paragraphs": [
+        "We propose an automatic approach that extracts editing styles in a source video and applies the edits to matched footage for video creation. Our Computer Vision based techniques considers framing, content type, playback speed, and lighting of each input video segment. By applying a combination of these features, we demonstrate an effective method that automatically transfers the visual and temporal styles from professionally edited videos to unseen raw footage. We evaluated our approach with real-world videos that contained a total of 3872 video shots of a variety of editing styles, including different subjects, camera motions, and lighting. We reported feedback from survey participants who reviewed a set of our results."
+      ],
+      "page_id": "2105.06988v1",
+      "source": "arxiv"
+    },
+    {
+      "title": "Can LLMs Reason About Brand Ownership? An Empirical Study of Domain Attribution Intelligence (arXiv, 2026)",
+      "url": "http://arxiv.org/abs/2606.20868v1",
+      "summary": "When a new domain resembling a popular brand appears, defenders face a fundamental ambiguity: it may be an attacker-created squatting site for phishing, or it may be a domain the brand itself registered, either defensively, to block attackers, or legitimately, for a new product or service launch. Incorrectly flagging a brand-owned domain as malicious produces a false positive that harms end users and damages the brand's reputation. Resolving this ambiguity requires brand intelligence: the abilit",
+      "paragraphs": [
+        "When a new domain resembling a popular brand appears, defenders face a fundamental ambiguity: it may be an attacker-created squatting site for phishing, or it may be a domain the brand itself registered, either defensively, to block attackers, or legitimately, for a new product or service launch. Incorrectly flagging a brand-owned domain as malicious produces a false positive that harms end users and damages the brand's reputation. Resolving this ambiguity requires brand intelligence: the ability to determine, at scale, whether a given domain belongs to a brand. Large language models (LLMs), with their broad knowledge of brand domain relationships, offer a promising zero configuration approach to this problem, but their reliability for brand intelligence tasks remains unknown. We present t"
+      ],
+      "page_id": "2606.20868v1",
+      "source": "arxiv"
+    }
   ]
 }

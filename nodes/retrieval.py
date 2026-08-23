@@ -659,6 +659,16 @@ def batch_score_chunks(
 
         scored.sort(key=lambda x: x["relevance"], reverse=True)
 
+        # arXiv abstracts are keyword-dense and can superficially match on shared
+        # terminology without being topically relevant (unlike curated Wikipedia
+        # intros). Require a higher relevance bar for arXiv results specifically,
+        # so a weak arXiv match doesn't crowd out or masquerade as real evidence.
+        ARXIV_MIN_RELEVANCE = 0.55
+        scored = [
+            item for item in scored
+            if item.get("source") != "arxiv" or item["relevance"] >= ARXIV_MIN_RELEVANCE
+        ]
+
         seen_titles = set()
         deduped = []
         for item in scored:
@@ -667,7 +677,20 @@ def batch_score_chunks(
                 deduped.append(item)
 
         # Keep top 3 now instead of 2, since we may have two sources competing
-        evidence[claim] = deduped[:3]
+        deduped = deduped[:3]
+
+        if not deduped:
+            # Everything got filtered (e.g. only weak arXiv matches existed)
+            deduped = [{
+                "title": "No evidence found",
+                "content": f"No sufficiently relevant evidence found for: {claim[:100]}",
+                "url": "",
+                "relevance": 0.0,
+                "source_type": "fallback",
+                "source": "none",
+            }]
+
+        evidence[claim] = deduped
 
     return evidence
 
