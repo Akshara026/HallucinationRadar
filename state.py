@@ -2,16 +2,20 @@
 state.py - RadarState definition for LangGraph pipeline
 """
 
-from typing import TypedDict, List, Dict, Any
+from typing import TypedDict, List, Dict, Any, Optional
 
 
 class RadarState(TypedDict, total=False):
     """State that flows through the HallucinationRadar pipeline."""
 
-    # Input
+    # Input - EITHER query (generate answer) OR external_answer (check pasted text)
     query: str
+    external_answer: str  # if provided, skips answer_node entirely
 
-    # Answer node output
+    # Set by prepare_input_node
+    answer_source: str  # "generated" or "external"
+
+    # Answer node output (or copied from external_answer)
     concepts: List[str]
     answer: str
 

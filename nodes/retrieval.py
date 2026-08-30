@@ -8,6 +8,7 @@ Optimized for GTX 1650 hardware:
 - Batched embedding calls
 - Deduplicated evidence per claim, tagged by source
 - Defensive error handling throughout
+- Transparency counters: cache vs live hits per source
 """
 
 import json
@@ -52,6 +53,49 @@ embeddings = OllamaEmbeddings(model="nomic-embed-text")
 _wiki_cache: Dict[str, Any] = {}
 _arxiv_cache: Dict[str, Any] = {}
 
+# Transparency counters (reset each run)
+_retrieval_stats = {
+    "wiki_live_fetches": 0,       # Wikipedia articles fetched fresh this run
+    "wiki_cache_hits": 0,         # Wikipedia articles loaded from disk cache
+    "wiki_search_failures": 0,    # Wikipedia searches that failed (429 etc)
+    "arxiv_live_fetches": 0,      # arXiv papers fetched fresh this run
+    "arxiv_cache_hits": 0,        # arXiv papers loaded from disk cache
+    "arxiv_search_failures": 0,   # arXiv searches that failed
+    "total_unique_queries": 0,    # Total unique search queries generated
+    "wiki_cache_size": 0,         # Total entries in Wikipedia cache (after run)
+    "arxiv_cache_size": 0,        # Total entries in arXiv cache (after run)
+}
+
+
+def _reset_stats():
+    """Reset transparency counters at start of each retrieval run."""
+    for key in _retrieval_stats:
+        _retrieval_stats[key] = 0
+
+
+def _print_retrieval_summary(elapsed: float):
+    """Print transparent retrieval statistics."""
+    s = _retrieval_stats
+
+    print(f"\n{'='*60}")
+    print(f"RETRIEVAL TRANSPARENCY REPORT")
+    print(f"{'='*60}")
+    print(f"Time: {elapsed:.1f}s")
+    print(f"Unique queries: {s['total_unique_queries']}")
+    print(f"")
+    print(f"Wikipedia:")
+    print(f"  Live fetches (this run):   {s['wiki_live_fetches']}")
+    print(f"  Cache hits:                {s['wiki_cache_hits']}")
+    print(f"  Search failures (429 etc): {s['wiki_search_failures']}")
+    print(f"  Total cache entries now:   {s['wiki_cache_size']}")
+    print(f"")
+    print(f"arXiv:")
+    print(f"  Live fetches (this run):   {s['arxiv_live_fetches']}")
+    print(f"  Cache hits:                {s['arxiv_cache_hits']}")
+    print(f"  Search failures:           {s['arxiv_search_failures']}")
+    print(f"  Total cache entries now:   {s['arxiv_cache_size']}")
+    print(f"{'='*60}\n")
+
 
 # =========================================================
 # Cache load/save (separate files per source)
@@ -93,15 +137,15 @@ def save_disk_caches() -> None:
 def retrieval_node(state: Dict[str, Any]) -> Dict[str, Any]:
     """
     Retrieve evidence for all claims from Wikipedia AND arXiv.
-
-    Input:  state["claims"] - list of factual claims
-    Output: state["evidence"] - dict mapping claim -> list of evidence dicts,
-            each tagged with a "source" field ("wikipedia" or "arxiv")
+    Includes transparency counters for cache vs live hits.
     """
     claims = state.get("claims", [])
 
     if not claims:
         return {"evidence": {}}
+
+    # Reset stats for this run
+    _reset_stats()
 
     load_disk_caches()
 
@@ -109,6 +153,11 @@ def retrieval_node(state: Dict[str, Any]) -> Dict[str, Any]:
 
     print(f"\nGenerating search queries for {len(claims)} claims...")
     all_queries = generate_all_queries(claims)
+
+    # Count total unique queries
+    _retrieval_stats["total_unique_queries"] = len(
+        set(q for queries in all_queries.values() for q in queries)
+    )
 
     print("Fetching Wikipedia articles...")
     claim_wiki_articles = collect_all_wiki_articles(all_queries)
@@ -124,10 +173,19 @@ def retrieval_node(state: Dict[str, Any]) -> Dict[str, Any]:
 
     save_disk_caches()
 
-    elapsed = time.time() - start_time
-    print(f"Retrieval complete in {elapsed:.1f}s")
+    # Update cache sizes after save
+    _retrieval_stats["wiki_cache_size"] = len(_wiki_cache)
+    _retrieval_stats["arxiv_cache_size"] = len(_arxiv_cache)
 
-    return {"evidence": evidence}
+    elapsed = time.time() - start_time
+
+    # Print transparency summary
+    _print_retrieval_summary(elapsed)
+
+    return {
+        "evidence": evidence,
+        "retrieval_stats": _retrieval_stats.copy(),
+    }
 
 
 # =========================================================
@@ -135,10 +193,7 @@ def retrieval_node(state: Dict[str, Any]) -> Dict[str, Any]:
 # =========================================================
 
 def generate_all_queries(claims: List[str]) -> Dict[str, List[str]]:
-    """
-    Generate search queries for ALL claims in ONE LLM call.
-    Same queries are reused for both Wikipedia and arXiv search.
-    """
+    """Generate search queries for ALL claims in ONE LLM call."""
     claims_text = "\n".join([f"{i + 1}. {claim}" for i, claim in enumerate(claims)])
 
     prompt = f"""For each claim below, generate 2 search queries to find evidence.
@@ -255,14 +310,16 @@ def wiki_search(query: str, num_results: int = 2) -> List[str]:
                 time.sleep(wait)
             else:
                 print(f"  Wiki search failed '{query}': {type(e).__name__}: {str(e)[:60]}")
+                _retrieval_stats["wiki_search_failures"] += 1
                 return []
 
     print(f"  Wiki search gave up: '{query}'")
+    _retrieval_stats["wiki_search_failures"] += 1
     return []
 
 
 def wiki_batch_fetch(titles: List[str]) -> Dict[str, Dict[str, Any]]:
-    """Fetch multiple Wikipedia pages in ONE API request (up to 50 per request)."""
+    """Fetch multiple Wikipedia pages in ONE API request."""
     if not titles:
         return {}
 
@@ -345,6 +402,7 @@ def collect_all_wiki_articles(
         key = search_cache_key(query)
         if key in _wiki_cache:
             query_to_titles[query] = _wiki_cache[key]
+            _retrieval_stats["wiki_cache_hits"] += 1  # Cache hit for search query
         else:
             uncached_queries.append(query)
 
@@ -358,6 +416,10 @@ def collect_all_wiki_articles(
         all_titles_needed.update(titles)
 
     uncached_titles = [t for t in all_titles_needed if t not in _wiki_cache]
+    cached_titles = [t for t in all_titles_needed if t in _wiki_cache]
+
+    # Count cache hits for articles
+    _retrieval_stats["wiki_cache_hits"] += len(cached_titles)
 
     if uncached_titles:
         print(f"  Batch fetching {len(uncached_titles)} wiki articles in "
@@ -369,6 +431,7 @@ def collect_all_wiki_articles(
 
             for title, article in fetched.items():
                 _wiki_cache[title] = article
+                _retrieval_stats["wiki_live_fetches"] += 1  # Live fetch
 
             for title in batch:
                 if title not in _wiki_cache:
@@ -423,11 +486,7 @@ _ARXIV_NS = {
 
 
 def arxiv_search(query: str, num_results: int = 2) -> List[Dict[str, Any]]:
-    """
-    Search arXiv for papers matching a query.
-    Returns list of paper dicts with title, summary (abstract), url, id.
-    No API key needed. Free public API.
-    """
+    """Search arXiv for papers matching a query."""
     params = {
         "search_query": f"all:{query}",
         "start": 0,
@@ -438,7 +497,7 @@ def arxiv_search(query: str, num_results: int = 2) -> List[Dict[str, Any]]:
 
     for attempt in range(3):
         try:
-            time.sleep(0.5 * (attempt + 1))  # arXiv asks for max 1 req / 3s, being conservative
+            time.sleep(0.5 * (attempt + 1))
             r = _arxiv_session.get(ARXIV_API, params=params, timeout=15)
             r.raise_for_status()
 
@@ -466,7 +525,7 @@ def arxiv_search(query: str, num_results: int = 2) -> List[Dict[str, Any]]:
                     "title": f"{title} (arXiv{', ' + year if year else ''})",
                     "url": arxiv_id_full or f"https://arxiv.org/abs/{arxiv_id}",
                     "summary": summary[:500],
-                    "paragraphs": [summary[:800]],  # abstract is the whole "paragraph"
+                    "paragraphs": [summary[:800]],
                     "page_id": arxiv_id or hash(title),
                     "source": "arxiv",
                 })
@@ -475,6 +534,7 @@ def arxiv_search(query: str, num_results: int = 2) -> List[Dict[str, Any]]:
 
         except ET.ParseError as e:
             print(f"  arXiv response parse failed for '{query}': {e}")
+            _retrieval_stats["arxiv_search_failures"] += 1
             return []
         except Exception as e:
             if attempt < 2:
@@ -483,6 +543,7 @@ def arxiv_search(query: str, num_results: int = 2) -> List[Dict[str, Any]]:
                 time.sleep(wait)
             else:
                 print(f"  arXiv search failed '{query}': {type(e).__name__}: {str(e)[:60]}")
+                _retrieval_stats["arxiv_search_failures"] += 1
                 return []
 
     return []
@@ -504,11 +565,13 @@ def collect_all_arxiv_papers(
         key = search_cache_key(query)
         if key in _arxiv_cache:
             query_to_papers[query] = _arxiv_cache[key]
+            _retrieval_stats["arxiv_cache_hits"] += 1  # Cache hit
         else:
             papers = arxiv_search(query, num_results=2)
             query_to_papers[query] = papers
             _arxiv_cache[key] = papers
             fetched_count += 1
+            _retrieval_stats["arxiv_live_fetches"] += len(papers)  # Live fetches
 
     if fetched_count == 0:
         print("  All arXiv results loaded from cache!")
@@ -527,7 +590,7 @@ def collect_all_arxiv_papers(
                     seen_ids.add(paper_id)
                     papers_for_claim.append(paper)
 
-        claim_papers[claim] = papers_for_claim[:2]  # cap arXiv results per claim
+        claim_papers[claim] = papers_for_claim[:2]
 
     return claim_papers
 
@@ -587,12 +650,7 @@ def extract_all_chunks(
 def batch_score_chunks(
     claims: List[str], claim_chunks: Dict[str, List[Dict[str, Any]]]
 ) -> Dict[str, List[Dict[str, Any]]]:
-    """
-    Score chunks by semantic similarity to claims.
-    Batches all embeddings together for efficiency.
-    Deduplicates by title. Keeps top evidence regardless of source,
-    so Wikipedia and arXiv compete on relevance alone.
-    """
+    """Score chunks by semantic similarity. Deduplicates by title."""
     all_texts = []
     text_mapping = []
 
@@ -659,10 +717,6 @@ def batch_score_chunks(
 
         scored.sort(key=lambda x: x["relevance"], reverse=True)
 
-        # arXiv abstracts are keyword-dense and can superficially match on shared
-        # terminology without being topically relevant (unlike curated Wikipedia
-        # intros). Require a higher relevance bar for arXiv results specifically,
-        # so a weak arXiv match doesn't crowd out or masquerade as real evidence.
         ARXIV_MIN_RELEVANCE = 0.55
         scored = [
             item for item in scored
@@ -676,11 +730,9 @@ def batch_score_chunks(
                 seen_titles.add(item["title"])
                 deduped.append(item)
 
-        # Keep top 3 now instead of 2, since we may have two sources competing
         deduped = deduped[:3]
 
         if not deduped:
-            # Everything got filtered (e.g. only weak arXiv matches existed)
             deduped = [{
                 "title": "No evidence found",
                 "content": f"No sufficiently relevant evidence found for: {claim[:100]}",
@@ -698,7 +750,7 @@ def batch_score_chunks(
 def _individual_score_chunks(
     claims: List[str], claim_chunks: Dict[str, List[Dict[str, Any]]]
 ) -> Dict[str, List[Dict[str, Any]]]:
-    """Fallback: score chunks individually if batch embedding fails."""
+    """Fallback: score chunks individually."""
     evidence = {}
 
     for claim in claims:
@@ -736,8 +788,7 @@ def _individual_score_chunks(
 
             evidence[claim] = deduped[:3]
 
-        except Exception as e:
-            print(f"  Scoring failed for claim: {e}")
+        except Exception:
             evidence[claim] = [{
                 "title": "Error",
                 "content": "Scoring failed.",
@@ -748,33 +799,3 @@ def _individual_score_chunks(
             }]
 
     return evidence
-
-
-if __name__ == "__main__":
-    print("=" * 70)
-    print("TESTING MULTI-SOURCE RETRIEVAL NODE")
-    print("=" * 70)
-
-    test_state = {
-        "claims": [
-            "The Eiffel Tower was completed in 1889",
-            "GPT-3 was developed by OpenAI",
-            "The transformer architecture uses self-attention mechanisms",
-        ]
-    }
-
-    start = time.time()
-    result = retrieval_node(test_state)
-    elapsed = time.time() - start
-
-    print(f"\nTotal time: {elapsed:.2f}s")
-
-    for claim, evidence_list in result["evidence"].items():
-        print(f"\nClaim: {claim}")
-        if not evidence_list:
-            print("  No evidence found")
-        for i, ev in enumerate(evidence_list, 1):
-            relevance = ev.get("relevance", 0)
-            source = ev.get("source", "?")
-            print(f"  {i}. [{relevance:.1%}] ({source}) {ev['title']}")
-            print(f"     {ev['content'][:120]}...")
